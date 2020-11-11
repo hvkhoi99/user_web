@@ -2,16 +2,18 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getListCategories } from '../../actions/category';
 
+
 class Header extends Component {
 
     componentDidMount() {
         this.props.getCategories();
     }
 
+
     render() {
 
         const listCategories = this.props.categories.map((item, index) => {
-            return (<li key={index}><a href>{item.name}</a></li>)
+            return (<li key={index}><a href={`/category/${item.id}`}>{item.name}</a></li>)
         })
         return (
             <div className="mainPart">
@@ -76,14 +78,15 @@ class Header extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
     return {
-        categories: state.categories
+        categories: state.categories,
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         getCategories: () => {
             dispatch(getListCategories());
-        }
+        },
+       
     }
 }
 export default connect(mapStateToProps, mapDispatchToProps)(Header)

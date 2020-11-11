@@ -1,0 +1,70 @@
+.left-side-item-manga {
+    width: 75%;
+}
+
+.manga-title-container {
+    display: block;
+    text-align: center;
+}
+
+.manga-infor-container {
+    display: flex;
+}
+
+.left-side-manga-infor {
+    width: 25%;
+}
+
+.right-side-manga-infor {
+    width: 75%;
+}
+
+
+/* status  */
+
+.manga-status-left {
+    display: inline-block;
+    width: 25%;
+    margin: 2%;
+    font-size: 20px;
+}
+
+.manga-status-right {
+    display: inline-block;
+    width: 68%;
+    font-size: 20px;
+}
+
+.ranking-item-container {
+    font-size: 20px;
+    margin: 2%;
+}
+
+
+/* Content settup */
+
+.content-list li {
+    border-bottom: 1px green dashed;
+    padding: 10px 0;
+}
+
+.left-list-item {
+    width: 45%;
+}
+
+.center-list-item {
+    width: 30%;
+}
+
+.right-list-item {
+    width: 20%;
+}
+
+.content-list li div {
+    display: flex;
+}
+
+.content-list li div span {
+    display: inline-block;
+    flex-direction: column;
+}

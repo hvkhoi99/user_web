@@ -11,7 +11,7 @@ class StoryMHeader extends Component {
                     </a>
                     <div className="slide-caption">
                         <h3>
-                            <a href="http://www.nettruyen.com/truyen-tranh/ngao-thi-thien-dia-22182" title="Ngạo Thị Thiên Địa">{story.name}</a>
+                            <a href={`/story/${story.id}`} title="Ngạo Thị Thiên Địa">{story.name}</a>
                         </h3>
                         <a href="http://www.nettruyen.com/truyen-tranh/ngao-thi-thien-dia/chap-226/647054" title="Chapter 226">Chapter 226</a>
                         <span className="time">

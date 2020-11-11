@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 
 class StoryMBLeft extends Component {
+
+    
+
     render() {
+
+        const story = this.props.story;
+
         return (
             <div>
-                <a title="Truyện tranh Vạn Giới Tiên Vương" href="http://www.nettruyen.com/truyen-tranh/van-gioi-tien-vuong-26694">
-                    <img src="https://static.8cache.com/cover/o/eJzLyTDT17WITwqMNNQtNKp01A_zNXY1ifQuc8301HeEghwTR_1IV8PsTO-w4HKTUP1iAwC-dBAE/pham-nhan-tu-tien.jpg" className="comic-list-img" data-original="//st.truyenchon.com/data/comics/70/van-gioi-tien-vuong.jpg" alt="Truyện tranh Vạn Giới Tiên Vương" /><h4>Vạn Giới Tiên Vương</h4>
+                <a title="Truyện tranh Vạn Giới Tiên Vương" href={`/story/${story.id}`}>
+                    <img src={story.path_image} className="comic-list-img" data-original="//st.truyenchon.com/data/comics/70/van-gioi-tien-vuong.jpg" alt="Truyện tranh Vạn Giới Tiên Vương" /><h4>{story.name}</h4>
                 </a>
                 <div className="view clearfix">
                     <span className="pull-left">

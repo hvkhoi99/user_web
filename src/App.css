@@ -36,3 +36,12 @@
     transform: rotate(360deg);
   }
 }
+
+.left-side-manga-infor img{
+  width: 235px;
+  height: 280px;
+}
+
+.pdRight{
+  padding-right: 20px;
+}

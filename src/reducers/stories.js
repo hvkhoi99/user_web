@@ -1,5 +1,4 @@
 
-
 const storiesInitialState = []
 const stories = (state = storiesInitialState, action) => {
     switch (action.type) {

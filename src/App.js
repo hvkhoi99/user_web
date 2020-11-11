@@ -3,10 +3,12 @@ import Header from './components/Header/Header';
 import Main from './components/Main/MainContent';
 import Footer from './components/Footer/Footer';
 import './App.css'
-import {BrowserRouter as Router,
+import {
+  BrowserRouter as Router,
   Switch,
   Route,
-  } from "react-router-dom";
+} from "react-router-dom";
+import routes from './Router/Url';
 
 
 class App extends Component {
@@ -16,14 +18,29 @@ class App extends Component {
       listStory: []
     }
   }
-
+  showContentMenus = (routes) => {
+    var result = null;
+    if (routes.length > 0) {
+      result = routes.map((route, index) => {
+        return (
+          <Route
+            key={index}
+            path={route.path}
+            exact={route.exact}
+            component={route.main}
+          />
+        );
+      });
+    }
+    return <Switch>{result}</Switch>;
+  }
 
   render() {
     return (
       <>
         <Router>
           <Header />
-          <Main />
+          {this.showContentMenus(routes)}
           <Footer />
         </Router>
       </>

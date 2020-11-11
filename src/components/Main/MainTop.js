@@ -13,9 +13,9 @@ class MainTop extends Component {
     render() {
 
         const listStory = this.props.stories.map((story, index) => {
-            return (<StoryMHeader key={index} story={story} />)
+            if(story.id>9) return (<StoryMHeader key={index} story={story} />);
 
-        })
+        });
 
         return (
             <>

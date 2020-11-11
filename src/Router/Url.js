@@ -1,44 +1,35 @@
-import React, { Component } from 'react';
-import {BrowserRouter as Router,
-    Switch,
-    Route,
-    } from "react-router-dom";
-
-import MainBetweenLeft from '../components/Main/MainBetweenLeft';
+import React from 'react';
+import Stories from '../components/Pages/stories';
+import Main from '../components/Main/MainContent';
+import PageStory from '../components/Pages/pageStory';
 
 
-class Url extends Component {
-    render() {
-        return (
-            <div>
-                <Switch>
-                    {/* <Route exact path="/">
-                        <Home />
-                    </Route> */}
-                    <Route path="/authors">
-                        <ListAuthor />
-                    </Route>
-                   
-                  
+const routes = [
+    {
+        path: '/category/:id',
+        exact: false,
+        main: ({ match, history }) => <Stories match={match} history={history} />
+    },
+    {
+        path: '/story/:id',
+        exact: false,
+        main: ({ match, history }) => <PageStory match={match} history={history} />
+    },
+    {
+        path: '/',
+        exact: false,
+        main: () => <Main />
+    },
+    // {
+    //     path: '/admin/edit',
+    //     exact: false,
+    //     main: ({ match, history }) => <UserCurrent match={match} history={history} />
+    // },
+    // {
+    //     path: '/',
+    //     exact: true,
+    //     main: () => <Login/>
+    // },
+]
 
-                    <Route path="/author/edit" children={<EditAuthor />} />
-                        
-                    
-                    
-                    {/* <Route path="/chi-tiet/:slug.:id.html" children={<ChiTiet />} />
-                    <Route path="/chi-tiet/:slug.:id.html">
-                            <ChiTiet />
-                        </Route> */}
-                    
-                    {/* <Route path="/edit/:id">
-                        <Edit />
-                    </Route> */}
-                    
-                    
-                </Switch>
-            </div>
-        );
-    }
-}
-
-export default Url;
+export default routes;
