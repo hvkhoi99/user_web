@@ -15,6 +15,22 @@ export const actFetchAuthors = (authors) => {
     }
 }
 
+export const actGetAuthorById = (id) =>
+{
+    return dispatch =>{
+        return callApi(`author/${id}`, 'GET', null).then(res => {
+            dispatch(actGetAuthor(res.data));
+        });
+    }
+}
+
+export const actGetAuthor = (author) =>{
+    return {
+        type: 'GET_AUTHOR_BY_ID',
+        author
+    }
+}
+
 // export const actGetAuthorByStoryId = (author) => {
 //     return {
 //         type: 'GET_AUTHOR_BY_STORY_ID',

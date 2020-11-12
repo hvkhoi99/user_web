@@ -1,42 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getListCategories } from '../../actions/category';
 
 class Footer extends Component {
+
+    componentDidMount() {
+        this.props.getCategories();
+    }
+
     render() {
+        const listCategories = this.props.categories.map((item, index) => {
+            return (
+                <li key={index}
+                >
+                    <a target="_self" href={`/category/${item.id}`}>{item.name}</a>
+                </li>)
+        });
         return (
             <div className="mainPart">
                 {/* -------------- */}
                 <footer>
-                    
+
                     <div className="category-container">
                         <h4>Thể loại</h4>
                         <ul className="category-list">
-                            <li>
-                                <a target="_self" href="http://www.nettruyen.com/tim-truyen/chuyen-sinh">Chuyển
-            Sinh</a>
-                            </li>
-                            <li>
-                                <a target="_self" href="http://www.nettruyen.com/tim-truyen/dam-my">Đam Mỹ</a>
-                            </li>
-                            <li>
-                                <a target="_self" href="http://www.nettruyen.com/tim-truyen/manga">Manga</a>
-                            </li>
-                            <li>
-                                <a target="_self" href="http://www.nettruyen.com/tim-truyen/manhua">Manhua</a>
-                            </li>
-                            <li>
-                                <a target="_self" href="http://www.nettruyen.com/tim-truyen/han-quoc-114">Manhwa</a>
-                            </li>
-                            <li>
-                                <a target="_self" href="http://www.nettruyen.com/tim-truyen/ngon-tinh">Ngôn
-            Tình</a>
-                            </li>
-                            <li>
-                                <a target="_self" href="http://www.nettruyen.com/tim-truyen/romance">Romance</a>
-                            </li>
-                            <li>
-                                <a target="_self" href="http://www.nettruyen.com/tim-truyen/xuyen-khong">Xuyên
-            Không</a>
-                            </li>
+                            {listCategories}
                         </ul>
                     </div>
                 </footer>
@@ -46,6 +34,23 @@ class Footer extends Component {
     }
 }
 
+const mapStateToProps = (state, ownProps) => {
+    return {
+        categories: state.categories,
+
+    }
+}
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        getCategories: () => {
+            dispatch(getListCategories());
+        }
+
+    }
+}
 
 
-export default Footer;
+export default connect(mapStateToProps, mapDispatchToProps)(Footer)
+
+
+

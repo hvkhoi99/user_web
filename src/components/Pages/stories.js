@@ -5,6 +5,7 @@ import { get_Category } from '../../actions/get_category';
 import StoryMBLeft from '../Story/StoryMBLeft';
 import MainBetweenRight from '../Main/MainBetweenRight'
 import Phantrang from '../Phantrang';
+import { getListChapters } from '../../actions/chapters';
 
 class Stories extends Component {
 
@@ -18,9 +19,11 @@ class Stories extends Component {
     }
 
     render() {
+
         const listStories = this.props.categoryStories.map((story, index) => {
             return (<StoryMBLeft key={index} story={story} />)
         })
+
 
         return (
             <>
@@ -45,7 +48,7 @@ const mapStateToProps = (state) => {
     return {
         categoryStories: state.categoryStories,
         categories: state.categories,
-        getCategory: state.getCategory
+        getCategory: state.getCategory,
     }
 }
 const mapDispatchToProps = (dispatch) => {
@@ -55,7 +58,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         getCategoryById: (id) => {
             dispatch(get_Category(id))
-        }
+        },
+
+        
 
     }
 }

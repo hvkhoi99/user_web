@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getListStories } from '../../actions/story';
+import { actFetchStoriesRequest, getListStories } from '../../actions/story';
 import StoryMHeader from '../Story/StoryMHeader';
 
 
@@ -12,8 +12,8 @@ class MainTop extends Component {
 
     render() {
 
-        const listStory = this.props.stories.map((story, index) => {
-            if(story.id>9) return (<StoryMHeader key={index} story={story} />);
+        const listStory = this.props.truyendecu.map((story, index) => {
+            if (story.id > 9) return (<StoryMHeader key={index} story={story} />);
 
         });
 
@@ -35,7 +35,8 @@ class MainTop extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        stories: state.stories
+        // stories: state.stories,
+        truyendecu: state.truyendecu
     }
 }
 
@@ -43,7 +44,11 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getStories: () => {
             dispatch(getListStories())
-        }
+        },
+
+        // getTruyendecu: () => {
+        //     dispatch(actFetchStoriesRequest())
+        // }
     }
 }
 

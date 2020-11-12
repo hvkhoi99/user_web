@@ -45,3 +45,7 @@
 .pdRight{
   padding-right: 20px;
 }
+
+.searchBar input{
+  color: black;
+}
