@@ -18,11 +18,9 @@ class Footer extends Component {
         });
         return (
             <div className="mainPart">
-                {/* -------------- */}
-                <footer>
-
+                <footer >
                     <div className="category-container">
-                        <h4>Thể loại</h4>
+                        <h4 >Thể loại</h4>
                         <ul className="category-list">
                             {listCategories}
                         </ul>

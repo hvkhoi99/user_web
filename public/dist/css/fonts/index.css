@@ -4,10 +4,13 @@
     box-sizing: border-box;
   }
   
-  /* body a {
+  body a {
     color: black;
-  } */
-
+    cursor: pointer;
+  }
+  a:hover{
+    text-decoration: none;
+  }
   .page-title {
     color: #2980b9;
     text-transform: uppercase;
@@ -71,10 +74,6 @@
     margin-right: 5px;
 }
 
-a {
-    color: #288ad6;
-    cursor: pointer;
-}
 
   /* Style the submit button */
   
@@ -380,4 +379,13 @@ a {
   .category-container a:hover {
     background: tomato;
     color: #fff;
+  }
+
+  footer {
+    padding-left: 20px;
+    background-color: black;
+  }
+
+  footer h4 {
+    color: white;
   }

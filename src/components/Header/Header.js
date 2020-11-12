@@ -38,7 +38,7 @@ class Header extends Component {
     }
 
     render() {
-        console.log(this.props.storiesSuggest);
+        // console.log(this.props.storiesSuggest);
         const listCategories = this.props.categories.map((item, index) => {
             return (<li key={index}><a href={`/category/${item.id}`}>{item.name}</a></li>)
         })
@@ -101,7 +101,7 @@ class Header extends Component {
         );
     }
 }
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         categories: state.categories,
         stories: state.stories,
@@ -109,7 +109,7 @@ const mapStateToProps = (state, ownProps) => {
 
     }
 }
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         getCategories: () => {
             dispatch(getListCategories());
