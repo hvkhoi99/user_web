@@ -1,19 +1,27 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { actFetchAuthorsRequest } from '../../actions/author';
+import { actFetchAuthorsRequest, actGetAuthorById } from '../../actions/author';
 import { actFetchCategoriesRequest } from '../../actions/category_stories';
+import { getListChapters } from '../../actions/chapters';
 import { actGetStory } from '../../actions/get_Story'
 import MainBetweenRight from '../Main/MainBetweenRight';
 
+var moment = require('moment')
 class PageStory extends Component {
+
+    // idF = this.props.getStory.author_id;
+
 
     componentDidMount() {
         var { match } = this.props;
         if (match) {
             var id = match.params.id;
+
             this.props.getStoryById(id);
             this.props.getCateByStoryId(id);
             this.props.fetchAllAuthors();
+            // this.props.getAuthor(this.idF);
+            this.props.getListChapters(id);
         }
     }
 
@@ -34,16 +42,27 @@ class PageStory extends Component {
     }
 
 
+
     render() {
 
+        console.log(this.props.getStory);
+        const listChapter = this.props.chapters.map((chapter, index) => {
+            return (
+                <li className=" ">
+                    <div>
+                        <span className="left-list-item">
+                            <a href={`/chapter/${chapter.id}`}>{chapter.name}</a>
+                        </span>
+                        <span className="center-list-item">{moment(chapter.created_at).format("L")}</span>
+                        <span className="right-list-item">2.527</span>
+                    </div>
+                </li>
+            )
+        })
 
         const listCate = this.props.getCategorybyIdStory.map((cate, index) => {
             return (<a href={`/category/${cate.id}`} key={index} className='pdRight'>{cate.name}</a>)
         })
-
-
-
-        console.log(this.props.getStory);
 
         return (
             <div className="mainPart">
@@ -54,7 +73,7 @@ class PageStory extends Component {
                         <div className="manga-title-container">
                             <h1 className="title-detail">{this.props.getStory.name}</h1>
                             <time className="small">
-                                [Cập nhật lúc: 09:25 08/11/2020]
+                                [Cập nhật lúc: {moment(this.props.getStory.updated_at).format("L")}]
           </time>
                         </div>
                         <div className="manga-infor-container">
@@ -76,7 +95,7 @@ class PageStory extends Component {
                                                 <i className="fa fa-rss ">
                                                 </i> Tình trạng
                   </span>
-                                            <span className="manga-status-right">Đang tiến hành</span>
+                                            <span className="manga-status-right">{this.props.getStory.status}</span>
                                         </li>
                                         <li>
                                             <span className="manga-status-left">
@@ -144,7 +163,7 @@ class PageStory extends Component {
                                 <i className="fas fa-file" />
             Nội dung
           </h3>
-                            <p />
+                            <p>{this.props.getStory.description}</p>
                         </div>
                         <div className=" ">
                             <div className style={{ borderBottom: '2px blue solid' }}>
@@ -163,16 +182,7 @@ class PageStory extends Component {
                                         </div>
                                     </li>
 
-                                    <li className=" ">
-                                        <div>
-                                            <span className="left-list-item">
-                                                <a href="http://www.nettruyen.com/truyen-tranh/do-thi-tuyet-the-cuong-ton/chap-17/656548 ">Chapter
-                      17</a>
-                                            </span>
-                                            <span className="center-list-item">1 giờ trước</span>
-                                            <span className="right-list-item">2.527</span>
-                                        </div>
-                                    </li>
+                                    {listChapter}
                                 </ul>
                             </nav>
                         </div>
@@ -191,6 +201,9 @@ const mapStateToProps = (state) => {
         getStory: state.getStory,
         getCategorybyIdStory: state.getCategorybyIdStory,
         authors: state.authors,
+        author: state.author,
+        chapters: state.chapters
+
     }
 }
 
@@ -207,6 +220,14 @@ const mapDispatchToProps = (dispatch) => {
         fetchAllAuthors: () => {
             dispatch(actFetchAuthorsRequest())
         },
+
+        getAuthor: (id) => {
+            dispatch(actGetAuthorById(id));
+        },
+
+        getListChapters: (id) => {
+            dispatch(getListChapters(id));
+        }
     }
 }
 
