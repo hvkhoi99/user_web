@@ -24,7 +24,6 @@ class Stories extends Component {
             return (<StoryMBLeft key={index} story={story} />)
         })
 
-
         return (
             <>
                 <div className="mainPart">

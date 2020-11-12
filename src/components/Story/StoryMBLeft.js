@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LinesEllipsis from 'react-lines-ellipsis'
+import { Link } from 'react-router-dom';
 
 class StoryMBLeft extends Component {
 
@@ -9,7 +10,7 @@ class StoryMBLeft extends Component {
 
         return (
             <div>
-                <a title={story.name} href={`/story/${story.id}`}>
+                <Link title={story.name} to={`/story/${story.id}`}>
                     <img src={story.path_image} className="comic-list-img" data-original="//st.truyenchon.com/data/comics/70/van-gioi-tien-vuong.jpg" alt={story.name} />
                     <h4>
                         {/* {story.name} */}
@@ -22,7 +23,7 @@ class StoryMBLeft extends Component {
                         />
                     </h4>
 
-                </a>
+                </Link>
                 <div className="view clearfix">
                     <span className="pull-left">
                         <i className="fa fa-eye">

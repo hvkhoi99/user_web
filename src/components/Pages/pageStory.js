@@ -1,21 +1,30 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
 import { actFetchAuthorsRequest, actGetAuthorById } from '../../actions/author';
 import { actFetchCategoriesRequest } from '../../actions/category_stories';
 import { getListChapters } from '../../actions/chapters';
 import { actGetStory } from '../../actions/get_Story'
 import MainBetweenRight from '../Main/MainBetweenRight';
 
-var moment = require('moment')
+// var moment = require('moment')
 class PageStory extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            id: '',
+        }
+    }
+        
     // idF = this.props.getStory.author_id;
-
-
+    
     componentDidMount() {
         var { match } = this.props;
         if (match) {
             var id = match.params.id;
+
+            this.setState({id: id})
 
             this.props.getStoryById(id);
             this.props.getCateByStoryId(id);
@@ -51,9 +60,12 @@ class PageStory extends Component {
                 <li className=" ">
                     <div>
                         <span className="left-list-item">
-                            <a href={`/chapter/${chapter.id}`}>{chapter.name}</a>
+                            <Link to={`/chapter/${chapter.id}`}>{chapter.name}</Link>
                         </span>
-                        <span className="center-list-item">{moment(chapter.created_at).format("L")}</span>
+                        <span className="center-list-item">
+                            {/* {moment(chapter.created_at).format("L")} */}
+                            20/11/2020
+                        </span>
                         <span className="right-list-item">2.527</span>
                     </div>
                 </li>
@@ -73,7 +85,10 @@ class PageStory extends Component {
                         <div className="manga-title-container">
                             <h1 className="title-detail">{this.props.getStory.name}</h1>
                             <time className="small">
-                                [Cập nhật lúc: {moment(this.props.getStory.updated_at).format("L")}]
+                                [Cập nhật lúc:
+                                {/* {moment(this.props.getStory.updated_at).format("L")} */}
+                                20/11/2020
+                                ]
           </time>
                         </div>
                         <div className="manga-infor-container">
@@ -95,7 +110,7 @@ class PageStory extends Component {
                                                 <i className="fa fa-rss ">
                                                 </i> Tình trạng
                   </span>
-                                            <span className="manga-status-right">{this.props.getStory.status}</span>
+                                            <span className="manga-status-right">{(this.props.getStory.status === 'updating') ? 'Đang cập nhật' : 'Hoàn thành'}</span>
                                         </li>
                                         <li>
                                             <span className="manga-status-left">
@@ -159,11 +174,8 @@ class PageStory extends Component {
                             </div>
                         </div>
                         <div className style={{ borderBottom: '2px blue solid' }}>
-                            <h3 style={{ color: 'rgb(74, 74, 100)' }}>
-                                <i className="fas fa-file" />
-            Nội dung
-          </h3>
-                            <p>{this.props.getStory.description}</p>
+                            <h3 style={{ color: 'rgb(74, 74, 100)' }}> <i className="fas fa-file" />Nội dung</h3>
+                            <p style={{ fontSize: '16px' }}>{this.props.getStory.description}</p>
                         </div>
                         <div className=" ">
                             <div className style={{ borderBottom: '2px blue solid' }}>

@@ -10,8 +10,7 @@ import author from './getAuthorById'
 import truyendecu from './truyendecu'
 import chapters from './chapters'
 import images from './images'
-
-
+import storiesSuggest from './storiesSuggest'
 
 
 const appReducers = combineReducers({
@@ -25,7 +24,8 @@ const appReducers = combineReducers({
     author,
     truyendecu,
     chapters,
-    images
+    images,
+    storiesSuggest
     
 })
 

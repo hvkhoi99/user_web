@@ -22,20 +22,6 @@ export const actGetTruyenDC = (stories) => {
     }
 }
 
-// export const actFetchStoriesRequest = () => {
-//     return dispatch => {
-//         return callApi('stories', 'GET', null).then(res => {
-//             dispatch(actFetchStories(res.data));
-//         });
-//     };
-// }
-
-// export const actFetchStories = (stories) => {
-//     return {
-//         type : 'FETCH_STORIES',
-//         stories
-//     }
-// }
 
 export const actSearchStoriesRequest = (name) => {
     return dispatch => {

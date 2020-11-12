@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import LinesEllipsis from 'react-lines-ellipsis'
+import { Link } from 'react-router-dom';
 
 
 class StoryMHeader extends Component {
@@ -13,7 +14,7 @@ class StoryMHeader extends Component {
                     </a>
                     <div className="slide-caption">
                         <h4>
-                            <a href={`/story/${story.id}`} title={story.name}>
+                            <Link to={`/story/${story.id}`} title={story.name}>
                                 <LinesEllipsis
                                     text={story.name}
                                     maxLine='1'
@@ -22,7 +23,7 @@ class StoryMHeader extends Component {
                                     basedOn='letters'
                                 />
 
-                            </a>
+                            </Link>
                         </h4>
                         <a href="http://www.nettruyen.com/truyen-tranh/ngao-thi-thien-dia/chap-226/647054" title="Chapter 226">Chapter 226</a>
                         <span className="time">
