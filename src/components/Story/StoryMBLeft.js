@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import LinesEllipsis from 'react-lines-ellipsis'
 
 class StoryMBLeft extends Component {
-
-    
 
     render() {
 
@@ -10,8 +9,19 @@ class StoryMBLeft extends Component {
 
         return (
             <div>
-                <a title="Truyện tranh Vạn Giới Tiên Vương" href={`/story/${story.id}`}>
-                    <img src={story.path_image} className="comic-list-img" data-original="//st.truyenchon.com/data/comics/70/van-gioi-tien-vuong.jpg" alt="Truyện tranh Vạn Giới Tiên Vương" /><h4>{story.name}</h4>
+                <a title={story.name} href={`/story/${story.id}`}>
+                    <img src={story.path_image} className="comic-list-img" data-original="//st.truyenchon.com/data/comics/70/van-gioi-tien-vuong.jpg" alt={story.name} />
+                    <h4>
+                        {/* {story.name} */}
+                        <LinesEllipsis
+                            text={story.name}
+                            maxLine='1'
+                            ellipsis='...'
+                            trimRight
+                            basedOn='letters'
+                        />
+                    </h4>
+
                 </a>
                 <div className="view clearfix">
                     <span className="pull-left">

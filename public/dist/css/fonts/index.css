@@ -1,11 +1,21 @@
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
   }
   
-  
+  body a {
+    color: black;
+  }
+
+  .page-title {
+    color: #2980b9;
+    text-transform: uppercase;
+    margin-bottom: 5px;
+    font-weight: 400;
+    font-size: 25px;
+  }
+
   /* Style the submit button */
   
   .searchBar button {
@@ -33,6 +43,7 @@
     font-size: 17px;
     border: 1px solid grey;
     background: #f1f1f1;
+    width: 100%;
   }
   
   
