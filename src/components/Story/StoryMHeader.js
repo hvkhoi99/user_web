@@ -6,7 +6,7 @@ class StoryMHeader extends Component {
         return (
             <div className="recommend-item" style={{ width: '203px' }}>
                 <div className="item">
-                    <a href="http://www.nettruyen.com/truyen-tranh/ngao-thi-thien-dia-22182">
+                    <a href={`/story/${story.id}`}>
                         <img className="recommendImage" src={story.path_image} alt="Ngạo Thị Thiên Địa" style={{ display: 'inline' }} />
                     </a>
                     <div className="slide-caption">

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getListCategories } from '../../actions/category';
 
 class Footer extends Component {
@@ -13,7 +14,7 @@ class Footer extends Component {
             return (
                 <li key={index}
                 >
-                    <a target="_self" href={`/category/${item.id}`}>{item.name}</a>
+                    <Link className="cate-item" target="_self" to={`/category/${item.id}`}>{item.name}</Link>
                 </li>)
         });
         return (
@@ -34,13 +35,13 @@ class Footer extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         categories: state.categories,
 
     }
 }
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         getCategories: () => {
             dispatch(getListCategories());

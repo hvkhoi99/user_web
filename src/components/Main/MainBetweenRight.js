@@ -23,11 +23,11 @@ class MainBetweenRight extends Component {
                         <div className="trending-tile-container">
                             <ul>
                                 <li>
-                                    <a href />Top Tháng</li>
+                                    <a href="/" />Top Tháng</li>
                                 <li>
-                                    <a href />Top Tuần</li>
+                                    <a href="/" />Top Tuần</li>
                                 <li>
-                                    <a href />Top Ngày</li>
+                                    <a href="/" />Top Ngày</li>
                             </ul>
                         </div>
                         {listStories}

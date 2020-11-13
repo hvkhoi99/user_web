@@ -12,7 +12,7 @@ class StoryMBRight extends Component {
                         <div className="order_number">{this.props.stt}</div>
                         <div className="order_infor">
                             <div>
-                                <a className="thumb" title="Truyện tranh Bách Luyện Thành Thần" href="http://www.nettruyen.com/truyen-tranh/bach-luyen-thanh-than-110924">
+                                <a className="thumb" title={story.name} href={`/story/${story.id}`}>
                                     <img className="ranking-img-item" src={story.path_image} alt="Bách Luyện Thành Thần" style={{ display: 'inline' }} />
                                 </a>
                             </div>
