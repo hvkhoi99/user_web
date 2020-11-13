@@ -6,7 +6,7 @@ class MainBottom extends Component {
         return (
             <>
                 <Phantrang/>
-                <div id="optionBar" className="navMenu">
+                {/* <div id="optionBar" className="navMenu">
                     <ul className="list-inline">
                         <li>
                             <a href="/" title="Truyen tranh">
@@ -39,7 +39,7 @@ class MainBottom extends Component {
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> */}
             </>
         );
     }

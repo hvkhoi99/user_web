@@ -6,12 +6,11 @@ import getCategory from './getCategory'
 import getStory from './getStory'
 import getCategorybyIdStory from './getCategoryByIdStory'
 import authors from './authors'
-import author from './getAuthorById'
+import author from './author'
 import truyendecu from './truyendecu'
 import chapters from './chapters'
 import images from './images'
-
-
+import storiesSuggest from './storiesSuggest'
 
 
 const appReducers = combineReducers({
@@ -23,9 +22,10 @@ const appReducers = combineReducers({
     getCategorybyIdStory,
     authors,
     author,
-    truyendecu,
+    // truyendecu,
     chapters,
-    images
+    images,
+    storiesSuggest
     
 })
 

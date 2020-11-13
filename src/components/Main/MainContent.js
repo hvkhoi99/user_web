@@ -14,7 +14,6 @@ class MainContent extends Component {
                         <MainBetweenLeft />
                         <MainBetweenRight />
                     </div>
-                    
                     <MainBottom />
                 </div>
             </>

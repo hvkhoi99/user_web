@@ -4,6 +4,10 @@ const author = (state = InitialState, action) => {
         case 'GET_AUTHOR_BY_ID':
             state = action.author;
             return { ...state }
+            
+        case 'GET_AUTHOR_BY_STORY_ID':
+            state = action.author;
+            return { ...state }
 
         default:
             return state

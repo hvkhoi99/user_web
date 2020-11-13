@@ -38,7 +38,7 @@
 /* menu navigation bar */
 
 .navMenu a {
-    background-color: grey;
+    background-color: rgb(168, 161, 161);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -57,12 +57,17 @@
 .navMenu ul {
     list-style: none;
     display: flex;
+    width: 64.2%;
+    margin-left: 67px;
+    border: .1px solid wheat;
 }
 
 .navMenu ul li {
     position: relative;
     width: 100%;
     text-align: center;
+    border: .1px solid wheat;
+
 }
 
 .navMenu li:hover .dropdown_1 li {
@@ -107,7 +112,7 @@
 /* top navigation with searching bar */
 
 .topNav a {
-    background-color: grey;
+    /* background-color: grey; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -116,11 +121,14 @@
     text-transform: uppercase;
     text-decoration: none;
     color: white;
+    
 }
+
 
 .topNav ul {
     list-style: none;
     display: flex;
+    /* background-color: rgb(57, 57, 245); */
 }
 
 .topNav ul li {
@@ -130,7 +138,9 @@
 }
 
 .topNav {
-    background-color: grey;
+    /* background-color: grey; */
+    background-color: rgb(57, 57, 245);
+
 }
 
 header {
@@ -140,15 +150,16 @@ header {
 
 .logo a {
     font-size: 36px;
-    color: rgb(36, 83, 79);
+    /* color: rgb(36, 83, 79); */
 }
 
 
 /* Block 2 recommended Items */
 
 .recommendImage {
-    width: 200px;
+    width: 180px;
     height: 200px;
+    border: .5px solid rgb(126, 124, 124);
 }
 
 .recommendBlock {
@@ -156,10 +167,17 @@ header {
     display: flex;
     flex-direction: row;
     margin: auto;
+    border: .5px solid rgb(190, 187, 187);
+
 }
 
 .recommendBlock div {
     margin: auto;
+    margin: 10px 10px;
+    margin-left: 20px;
+}
+.recommendBlock div h4{
+    text-align: center;
 }
 
 .recommendBlock .recommend-title h2 {
@@ -171,21 +189,36 @@ header {
     margin: auto;
 }
 
-
 /* comic list */
 
 .comic-list-container {
     width: 90%;
     margin: auto;
     display: flex;
+    /* background-color: blanchedalmond; */
+    /* background-color: rgb(172, 168, 168); */
+
+}
+
+
+.left-side-item h4{
+    text-align: center;
+    margin-left: -40px;
 }
 
 .left-side-item {
+    margin-top: 50px;
+    padding-left: 10px;
     width: 75%;
+    border: 1px solid rgb(204, 199, 199);
+
 }
 
 .right-side-item {
     width: 25%;
+    margin-left: 60px;
+    border: 1px solid rgb(204, 199, 199);
+    margin-top: 50px;
 }
 
 .comic-list-container .left-side-item .introduction-item {
@@ -195,15 +228,24 @@ header {
 
 .comic-list-container .left-side-item div {
     display: inline-block;
-    width: 220px;
+    width: 200px;
+    margin-left: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* border: .5px solid rgb(163, 163, 170); */
+    /* text-align: center; */
+    
 }
 
 
 /* comic-list-img */
 
 .comic-list-img {
-    width: 220px;
+    /* margin: 0 0px; */
+    width: 170px;
     height: 200px;
+    border: .5px solid rgb(100, 98, 98);
+
 }
 
 
@@ -218,11 +260,9 @@ header {
     display: flex;
     justify-content: space-around;
     flex-direction: row;
+    margin-top: 20px;
 }
 
-.right-side-item .trending-tile-container ul li {
-    /* border: solid steelblue 1px; */
-}
 
 .right-side-item .trending-tile-container ul li a {
     font-size: 2.5em;
@@ -235,6 +275,7 @@ header {
 .ranking-img-item {
     width: 55px;
     height: 50px;
+    border: .5px solid rgb(175, 172, 172);
 }
 
 .order-item {
@@ -295,13 +336,14 @@ footer .footer-right-side {
     text-decoration: none;
     color: white;
     border: solid tan 1px;
-    flex-direction: row;
+    /* flex-direction: row; */
 }
 
 .category-container ul li {
     position: relative;
     width: 100px;
     text-align: center;
+    margin-left: 50px;
 }
 
 .category-container a:hover {

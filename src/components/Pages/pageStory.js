@@ -1,16 +1,14 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { actFetchAuthorsRequest, actGetAuthorById } from '../../actions/author';
+import { Link } from 'react-router-dom';
+import { actGetAuthorByStoryIdRequest } from '../../actions/author';
 import { actFetchCategoriesRequest } from '../../actions/category_stories';
 import { getListChapters } from '../../actions/chapters';
 import { actGetStory } from '../../actions/get_Story'
 import MainBetweenRight from '../Main/MainBetweenRight';
 
-var moment = require('moment')
+// var moment = require('moment')
 class PageStory extends Component {
-
-    // idF = this.props.getStory.author_id;
-
 
     componentDidMount() {
         var { match } = this.props;
@@ -19,41 +17,26 @@ class PageStory extends Component {
 
             this.props.getStoryById(id);
             this.props.getCateByStoryId(id);
-            this.props.fetchAllAuthors();
-            // this.props.getAuthor(this.idF);
+
+            this.props.getAuthorByStoryId(id);
             this.props.getListChapters(id);
         }
     }
 
-    findIndex = (list, id) => {
-        var result = -1;
-        list.forEach((item, index) => {
-            if (item.id === id) {
-                result = index;
-            }
-        })
-        return result;
-    }
-    getNameAuthor = (list, id) => {
-        if (list.length > 0) {
-            let name = (id === null) ? 'Đang cập nhật' : list[this.findIndex(list, id)].name;
-            return name;
-        }
-    }
-
-
-
     render() {
 
-        console.log(this.props.getStory);
+        console.log(this.props.author);
         const listChapter = this.props.chapters.map((chapter, index) => {
             return (
                 <li className=" ">
                     <div>
                         <span className="left-list-item">
-                            <a href={`/chapter/${chapter.id}`}>{chapter.name}</a>
+                            <Link to={`/chapter/${chapter.id}`}>{chapter.name}</Link>
                         </span>
-                        <span className="center-list-item">{moment(chapter.created_at).format("L")}</span>
+                        <span className="center-list-item">
+                            {/* {moment(chapter.created_at).format("L")} */}
+                            20/11/2020
+                        </span>
                         <span className="right-list-item">2.527</span>
                     </div>
                 </li>
@@ -73,7 +56,10 @@ class PageStory extends Component {
                         <div className="manga-title-container">
                             <h1 className="title-detail">{this.props.getStory.name}</h1>
                             <time className="small">
-                                [Cập nhật lúc: {moment(this.props.getStory.updated_at).format("L")}]
+                                [Cập nhật lúc:
+                                {/* {moment(this.props.getStory.updated_at).format("L")} */}
+                                20/11/2020
+                                ]
           </time>
                         </div>
                         <div className="manga-infor-container">
@@ -84,32 +70,21 @@ class PageStory extends Component {
                                 <div>
                                     <ul style={{ listStyleType: 'none' }}>
                                         <li>
-                                            <span className="manga-status-left">
-                                                <i className="fa fa-user ">
-                                                </i> Tác giả
-                  </span>
-                                            <span className="manga-status-right">{this.getNameAuthor(this.props.authors, this.props.getStory.author_id)}</span>
+                                            <span className="manga-status-left"> <i className="fa fa-user "></i> Tác giả   </span>
+                                            <span className="manga-status-right">{(this.props.author == null) ? 'Đang cập nhật' : this.props.author.name}</span>
                                         </li>
                                         <li>
-                                            <span className="manga-status-left">
-                                                <i className="fa fa-rss ">
-                                                </i> Tình trạng
-                  </span>
-                                            <span className="manga-status-right">{this.props.getStory.status}</span>
+                                            <span className="manga-status-left"> <i className="fa fa-rss "> </i> Tình trạng  </span>
+                                            <span className="manga-status-right">{(this.props.getStory.status === 'updating') ? 'Đang cập nhật' : 'Hoàn thành'}</span>
                                         </li>
                                         <li>
-                                            <span className="manga-status-left">
-                                                <i className="fa fa-tags ">
-                                                </i> Thể loại</span>
+                                            <span className="manga-status-left"> <i className="fa fa-tags "> </i> Thể loại</span>
                                             <span className="manga-status-right">
                                                 {listCate}
                                             </span>
                                         </li>
                                         <li className=" ">
-                                            <span className="manga-status-left">
-                                                <i className="fa fa-eye ">
-                                                </i> Lượt xem
-                  </span>
+                                            <span className="manga-status-left"> <i className="fa fa-eye "> </i> Lượt xem </span>
                                             <span className="manga-status-right">308.790</span>
                                         </li>
                                     </ul>
@@ -159,18 +134,12 @@ class PageStory extends Component {
                             </div>
                         </div>
                         <div className style={{ borderBottom: '2px blue solid' }}>
-                            <h3 style={{ color: 'rgb(74, 74, 100)' }}>
-                                <i className="fas fa-file" />
-            Nội dung
-          </h3>
-                            <p>{this.props.getStory.description}</p>
+                            <h3 style={{ color: 'rgb(74, 74, 100)' }}> <i className="fas fa-file" />Nội dung</h3>
+                            <p style={{ fontSize: '16px' }}>{this.props.getStory.description}</p>
                         </div>
                         <div className=" ">
                             <div className style={{ borderBottom: '2px blue solid' }}>
-                                <h2 className=" ">
-                                    <i className="fa fa-list ">
-                                    </i> Danh sách chương
-            </h2>
+                                <h2 className=" ">  <i className="fa fa-list "> </i> Danh sách chương </h2>
                             </div>
                             <nav>
                                 <ul style={{ listStyleType: 'none' }} className="content-list">
@@ -181,14 +150,12 @@ class PageStory extends Component {
                                             <span className="right-list-item">Lượt xem</span>
                                         </div>
                                     </li>
-
                                     {listChapter}
                                 </ul>
                             </nav>
                         </div>
                     </section>
                     <MainBetweenRight />
-
                 </div>
             </div>
 
@@ -200,10 +167,8 @@ const mapStateToProps = (state) => {
     return {
         getStory: state.getStory,
         getCategorybyIdStory: state.getCategorybyIdStory,
-        authors: state.authors,
         author: state.author,
         chapters: state.chapters
-
     }
 }
 
@@ -217,12 +182,8 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(actFetchCategoriesRequest(id))
         },
 
-        fetchAllAuthors: () => {
-            dispatch(actFetchAuthorsRequest())
-        },
-
-        getAuthor: (id) => {
-            dispatch(actGetAuthorById(id));
+        getAuthorByStoryId: (id) => {
+            dispatch(actGetAuthorByStoryIdRequest(id));
         },
 
         getListChapters: (id) => {

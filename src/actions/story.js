@@ -4,7 +4,7 @@ export const getListStories = () => {
     return dispatch => {
         return callApi('stories', 'GET', null).then(res => {
             dispatch(actGetStories(res.data));
-            dispatch(actGetTruyenDC(res.data));
+            // dispatch(actGetTruyenDC(res.data));
         });
     };
 }
@@ -15,27 +15,21 @@ export const actGetStories = (stories) => {
         stories
     }
 }
-export const actGetTruyenDC = (stories) => {
-    return {
-        type: 'GET_TRUYEN_DC',
-        stories
-    }
-}
-
-// export const actFetchStoriesRequest = () => {
-//     return dispatch => {
-//         return callApi('stories', 'GET', null).then(res => {
-//             dispatch(actFetchStories(res.data));
-//         });
-//     };
-// }
-
-// export const actFetchStories = (stories) => {
+// export const actGetTruyenDC = (stories) => {
 //     return {
-//         type : 'FETCH_STORIES',
+//         type: 'GET_TRUYEN_DC',
 //         stories
 //     }
 // }
+
+export const getListStoriesByIdStory = (id) => {
+    return dispatch => {
+        return callApi(`story/${id}`, 'GET', null).then(res =>{
+            dispatch(actGetStories(res.data));
+        })
+    }
+}
+
 
 export const actSearchStoriesRequest = (name) => {
     return dispatch => {

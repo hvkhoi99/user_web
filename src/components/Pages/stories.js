@@ -24,13 +24,12 @@ class Stories extends Component {
             return (<StoryMBLeft key={index} story={story} />)
         })
 
-
         return (
             <>
                 <div className="mainPart">
                     <div className="comic-list-container">
                         <section className="left-side-item">
-                            <div className="introduction-item">
+                            <div className="introduction-item introduction-item-1">
                                 <h3 className="page-title">Thể Loại <i className="fa fa-angle-right" /> {this.props.getCategory.name}</h3>
                             </div>
                             {listStories}
@@ -59,9 +58,6 @@ const mapDispatchToProps = (dispatch) => {
         getCategoryById: (id) => {
             dispatch(get_Category(id))
         },
-
-        
-
     }
 }
 

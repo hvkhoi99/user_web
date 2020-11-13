@@ -3,6 +3,8 @@ import Stories from '../components/Pages/stories';
 import Main from '../components/Main/MainContent';
 import PageStory from '../components/Pages/pageStory';
 import PageImage from '../components/Pages/pageImage';
+import PageHistory from '../components/Pages/pageHistory';
+
 
 
 const routes = [
@@ -20,6 +22,11 @@ const routes = [
         path: '/chapter/:id',
         exact: false,
         main: ({ match, history }) => <PageImage match={match} history={history} />
+    },
+    {
+        path: '/history',
+        exact: false,
+        main: ({ match, history }) => <PageHistory match={match} history={history} />
     },
     {
         path: '/',

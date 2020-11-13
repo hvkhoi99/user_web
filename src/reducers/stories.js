@@ -5,9 +5,7 @@ const stories = (state = storiesInitialState, action) => {
         case 'GET_STORIES':
             state = action.stories;
             return [...state]
-        case 'SEARCH_STORIES':
-            state = action.stories;
-            return [...state]
+        
         case 'FETCH_STORIES':
             state = action.stories;
             return [...state]

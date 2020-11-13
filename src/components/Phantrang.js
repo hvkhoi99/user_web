@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 export default class Phantrang extends Component {
     render() {
         return (
-            <div id="nextBar" className="navMenu" style={{ width: '66%', marginLeft: '5%' }}>
+            <div id="nextBar" className="navMenu" >
                 <ul className=''>
                     <li className="hidden">Trang 2 / 515 </li>
                     <li><a href='/' title="Trang đầu tiên">«</a> </li>

@@ -1,32 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getListCategories } from '../../actions/category';
 import { actFetchStoriesRequest, actSearchStoriesRequest, getListStories } from '../../actions/story';
+import SuggestSearch from './SuggestSearch';
 
 
 class Header extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            suggestStatus: false
+        }
+        this.nameRef = React.createRef();
+    }
 
     componentDidMount() {
         this.props.getCategories();
     }
 
-    constructor(props) {
-        super(props);
-        this.nameRef = React.createRef();
-    }
+    // searchClick = () => {
+    //     let name = this.nameRef.current.value;
+    //     (name === "") ? this.props.fetchStories() : this.props.searchStories(name)
+    // }
 
-    searchClick = () => {
-        let name = this.nameRef.current.value;
-        (name === "") ? this.props.fetchStories() : this.props.searchStories(name)
-    }
     isChange = () => {
         let name = this.nameRef.current.value;
-        (name === "") ? this.props.fetchStories() : this.props.searchStories(name)
+        if(name === ''){
+            this.setState({suggestStatus: false});
+        }
+        else{
+            this.setState({suggestStatus: true})
+            this.props.searchStories(name)
+        }
+        // (name === "") ? this.props.fetchStories() : this.props.searchStories(name)
     }
 
-
     render() {
-
+        // console.log(this.props.storiesSuggest);
         const listCategories = this.props.categories.map((item, index) => {
             return (<li key={index}><a href={`/category/${item.id}`}>{item.name}</a></li>)
         })
@@ -36,12 +48,13 @@ class Header extends Component {
                     {/* Searching bar*/}
                     <div className="topNav">
                         <ul className="searchBar">
-                            <li className="logo"><a href="/">MangaWorld</a></li>
-                            <li>
-                                <a>
+                            <li className="logo"><Link to="/">MangaWorld</Link></li>
+                            <li className="search-input">
+                                {/* <a> */}
                                     <input type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="tìm kiếm ở đây" />
-                                    <button type="submit" onClick={() => this.searchClick()} value="Tìm kiếm"><i className="fa fa-search" /></button>
-                                </a>
+                                   {(this.state.suggestStatus) ? <SuggestSearch storiesSuggest = {this.props.storiesSuggest}/> : <></>}  
+                                    {/* <button type="submit" onClick={() => this.searchClick()} value="Tìm kiếm"><i className="fa fa-search" /></button> */}
+                                {/* </a> */}
                             </li>
                             <li>
                                 <a href="/">
@@ -57,13 +70,13 @@ class Header extends Component {
                         </ul>
                     </div>
                     {/* navigation menu */}
-                    <div className="navMenu">
+                    <div className="navMenu-top">
                         <nav>
                             <ul>
-                                <li><a href="/"><i className="fas fa-home" /></a></li>
+                                <li><Link to="/"><i className="fas fa-home" /></Link></li>
                                 <li><a href="/">HOT</a></li>
                                 <li><a href="/">THEO DÕI</a></li>
-                                <li><a href="/">LỊCH SỬ</a></li>
+                                <li><a href="/history">LỊCH SỬ</a></li>
                                 <li><a href="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
                                     <ul className="dropdown_1">
                                         {listCategories}
@@ -79,9 +92,6 @@ class Header extends Component {
                                         <li><a>Mới cập nhật</a></li>
                                     </ul>
                                 </li>
-                                {/* <li><a>TÌM TRUYỆN</a></li> */}
-                                {/* <li><a>CON GÁI</a></li>
-                                <li><a>CON TRAI</a></li> */}
                             </ul>
                         </nav>
                     </div>
@@ -91,14 +101,15 @@ class Header extends Component {
         );
     }
 }
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
         categories: state.categories,
-        stories: state.stories
+        stories: state.stories,
+        storiesSuggest: state.storiesSuggest,
 
     }
 }
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
         getCategories: () => {
             dispatch(getListCategories());

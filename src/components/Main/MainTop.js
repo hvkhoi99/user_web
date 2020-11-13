@@ -10,10 +10,12 @@ class MainTop extends Component {
         this.props.getStories();
     }
 
+    
+
     render() {
 
-        const listStory = this.props.truyendecu.map((story, index) => {
-            if (story.id > 9) return (<StoryMHeader key={index} story={story} />);
+        const listStory = this.props.stories.map((story, index) => {
+            if (story.id > 12) return (<StoryMHeader key={index}  story={story} />);
 
         });
 
@@ -35,8 +37,8 @@ class MainTop extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        // stories: state.stories,
-        truyendecu: state.truyendecu
+        stories: state.stories,
+        // truyendecu: state.truyendecu
     }
 }
 
