@@ -22,7 +22,7 @@ const appReducers = combineReducers({
     getCategorybyIdStory,
     authors,
     author,
-    // truyendecu,
+    truyendecu,
     chapters,
     images,
     storiesSuggest

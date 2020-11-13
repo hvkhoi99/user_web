@@ -1,17 +1,18 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getListStories } from '../../actions/story';
+import { getListStories, getTruyenDCRequest } from '../../actions/story';
 import StoryMBRight from '../Story/StoryMBRight'
 
 class MainBetweenRight extends Component {
 
     componentDidMount(){
-        this.props.getStories();
+        // this.props.getStories();
+        this.props.getTruyendecu(5);
     }
 
     render() {
 
-        const listStories = this.props.stories.map((story, index) => {
+        const listStories = this.props.truyendecu.map((story, index) => {
             if(story.id>12)
             return (<StoryMBRight stt={index+1} key={index} story={story} />);
         });
@@ -38,16 +39,20 @@ class MainBetweenRight extends Component {
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
-        stories: state.stories
+        // stories: state.stories,
+        truyendecu: state.truyendecu
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        getStories: () => {
-            dispatch(getListStories());
+        // getStories: () => {
+        //     dispatch(getListStories());
+        // },
+        getTruyendecu: (number) => {
+            dispatch(getTruyenDCRequest(number))
         }
     }
 }

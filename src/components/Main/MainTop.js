@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { actFetchStoriesRequest, getListStories } from '../../actions/story';
+import { actFetchStoriesRequest, getListStories, getTruyenDCRequest } from '../../actions/story';
 import StoryMHeader from '../Story/StoryMHeader';
 
 
 class MainTop extends Component {
 
     componentDidMount() {
-        this.props.getStories();
+        // this.props.getStories();
+        this.props.getTruyendecu(5);
     }
 
     
 
     render() {
 
-        const listStory = this.props.stories.map((story, index) => {
+        const listStory = this.props.truyendecu.map((story, index) => {
             if (story.id > 12) return (<StoryMHeader key={index}  story={story} />);
 
         });
@@ -37,20 +38,20 @@ class MainTop extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        stories: state.stories,
-        // truyendecu: state.truyendecu
+        // stories: state.stories,
+        truyendecu: state.truyendecu
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        getStories: () => {
-            dispatch(getListStories())
-        },
+        // getStories: () => {
+        //     dispatch(getListStories())
+        // },
 
-        // getTruyendecu: () => {
-        //     dispatch(actFetchStoriesRequest())
-        // }
+        getTruyendecu: (number) => {
+            dispatch(getTruyenDCRequest(number))
+        }
     }
 }
 

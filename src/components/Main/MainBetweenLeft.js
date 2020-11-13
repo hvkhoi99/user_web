@@ -5,6 +5,10 @@ import MyContext from '../../myContext';
 import StoryMBLeft from '../Story/StoryMBLeft';
 
 class MainBetweenLeft extends Component {
+    componentDidMount() {
+        this.props.getStories();
+    }
+    
     render() {
         
         const listStories = this.props.stories.map((story, index) => {
