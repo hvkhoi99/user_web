@@ -4,6 +4,7 @@ import Main from '../components/Main/MainContent';
 import PageStory from '../components/Pages/pageStory';
 import PageImage from '../components/Pages/pageImage';
 import PageHistory from '../components/Pages/pageHistory';
+import PageLogin from '../components/Pages/pageLogin';
 
 
 
@@ -27,6 +28,11 @@ const routes = [
         path: '/history',
         exact: false,
         main: ({ match, history }) => <PageHistory match={match} history={history} />
+    },
+    {
+        path: '/login',
+        exact: false,
+        main: ({ match, history }) => <PageLogin match={match} history={history} />
     },
     {
         path: '/',
