@@ -13,7 +13,7 @@ class MainBetweenRight extends Component {
     render() {
 
         const listStories = this.props.truyendecu.map((story, index) => {
-            if(story.id>12)
+            
             return (<StoryMBRight stt={index+1} key={index} story={story} />);
         });
 

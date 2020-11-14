@@ -16,7 +16,7 @@ class MainTop extends Component {
     render() {
 
         const listStory = this.props.truyendecu.map((story, index) => {
-            if (story.id > 12) return (<StoryMHeader key={index}  story={story} />);
+            return (<StoryMHeader key={index}  story={story} />);
 
         });
 
