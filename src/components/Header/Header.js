@@ -27,11 +27,11 @@ class Header extends Component {
 
     isChange = () => {
         let name = this.nameRef.current.value;
-        if(name === ''){
-            this.setState({suggestStatus: false});
+        if (name === '') {
+            this.setState({ suggestStatus: false });
         }
-        else{
-            this.setState({suggestStatus: true})
+        else {
+            this.setState({ suggestStatus: true })
             this.props.searchStories(name)
         }
         // (name === "") ? this.props.fetchStories() : this.props.searchStories(name)
@@ -45,15 +45,26 @@ class Header extends Component {
         return (
             <div className="mainPart">
                 <header>
+                    {/* <nav>
+                        <a href="#home"><img className="logo" src="./resources/img/logo.png" alt="logo" /></a>
+                        <ul class="main-nav">
+                            <li><a href="#testimonials">How Clients Think</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#products">Products</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </nav>
+                    <div className="clearfix"></div> */}
+
                     {/* Searching bar*/}
                     <div className="topNav">
                         <ul className="searchBar">
                             <li className="logo"><Link to="/">MangaWorld</Link></li>
                             <li className="search-input">
                                 {/* <a> */}
-                                    <input type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="tìm kiếm ở đây" />
-                                   {(this.state.suggestStatus) ? <SuggestSearch storiesSuggest = {this.props.storiesSuggest}/> : <></>}  
-                                    {/* <button type="submit" onClick={() => this.searchClick()} value="Tìm kiếm"><i className="fa fa-search" /></button> */}
+                                <input type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="tìm kiếm ở đây" />
+                                {(this.state.suggestStatus) ? <SuggestSearch storiesSuggest={this.props.storiesSuggest} /> : <></>}
+                                {/* <button type="submit" onClick={() => this.searchClick()} value="Tìm kiếm"><i className="fa fa-search" /></button> */}
                                 {/* </a> */}
                             </li>
                             <li>
@@ -73,16 +84,16 @@ class Header extends Component {
                     <div className="navMenu-top">
                         <nav>
                             <ul>
-                                <li><Link to="/"><i className="fas fa-home" /></Link></li>
-                                <li><a href="/">HOT</a></li>
-                                <li><a href="/">THEO DÕI</a></li>
-                                <li><a href="/history">LỊCH SỬ</a></li>
-                                <li><a href="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
+                                <li className="nav-li"><Link to="/"><i className="fas fa-home" /></Link></li>
+                                <li className="nav-li"><a href="/">HOT</a></li>
+                                <li className="nav-li"><a href="/">THEO DÕI</a></li>
+                                <li className="nav-li"><a href="/history">LỊCH SỬ</a></li>
+                                <li className="nav-li"><a href="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
                                     <ul className="dropdown_1">
                                         {listCategories}
                                     </ul>
                                 </li>
-                                <li><a>XẾP HẠNG <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
+                                <li className="nav-li"><a>XẾP HẠNG <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
                                     <ul className="dropdown_1">
                                         <li><a>Top all</a></li>
                                         <li><a>Top tháng</a></li>

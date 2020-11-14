@@ -8,6 +8,7 @@ import {
   Route,
 } from "react-router-dom";
 import routes from './Router/Url';
+import Navigation from './components/Navigation/navigation';
 
 
 class App extends Component {
@@ -39,6 +40,7 @@ class App extends Component {
       <>
         <Router>
           <Header />
+          <Navigation/>
           {this.showContentMenus(routes)}
           <Footer />
         </Router>

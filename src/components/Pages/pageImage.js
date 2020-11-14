@@ -5,13 +5,13 @@ import { getImages } from '../../actions/image'
 class PageImage extends Component {
 
     componentDidMount() {
-        const {match} = this.props;
-        if(match){
+        const { match } = this.props;
+        if (match) {
             var id = match.params.id;
             this.props.getImages(id);
         }
     }
-    
+
 
     render() {
 
@@ -22,9 +22,12 @@ class PageImage extends Component {
         })
 
         return (
-            <div>
-                {listImage}
+            <div className="div-img-father">
+                <div className="div-img">
+                    {listImage}
+                </div>
             </div>
+
         )
     }
 }

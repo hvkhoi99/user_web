@@ -25,10 +25,10 @@ class PageStory extends Component {
 
     render() {
 
-        console.log(this.props.author);
+        // console.log(this.props.author);
         const listChapter = this.props.chapters.map((chapter, index) => {
             return (
-                <li className=" ">
+                <li>
                     <div>
                         <span className="left-list-item">
                             <Link to={`/chapter/${chapter.id}`}>{chapter.name}</Link>
@@ -40,8 +40,8 @@ class PageStory extends Component {
                         <span className="right-list-item">2.527</span>
                     </div>
                 </li>
-            )
-        })
+            );
+        });
 
         const listCate = this.props.getCategorybyIdStory.map((cate, index) => {
             return (<a href={`/category/${cate.id}`} key={index} className='pdRight'>{cate.name}</a>)
@@ -83,7 +83,7 @@ class PageStory extends Component {
                                                 {listCate}
                                             </span>
                                         </li>
-                                        <li className=" ">
+                                        <li>
                                             <span className="manga-status-left"> <i className="fa fa-eye "> </i> Lượt xem </span>
                                             <span className="manga-status-right">308.790</span>
                                         </li>
@@ -113,7 +113,7 @@ class PageStory extends Component {
                                     </div>
                                     <div className="ranking-item-container">
                                         <button style={{ width: '120px', marginRight: '5px' }}>
-                                            <a className=" ">
+                                            <a className="/">
                                                 <i className="fa fa-heart " /> <span>Theo dõi</span>
                                             </a>
                                             <span>
@@ -122,11 +122,11 @@ class PageStory extends Component {
               </div>
                                     <div className="ranking-item-container">
                                         <button style={{ width: '120px' }}>
-                                            <a className=" " href="http://www.nettruyen.com/truyen-tranh/do-thi-tuyet-the-cuong-ton/chap-0/651717 ">
+                                            <a className="/" href="http://www.nettruyen.com/truyen-tranh/do-thi-tuyet-the-cuong-ton/chap-0/651717 ">
                                                 Đọc từ đầu</a>
                                         </button>
                                         <button style={{ width: '150px' }}>
-                                            <a className=" " href="http://www.nettruyen.com/truyen-tranh/do-thi-tuyet-the-cuong-ton/chap-17/656548 ">
+                                            <a className="/" href="http://www.nettruyen.com/truyen-tranh/do-thi-tuyet-the-cuong-ton/chap-17/656548 ">
                                                 Đọc mới nhất</a>
                                         </button>
                                     </div>

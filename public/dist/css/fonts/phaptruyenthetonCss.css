@@ -13,6 +13,7 @@
 
 .left-side-manga-infor {
     width: 25%;
+    
 }
 
 .right-side-manga-infor {
@@ -33,6 +34,14 @@
     display: inline-block;
     width: 68%;
     font-size: 20px;
+    
+}
+.manga-status-right a{
+    margin: 2px;
+    border: .1px solid rgb(197, 194, 189);
+    background-color: rgb(197, 194, 189);
+    border-radius: 10px;
+    padding: 2px;
 }
 
 .ranking-item-container {

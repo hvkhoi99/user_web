@@ -12,11 +12,17 @@
     text-decoration: none;
   }
   .page-title {
-    color: #2980b9;
+    color: black;
     text-transform: uppercase;
     margin-bottom: 5px;
     font-weight: 400;
     font-size: 25px;
+    padding-top: 10px;
+  }
+
+
+.LinesEllipsis{
+    color: Black;
   }
 
   .form-search {
@@ -113,7 +119,7 @@
   /* menu navigation bar */
   
   .navMenu-top a {
-    background-color: rgb(9, 108, 148);
+    background-color: rgb(13, 154, 209);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -138,12 +144,32 @@
     position: relative;
     width: 100%;
     text-align: center;
-    border: .05px solid rgb(172, 163, 163);
+    border: .05px solid rgb(38, 200, 211);
+
+  }
+
+  .nav-li a:hover{
+    transition: all .3s ease-out;
+
+  }
+
+  .nav-li .dropdown_1::before, .nav-li .dropdown_1::after{
+    transition: all 5s ease-out;
+
+  }
+
+  
+
+
+  .dropdown_1 li a:hover, .dropdown_1 li a:focus{
+    transition: all .3s ease-out;
+
   }
   
   .navMenu-top li:hover .dropdown_1 li {
     top: 0;
     display: block;
+
   }
   
   .dropdown_1 li {
@@ -328,7 +354,7 @@
     align-self: center;
   }
   
-  .order_infor {
+  /* .order_infor {
     width: 85%;
     display: flex;
   }
@@ -336,7 +362,7 @@
   .order_infor div,
   .order_infor i {
     padding: 5px;
-  }
+  } */
   
   
   /* footer -----------------*/
@@ -388,7 +414,9 @@
 
   footer {
     padding-left: 20px;
-    background-color: black;
+    /* background-color: rgb(43, 43, 43); */
+    background-image: linear-gradient(to right, rgb(53, 51, 58), rgb(83, 78, 79));
+
   }
 
   footer h4 {

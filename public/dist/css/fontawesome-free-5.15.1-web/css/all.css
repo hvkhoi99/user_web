@@ -4615,5 +4615,14 @@ readers do not read off random characters that represent icons */
 
 .fa,
 .fas {
+
   font-family: 'Font Awesome 5 Free';
   font-weight: 900; }
+
+.fa-star:not(:last-child){
+  color: yellow;
+}
+
+.fa-thumbs-up, .fa-share{
+  color: rgb(21, 134, 209);
+} 

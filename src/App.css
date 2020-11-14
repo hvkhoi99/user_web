@@ -37,21 +37,16 @@
   }
 }
 
+
 .left-side-manga-infor img{
-  width: 235px;
+  width: 200px;
   height: 280px;
+  border: .1px solid rgb(143, 141, 141);
 }
 
-.pdRight{
-  padding-right: 20px;
-}
 
 .searchBar input{
   color: black;
-}
-
-.category-container{
-  
 }
 
 .cate-item{
