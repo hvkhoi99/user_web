@@ -15,3 +15,19 @@ export const actGet = (story) => {
         story
     }
 }
+
+export const actGetStoryByChapterIdRequest = (id) => {
+    return dispatch => {
+        return callApi(`story/chapter/${id}`, 'GET', null).then(res => {
+            dispatch(actGetStoryByChapterId(res.data));
+
+        });
+    };
+}
+
+export const actGetStoryByChapterId = (story) => {
+    return {
+        type: 'GET_STORY_BY_CHAPTER_ID',
+        story
+    }
+}

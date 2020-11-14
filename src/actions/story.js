@@ -4,7 +4,6 @@ export const getListStories = () => {
     return dispatch => {
         return callApi('stories', 'GET', null).then(res => {
             dispatch(actGetStories(res.data));
-            // dispatch(actGetTruyenDC(res.data));
         });
     };
 }
@@ -15,12 +14,22 @@ export const actGetStories = (stories) => {
         stories
     }
 }
-// export const actGetTruyenDC = (stories) => {
-//     return {
-//         type: 'GET_TRUYEN_DC',
-//         stories
-//     }
-// }
+
+export const getTruyenDCRequest = (number) => {
+    return dispatch => {
+        return callApi(`story/many-view/${number}`, 'GET', null).then(res => {
+            dispatch(actGetTruyenDC(res.data));
+        });
+    };
+}
+
+
+export const actGetTruyenDC = (stories) => {
+    return {
+        type: 'GET_TRUYEN_DC',
+        stories
+    }
+}
 
 export const getListStoriesByIdStory = (id) => {
     return dispatch => {

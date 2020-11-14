@@ -225,6 +225,7 @@ header {
     width: 90%;
     margin: auto;
     display: flex;
+    min-height: 1000px;
     /* background-color: blanchedalmond; */
     /* background-color: rgb(172, 168, 168); */
 
@@ -338,6 +339,7 @@ header {
 
 footer {
     display: flex;
+    margin-top: 15px;
 }
 
 footer .footer-left-side {
