@@ -19,7 +19,7 @@ class StoryHistory extends Component {
         var dataString = localStorage.getItem(storyKey);
 
         var list = (dataString) ? JSON.parse(dataString) : [];
-        if (this.findIndex(list, story_id) !== -1) {
+        if (this.findIndex(list, story_id) !== -1) {    
             list.splice(this.findIndex(list, story_id), 1);
             localStorage.setItem(storyKey, JSON.stringify(list));
         }
