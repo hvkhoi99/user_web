@@ -87,7 +87,7 @@ class PageLogin extends Component {
                             </div>
                         </div>
                         <div className="form-group-login">
-                            <button className="form-submit-login" onClick={() => this.loginClick()} >Login</button>
+                            <button className="form-submit-login" onClick={() => this.loginClick()}>Login</button>
                         </div>
                         <p className="text-danger">{this.state.errMsg}</p>
                         <span className="text-success">{this.state.msg}</span>

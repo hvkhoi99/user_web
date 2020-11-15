@@ -56,6 +56,7 @@ class StoryFollow extends Component {
 
         return (
             <div className="storyfollow-container">
+                <p onClick={()=>this.UnfollowClick(story.id)} className="item-storyfollow unfollow-storyfollow">X</p>
                 <Link title={story.name} to={`/story/${story.id}`}>
                     <img className="story-item" onClick={(name) => this.SaveClick(story)} src={story.path_image} className="comic-list-img" data-original="//st.truyenchon.com/data/comics/70/van-gioi-tien-vuong.jpg" alt={story.name} />
                     <h4 className="item-storyfollow name-storyfollow">
@@ -70,7 +71,6 @@ class StoryFollow extends Component {
                         />
                     </h4>
                 </Link>
-                <p onClick={()=>this.UnfollowClick(story.id)} className="item-storyfollow unfollow-storyfollow">X</p>
 
                 {/* <div className="view clearfix">
                     <span className="pull-left">

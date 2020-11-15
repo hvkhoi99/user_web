@@ -273,10 +273,11 @@ header {
 
 .comic-list-img {
     /* margin: 0 0px; */
+    /* display: inline-block; */
     width: 170px;
     height: 200px;
     border: .5px solid rgb(100, 98, 98);
-
+    /* padding-top: -10px; */
 }
 
 
@@ -520,6 +521,10 @@ footer .footer-right-side {
         border: .1px solid rgb(157, 152, 152);
     }
 
+    .fa-eye{
+        margin-top: -5px;
+        margin-right: -5px;
+    }
  
 
 
