@@ -10,6 +10,14 @@ import MainBetweenRight from '../Main/MainBetweenRight';
 // var moment = require('moment')
 class PageStory extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            buttonCheck: true
+        }
+    }
+
+
     componentDidMount() {
         var { match } = this.props;
         if (match) {
@@ -20,6 +28,19 @@ class PageStory extends Component {
 
             this.props.getAuthorByStoryId(id);
             this.props.getListChapters(id);
+        }
+    }
+
+    FollowClick() {
+        var { history } = this.props;
+        if (this.props.checkLogin === null) {
+            if (window.confirm("Bạn cần phải đăng nhập!")) {
+                history.push('/login');
+
+            }
+            
+        }else{
+            this.setState({buttonCheck: !this.state.buttonCheck})
         }
     }
 
@@ -49,7 +70,6 @@ class PageStory extends Component {
 
         return (
             <div className="mainPart">
-
                 {/* Block two - slide show */}
                 <div className="comic-list-container">
                     <section className="left-side-item-manga">
@@ -64,7 +84,7 @@ class PageStory extends Component {
                         </div>
                         <div className="manga-infor-container">
                             <div className="left-side-manga-infor">
-                                <img style={{ width: '100px', height: '100px' }} src={this.props.getStory.path_image} alt="Đô Thị Tuyệt Thế Cuồng Tôn " style={{ marginTop: '50px' }} />
+                                <img style={{ width: '100px', height: '100px' }} src={this.props.getStory.path_image} alt={this.props.getStory.name} style={{ marginTop: '50px' }} />
                             </div>
                             <div className="right-side-manga-infor ">
                                 <div>
@@ -112,9 +132,9 @@ class PageStory extends Component {
                                         </button>
                                     </div>
                                     <div className="ranking-item-container">
-                                        <button style={{ width: '120px', marginRight: '5px' }}>
-                                            <a className="/">
-                                                <i className="fa fa-heart " /> <span>Theo dõi</span>
+                                        <button onClick={() => this.FollowClick()} style={{ width: '120px', marginRight: '5px' }}>
+                                            <a style={(this.state.buttonCheck) ? { color: 'red' } : { color: 'black' }}>
+                                                <i className="fa fa-heart " /> <span >Theo dõi</span>
                                             </a>
                                             <span>
                                             </span></button>
@@ -157,7 +177,7 @@ class PageStory extends Component {
                     </section>
                     <MainBetweenRight />
                 </div>
-            </div>
+            </div >
 
         )
     }
@@ -168,7 +188,8 @@ const mapStateToProps = (state) => {
         getStory: state.getStory,
         getCategorybyIdStory: state.getCategorybyIdStory,
         author: state.author,
-        chapters: state.chapters
+        chapters: state.chapters,
+        checkLogin: state.checkLogin
     }
 }
 

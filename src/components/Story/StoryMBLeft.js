@@ -3,18 +3,26 @@ import LinesEllipsis from 'react-lines-ellipsis'
 import { Link } from 'react-router-dom';
 
 class StoryMBLeft extends Component {
-    SaveClick = (name) => {
+    findIndex = (list, id) => {
+        var result = -1;
+        list.forEach((item, index) => {
+            if (item.id === id) {
+                result = index;
+            }
+        })
+        return result;
+    }
+
+    SaveClick = (story) => {
         var storyKey = 'list';
         var dataString = localStorage.getItem(storyKey);
-        var list;
-        if (dataString) {
-            list = JSON.parse(dataString)
+
+        var list = (dataString) ? JSON.parse(dataString) : [];
+        
+        if (this.findIndex(list, story.id) === -1) {
+            list.push(story);
+            localStorage.setItem(storyKey, JSON.stringify(list));
         }
-        else {
-            list = [];
-        }
-        list.push(name);
-        localStorage.setItem(storyKey, JSON.stringify(list));
     }
 
     render() {

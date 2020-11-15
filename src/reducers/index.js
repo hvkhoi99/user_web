@@ -11,6 +11,8 @@ import truyendecu from './truyendecu'
 import chapters from './chapters'
 import images from './images'
 import storiesSuggest from './storiesSuggest'
+import checkLogin from './checkLogin'
+
 
 
 const appReducers = combineReducers({
@@ -25,7 +27,8 @@ const appReducers = combineReducers({
     truyendecu,
     chapters,
     images,
-    storiesSuggest
+    storiesSuggest,
+    checkLogin
     
 })
 

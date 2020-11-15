@@ -38,6 +38,19 @@ class Header extends Component {
     }
 
     render() {
+        const htmlLogin = () => { return (<li> <a href="/">Đăng xuất</a></li>) };
+        // if (this.props.checkLogin) {
+        //     html = () => (<li> <a href="/">Đăng xuất</a></li>);
+        // } else {
+        //     html = () => (
+        //         <>
+
+        //             <li> <a href="/">Đăng nhập</a></li>
+        //             <li> <a href="/">Đăng ký</a></li>
+        //         </>
+
+        //     );
+        // }
         // console.log(this.props.storiesSuggest);
         const listCategories = this.props.categories.map((item, index) => {
             return (<li key={index}><a href={`/category/${item.id}`}>{item.name}</a></li>)
@@ -74,8 +87,8 @@ class Header extends Component {
                             </li>
                             <li>
                                 <ul>
-                                    <li> <a href="/">Đăng nhập</a></li>
-                                    <li> <a href="/">Đăng kí</a></li>
+                                    {htmlLogin}
+                                    <li> <a href="/">Đăng xuất</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -87,7 +100,7 @@ class Header extends Component {
                                 <li className="nav-li"><Link to="/"><i className="fas fa-home" /></Link></li>
                                 <li className="nav-li"><a href="/">HOT</a></li>
                                 <li className="nav-li"><a href="/">THEO DÕI</a></li>
-                                <li className="nav-li"><a href="/history">LỊCH SỬ</a></li>
+                                <li className="nav-li"><Link to="/history">LỊCH SỬ</Link></li>
                                 <li className="nav-li"><a href="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
                                     <ul className="dropdown_1">
                                         {listCategories}
@@ -117,6 +130,7 @@ const mapStateToProps = (state) => {
         categories: state.categories,
         stories: state.stories,
         storiesSuggest: state.storiesSuggest,
+        checkLogin: state.checkLogin
 
     }
 }
