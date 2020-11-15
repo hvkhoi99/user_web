@@ -37,21 +37,20 @@ class Header extends Component {
         // (name === "") ? this.props.fetchStories() : this.props.searchStories(name)
     }
 
+    LogOutClick = () => {
+        localStorage.removeItem('userData');
+        localStorage.removeItem('isLoggedIn');
+    }
+
     render() {
-        const htmlLogin = () => { return (<li> <a href="/">Đăng xuất</a></li>) };
-        // if (this.props.checkLogin) {
-        //     html = () => (<li> <a href="/">Đăng xuất</a></li>);
-        // } else {
-        //     html = () => (
-        //         <>
+        const htmlLogin = (this.props.checkLogin) ? (<li className="dangxuat"> <a onClick={()=> this.LogOutClick()} href="/" >Đăng xuất</a></li>) : (
+            <>
 
-        //             <li> <a href="/">Đăng nhập</a></li>
-        //             <li> <a href="/">Đăng ký</a></li>
-        //         </>
+                <li className="dangnhap"> <Link to="/login">Đăng nhập</Link></li>
+                <li className="dangky"> <a href="/">Đăng ký</a></li>
+            </>
+        );
 
-        //     );
-        // }
-        // console.log(this.props.storiesSuggest);
         const listCategories = this.props.categories.map((item, index) => {
             return (<li key={index}><a href={`/category/${item.id}`}>{item.name}</a></li>)
         })
@@ -88,7 +87,6 @@ class Header extends Component {
                             <li>
                                 <ul>
                                     {htmlLogin}
-                                    <li> <a href="/">Đăng xuất</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -99,7 +97,7 @@ class Header extends Component {
                             <ul>
                                 <li className="nav-li"><Link to="/"><i className="fas fa-home" /></Link></li>
                                 <li className="nav-li"><a href="/">HOT</a></li>
-                                <li className="nav-li"><a href="/">THEO DÕI</a></li>
+                                <li className="nav-li"><a href="/follow">THEO DÕI</a></li>
                                 <li className="nav-li"><a href="/history">LỊCH SỬ</a></li>
                                 <li className="nav-li"><a href="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
                                     <ul className="dropdown_1">

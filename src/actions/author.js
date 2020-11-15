@@ -3,7 +3,8 @@ import callApi from '../utils/apiCaller';
 export const actFetchAuthorsRequest = () => {
     return dispatch => {
         return callApi('authors', 'GET', null).then(res => {
-            dispatch(actFetchAuthors(res.data));
+            var dataAuthorGet = res.data;
+            dispatch(actFetchAuthors(dataAuthorGet));
         });
     };
 }

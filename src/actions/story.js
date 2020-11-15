@@ -33,7 +33,7 @@ export const actGetTruyenDC = (stories) => {
 
 export const getListStoriesByIdStory = (id) => {
     return dispatch => {
-        return callApi(`story/${id}`, 'GET', null).then(res =>{
+        return callApi(`story/${id}`, 'GET', null).then(res => {
             dispatch(actGetStories(res.data));
         })
     }
@@ -53,4 +53,12 @@ export const actSearchStories = (stories) => {
         type: 'SEARCH_STORIES',
         stories
     }
+}
+
+
+export const actDeleteStoryFollow = (user_id, story_id) => {
+    return dispatch => {
+        return callApi(`unfollow/user/${user_id}/story/${story_id}`, 'DELETE', null)
+            // dispatch(actSearchStories(res.data));
+    };
 }

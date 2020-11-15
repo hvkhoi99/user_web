@@ -3,7 +3,8 @@ import callApi from '../utils/apiCaller';
 export const getListChapters = (id) => {
     return dispatch => {
         return callApi(`story/${id}/chapters`, 'GET', null).then(res => {
-            dispatch(actGetListChapters(res.data));
+            var resData = res.data;
+            dispatch(actGetListChapters(resData));
         });
     };
 }

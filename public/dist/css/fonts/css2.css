@@ -138,9 +138,7 @@
 }
 
 .topNav {
-    /* background-color: grey; */
-    /* background-color: rgb(57, 57, 245); */
-    /* background-image: linear-gradient(purple, pink); */
+
     background-image: linear-gradient(to right, purple, pink);
 }
 
@@ -152,6 +150,8 @@ header {
 .logo a {
     font-size: 36px;
     /* color: rgb(36, 83, 79); */
+    margin-top: 10px;
+    margin-left: 30px;
 }
 
 
@@ -393,7 +393,7 @@ footer .footer-right-side {
     width: 7rem;
     height: 7rem;
     position: fixed;
-    top: 11.5rem;
+    top: 12.5rem;
     right: .5rem;
     border-radius: 50%;
     z-index: 2000;
@@ -409,11 +409,13 @@ footer .footer-right-side {
     width: 6rem;
     height: 6rem;
     position: fixed;
-    top: 12rem;
+    top: 13rem;
     right: 1rem;
     border-radius: 50%;
     z-index: 1000;
-    transition: transform .8s; }
+    transition: transform .8s;
+    opacity: .95;
+ }
   
   .navigation__checkbox:checked ~ .navigation__background {
     transform: scale(80); }
@@ -495,6 +497,28 @@ footer .footer-right-side {
   .navigation__checkbox:checked + .navigation__button .navigation__icon::after {
     top: 0;
     transform: rotate(-135deg); }
+
+    .dangxuat{
+        margin-left: 110px;
+        margin-top: 10px;
+    }
+
+    .dangxuat a:hover, .dangnhap a:hover, .dangky a:hover, .fa-comment:hover{
+        color: rgb(64, 67, 255);
+        border: .1px solid rgb(64, 67, 255); 
+        border-radius: 5px;
+        transition: all .2s;
+    }
+
+    .dangnhap, .dangky{
+        margin-top: 10px;
+    }
+    .fa-comment{
+        margin-top: 15px;
+    }
+    .suggestsearch{
+        border: .1px solid rgb(157, 152, 152);
+    }
 
  
 

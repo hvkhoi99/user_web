@@ -5,6 +5,8 @@ import PageStory from '../components/Pages/pageStory';
 import PageImage from '../components/Pages/pageImage';
 import PageHistory from '../components/Pages/pageHistory';
 import PageLogin from '../components/Pages/pageLogin';
+import PageFollow from '../components/Pages/pageFollow';
+
 
 
 
@@ -33,6 +35,11 @@ const routes = [
         path: '/login',
         exact: false,
         main: ({ match, history }) => <PageLogin match={match} history={history} />
+    },
+    {
+        path: '/follow',
+        exact: false,
+        main: ({ match, history }) => <PageFollow match={match} history={history} />
     },
     {
         path: '/',

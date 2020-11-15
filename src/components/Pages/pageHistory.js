@@ -23,6 +23,8 @@ class PageHistory extends Component {
             list = [];
         }
 
+        console.log(JSON.parse(dataS));
+
         const listStories = list.map((story, index) => {
             if(list)
             {

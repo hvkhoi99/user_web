@@ -1,7 +1,18 @@
 import React, { Component } from 'react';
 
 class StoryMBRight extends Component {
-    SaveClick = (name) => {
+    findIndex = (list, id) => {
+        var result = -1;
+        list.forEach((item, index) => {
+            if (item.id === id) {
+                result = index;
+            }
+        });
+
+        return result;
+    }
+
+    SaveClick = (story) => {
         var storyKey = 'list';
         var dataString = localStorage.getItem(storyKey);
         var list;
@@ -11,8 +22,10 @@ class StoryMBRight extends Component {
         else {
             list = [];
         }
-        list.push(name);
-        localStorage.setItem(storyKey, JSON.stringify(list));
+        if (this.findIndex(list, story.id) === -1) {
+            list.push(story);
+            localStorage.setItem(storyKey, JSON.stringify(list));
+        }
     }
     render() {
 

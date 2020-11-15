@@ -20,9 +20,9 @@ class PageLogin extends Component {
     }
 
     loginClick = () => {
-        var {history} = this.props;
+        var { history } = this.props;
         Axios
-            .post("http://localhost:8000/api/login", {
+            .post("http://localhost:8000/api/login-user", {
                 email: this.emailRef.current.value,
                 password: this.passwordRef.current.value,
             }).then((response) => {
@@ -36,7 +36,7 @@ class PageLogin extends Component {
                     // showAlert('Đã đăng nhập thành công', 'success');
                     this.props.setLoginTrue();
                     history.goBack();
-                    
+
                 }
                 else {
                     if (response.data.status === "failed") {
@@ -66,30 +66,36 @@ class PageLogin extends Component {
 
     render() {
         return (
-            <div className="form-login">
-                    <h3 className="logo-login">ADMIN LOGIN</h3>
-                    <div className="form-group-login">
-                        <input className="form-control-login" type="text" name="email" placeholder="Email" ref={this.emailRef} />
-                        <i className="fa fa-user icon-login" />
-                        <span className="text-danger">{this.state.errMsgEmail}</span>
-                    </div>
-                    <div className="form-group-login">
-                        <input className="form-control-login" type="password" name="password" placeholder="Password" ref={this.passwordRef} />
-                        <i className="fa fa-unlock-alt icon-login" />
-                        <span className="text-danger">{this.state.errMsgPwd}</span>
-                    </div>
-                    <div className="checkbox-login">
-                        <div className="form-check-login">
-                            <input className="remember-me-login" type="checkbox" name="remember_me" id="remember_me" />
-                            <label htmlFor="remember_me" className="label-login">Ghi nhớ đăng nhập</label>
+            <div className="page-login-bg">
+                <div className="form-login-container">
+                    <div className="form-login">
+                        <h3 className="logo-login">LOGIN</h3>
+                        <div className="form-group-login">
+                            <input className="form-control-login" type="text" name="email" placeholder="Email" ref={this.emailRef} />
+                            <i className="fa fa-user icon-login" />
+                            <span className="text-danger">{this.state.errMsgEmail}</span>
                         </div>
+                        <div className="form-group-login">
+                            <input className="form-control-login" type="password" name="password" placeholder="Password" ref={this.passwordRef} />
+                            <i className="fa fa-unlock-alt icon-login" />
+                            <span className="text-danger">{this.state.errMsgPwd}</span>
+                        </div>
+                        <div className="checkbox-login">
+                            <div className="form-check-login">
+                                <input className="remember-me-login" type="checkbox" name="remember_me" id="remember_me" />
+                                <label htmlFor="remember_me" className="label-login">Ghi nhớ đăng nhập</label>
+                            </div>
+                        </div>
+                        <div className="form-group-login">
+                            <button className="form-submit-login" onClick={() => this.loginClick()} >Login</button>
+                        </div>
+                        <p className="text-danger">{this.state.errMsg}</p>
+                        <span className="text-success">{this.state.msg}</span>
                     </div>
-                    <div className="form-group-login">
-                        <button className="form-submit-login" onClick={() => this.loginClick()} >Login</button>
-                    </div>
-                    <p className="text-danger">{this.state.errMsg}</p>
-                    <span className="text-success">{this.state.msg}</span>
-                </div>
+                 </div>
+
+             </div>
+
         )
     }
 }

@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { actGetAuthorByStoryIdRequest } from '../../actions/author';
 import { actFetchCategoriesRequest } from '../../actions/category_stories';
 import { getListChapters } from '../../actions/chapters';
+import { actFollowRequest, actGetStoriesFollowRequest } from '../../actions/follow';
 import { actGetStory } from '../../actions/get_Story'
 import MainBetweenRight from '../Main/MainBetweenRight';
 
@@ -28,39 +29,76 @@ class PageStory extends Component {
 
             this.props.getAuthorByStoryId(id);
             this.props.getListChapters(id);
+
         }
+        var dataS = localStorage.getItem('userData');
+        var list;
+        if (dataS) {
+            list = JSON.parse(dataS).id
+        }
+        else {
+            list = [];
+        }
+        this.props.getFollowStories(list)
+
     }
+
+    findIndex = (list, id) => {
+        var result = -1;
+        list.forEach((item, index) => {
+            if (item.id === id) {
+                result = index;
+            }
+        });
+
+        return result;
+    }
+
 
     FollowClick() {
         var { history } = this.props;
         if (this.props.checkLogin === null) {
             if (window.confirm("Bạn cần phải đăng nhập!")) {
                 history.push('/login');
-
             }
-            
-        }else{
-            this.setState({buttonCheck: !this.state.buttonCheck})
+
+        } else {
+            var userCurrent = JSON.parse(localStorage.getItem('userData'));
+            var story = {
+                story_id: this.props.match.params.id,
+                user_id: userCurrent.id
+            }
+            // this.props.getStoriesFollow.map((item, index) => {
+            //     if (this.props.getStoriesFollow.indexOf(item) === -1) this.setState({ buttonCheck: true});
+            //     else this.setState({ buttonCheck: false});
+            // })
+            this.props.followStory(story);
         }
     }
 
+    
+
     render() {
 
-        // console.log(this.props.author);
+        
+
+
         const listChapter = this.props.chapters.map((chapter, index) => {
             return (
-                <li>
-                    <div>
-                        <span className="left-list-item">
-                            <Link to={`/chapter/${chapter.id}`}>{chapter.name}</Link>
-                        </span>
-                        <span className="center-list-item">
-                            {/* {moment(chapter.created_at).format("L")} */}
+                <>
+                    <li key={index}>
+                        <div>
+                            <span className="left-list-item">
+                                <Link to={`/chapter/${chapter.id}`}>{chapter.name}</Link>
+                            </span>
+                            <span className="center-list-item">
+                                {/* {moment(chapter.created_at).format("L")} */}
                             20/11/2020
                         </span>
-                        <span className="right-list-item">2.527</span>
-                    </div>
-                </li>
+                            <span className="right-list-item">2.527</span>
+                        </div>
+                    </li>
+                </>
             );
         });
 
@@ -189,7 +227,9 @@ const mapStateToProps = (state) => {
         getCategorybyIdStory: state.getCategorybyIdStory,
         author: state.author,
         chapters: state.chapters,
-        checkLogin: state.checkLogin
+        checkLogin: state.checkLogin,
+        getStoriesFollow: state.getStoriesFollow
+
     }
 }
 
@@ -209,6 +249,12 @@ const mapDispatchToProps = (dispatch) => {
 
         getListChapters: (id) => {
             dispatch(getListChapters(id));
+        },
+        followStory: (story) => {
+            dispatch(actFollowRequest(story));
+        },
+        getFollowStories: (user_id) => {
+            dispatch(actGetStoriesFollowRequest(user_id))
         }
     }
 }
