@@ -26,8 +26,7 @@ class PageHistory extends Component {
         console.log(JSON.parse(dataS));
 
         const listStories = list.map((story, index) => {
-            if(list)
-            {
+            if (list) {
                 return (<StoryHistory key={index} story={story} />)
             }
             else return (<></>);

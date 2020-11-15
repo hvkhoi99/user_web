@@ -3,7 +3,6 @@ import LinesEllipsis from 'react-lines-ellipsis'
 import { Link } from 'react-router-dom';
 
 class StoryMBLeft extends Component {
-
     findIndex = (list, id) => {
         var result = -1;
         list.forEach((item, index) => {
@@ -18,12 +17,12 @@ class StoryMBLeft extends Component {
     SaveClick = (story) => {
         var storyKey = 'list';
         var dataString = localStorage.getItem(storyKey);
-        var list;
-        if (dataString) {
-            list = JSON.parse(dataString)
-        }
-        else {
-            list = [];
+
+        var list = (dataString) ? JSON.parse(dataString) : [];
+        
+        if (this.findIndex(list, story.id) === -1) {
+            list.unshift(story);
+            localStorage.setItem(storyKey, JSON.stringify(list));
         }
 
         if (this.findIndex(list, story.id) === -1) {
