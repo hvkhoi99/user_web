@@ -34,7 +34,8 @@ class StoryFollow extends Component {
         }
     }
 
-    UnfollowClick = (story_id) =>{
+    RemoveHistoryClick = (story_id) => {
+
 
         var dataS = localStorage.getItem('userData');
         var list;
@@ -44,19 +45,18 @@ class StoryFollow extends Component {
         else {
             list = [];
         }
-        
+
         this.props.unfollowStory(list, story_id);
-        // alert(5+" & "+ story_id);
     }
 
     render() {
-        
+
 
         const story = this.props.story;
 
         return (
             <div className="storyfollow-container">
-                <Link to='/follow'><p onClick={()=>this.UnfollowClick(story.id)} className="item-storyfollow unfollow-storyfollow">X</p></Link>
+                <Link to='/follow' onClick={() => this.RemoveHistoryClick(story.id)}><p className="item-storyfollow unfollow-storyfollow">X</p></Link>
                 <Link title={story.name} to={`/story/${story.id}`}>
                     <img className="story-item" onClick={(name) => this.SaveClick(story)} src={story.path_image} className="comic-list-img" data-original="//st.truyenchon.com/data/comics/70/van-gioi-tien-vuong.jpg" alt={story.name} />
                     <h4 className="item-storyfollow name-storyfollow">
@@ -72,12 +72,6 @@ class StoryFollow extends Component {
                     </h4>
                 </Link>
 
-                {/* <div className="view clearfix">
-                    <span className="pull-left">
-                        <i className="fa fa-eye">
-                        </i> 2.108.695 <i className="fa fa-comment" /> 219 <i className="fa fa-heart" />
-            15.831</span>
-                </div> */}
             </div>
         );
     }
