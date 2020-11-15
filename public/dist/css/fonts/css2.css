@@ -157,6 +157,7 @@ header {
 
 /* Block 2 recommended Items */
 
+
 .recommendImage {
     width: 180px;
     height: 200px;
@@ -173,12 +174,11 @@ header {
 }
 
 .recommendBlock div {
-    margin: auto;
-    margin: 10px 10px;
-    margin-left: 20px;
+    margin: 10px auto;
 }
 .recommendBlock div h4{
     text-align: center;
+    margin-left: -7px;
 }
 
 .div-img-father{

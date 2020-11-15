@@ -1,33 +1,28 @@
 import React, { Component } from 'react';
 import LinesEllipsis from 'react-lines-ellipsis'
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-class StoryMBLeft extends Component {
+class StoryHistory extends Component {
     findIndex = (list, id) => {
         var result = -1;
         list.forEach((item, index) => {
             if (item.id === id) {
                 result = index;
             }
-        });
-
+        })
         return result;
     }
 
-    SaveClick = (story) => {
+    deleteClick = (story) => {
         var storyKey = 'list';
         var dataString = localStorage.getItem(storyKey);
 
         var list = (dataString) ? JSON.parse(dataString) : [];
-        
-        if (this.findIndex(list, story.id) === -1) {
-            list.unshift(story);
+        if (this.findIndex(list, story.id) !== -1) {
+            list.splice(this.findIndex(list, story.id), 1);
             localStorage.setItem(storyKey, JSON.stringify(list));
-        }
-
-        if (this.findIndex(list, story.id) === -1) {
-            list.push(story);
-            localStorage.setItem(storyKey, JSON.stringify(list));
+            this.props.deleteHistory(story.id)
         }
     }
 
@@ -37,10 +32,10 @@ class StoryMBLeft extends Component {
 
         return (
             <div>
+                <a title="Xóa khỏi lịch sử"><i className="fa fa-times-circle" onClick={() => this.deleteClick(story)} style={{position: "relative", bottom: 97, left: 187 ,fontSize: 17}} /></a>
                 <Link title={story.name} to={`/story/${story.id}`}>
-                    <img className="story-item" onClick={(name) => this.SaveClick(story)} src={story.path_image} className="comic-list-img" data-original="//st.truyenchon.com/data/comics/70/van-gioi-tien-vuong.jpg" alt={story.name} />
+                    <img className="story-item" src={story.path_image} className="comic-list-img" alt={story.name} />
                     <h4>
-                        {/* {story.name} */}
                         <LinesEllipsis
                             onClick={(name) => this.SaveClick(story)}
                             text={story.name}
@@ -52,15 +47,17 @@ class StoryMBLeft extends Component {
                     </h4>
 
                 </Link>
-                {/* <div className="view clearfix">
-                    <span className="pull-left">
-                        <i className="fa fa-eye">
-                        </i> 2.108.695 <i className="fa fa-comment" /> 219 <i className="fa fa-heart" />
-            15.831</span>
-                </div> */}
             </div>
         );
     }
 }
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteHistory: (id) => {
+            dispatch({type: 'DELETE_HISTORY', id})
+        }
+    }
+}
 
-export default StoryMBLeft;
+export default connect(null, mapDispatchToProps)(StoryHistory)
+

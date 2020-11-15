@@ -15,12 +15,12 @@ class StoryMBRight extends Component {
     SaveClick = (story) => {
         var storyKey = 'list';
         var dataString = localStorage.getItem(storyKey);
-        var list;
-        if (dataString) {
-            list = JSON.parse(dataString)
-        }
-        else {
-            list = [];
+
+        var list = (dataString) ? JSON.parse(dataString) : [];
+        
+        if (this.findIndex(list, story.id) === -1) {
+            list.unshift(story);
+            localStorage.setItem(storyKey, JSON.stringify(list));
         }
         if (this.findIndex(list, story.id) === -1) {
             list.push(story);

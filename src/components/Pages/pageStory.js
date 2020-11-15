@@ -122,7 +122,7 @@ class PageStory extends Component {
                         </div>
                         <div className="manga-infor-container">
                             <div className="left-side-manga-infor">
-                                <img style={{ width: '100px', height: '100px' }} src={this.props.getStory.path_image} alt="Đô Thị Tuyệt Thế Cuồng Tôn " style={{ marginTop: '50px' }} />
+                                <img style={{ width: '100px', height: '100px' }} src={this.props.getStory.path_image} alt={this.props.getStory.name} style={{ marginTop: '50px' }} />
                             </div>
                             <div className="right-side-manga-infor ">
                                 <div>

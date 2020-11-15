@@ -36,7 +36,6 @@ class PageLogin extends Component {
                     // showAlert('Đã đăng nhập thành công', 'success');
                     this.props.setLoginTrue();
                     history.goBack();
-
                 }
                 else {
                     if (response.data.status === "failed") {

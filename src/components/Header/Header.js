@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getListCategories } from '../../actions/category';
+import { isLoginFalse } from '../../actions/login';
 import { actFetchStoriesRequest, actSearchStoriesRequest, getListStories } from '../../actions/story';
 import SuggestSearch from './SuggestSearch';
 
@@ -18,6 +19,13 @@ class Header extends Component {
 
     componentDidMount() {
         this.props.getCategories();
+    }
+
+    logoutClick = () => {
+        localStorage.removeItem('userLogin');
+        localStorage.removeItem('isUserLoggedIn');
+
+        this.props.setLoginFalse();
     }
 
     // searchClick = () => {
@@ -74,7 +82,7 @@ class Header extends Component {
                             <li className="logo"><Link to="/">MangaWorld</Link></li>
                             <li className="search-input">
                                 {/* <a> */}
-                                <input type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="tìm kiếm ở đây" />
+                                <input type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="Tìm kiếm ..." />
                                 {(this.state.suggestStatus) ? <SuggestSearch storiesSuggest={this.props.storiesSuggest} /> : <></>}
                                 {/* <button type="submit" onClick={() => this.searchClick()} value="Tìm kiếm"><i className="fa fa-search" /></button> */}
                                 {/* </a> */}
@@ -119,7 +127,6 @@ class Header extends Component {
                     </div>
                 </header>
             </div>
-
         );
     }
 }
@@ -143,6 +150,9 @@ const mapDispatchToProps = (dispatch) => {
         searchStories: (stories) => {
             dispatch(actSearchStoriesRequest(stories))
         },
+        setLoginFalse: () => {
+            dispatch(isLoginFalse())
+        }
 
     }
 }
