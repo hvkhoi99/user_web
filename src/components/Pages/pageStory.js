@@ -49,7 +49,7 @@ class PageStory extends Component {
         // console.log(this.props.author);
         const listChapter = this.props.chapters.map((chapter, index) => {
             return (
-                <li>
+                <li key={index}>
                     <div>
                         <span className="left-list-item">
                             <Link to={`/chapter/${chapter.id}`}>{chapter.name}</Link>

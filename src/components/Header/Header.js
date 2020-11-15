@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getListCategories } from '../../actions/category';
+import { isLoginFalse } from '../../actions/login';
 import { actFetchStoriesRequest, actSearchStoriesRequest, getListStories } from '../../actions/story';
 import SuggestSearch from './SuggestSearch';
 
@@ -18,6 +19,13 @@ class Header extends Component {
 
     componentDidMount() {
         this.props.getCategories();
+    }
+
+    logoutClick = () => {
+        localStorage.removeItem('userLogin');
+        localStorage.removeItem('isUserLoggedIn');
+
+        this.props.setLoginFalse();
     }
 
     // searchClick = () => {
@@ -38,20 +46,19 @@ class Header extends Component {
     }
 
     render() {
-        const htmlLogin = () => { return (<li> <a href="/">Đăng xuất</a></li>) };
-        // if (this.props.checkLogin) {
-        //     html = () => (<li> <a href="/">Đăng xuất</a></li>);
-        // } else {
-        //     html = () => (
-        //         <>
-
-        //             <li> <a href="/">Đăng nhập</a></li>
-        //             <li> <a href="/">Đăng ký</a></li>
-        //         </>
-
-        //     );
-        // }
-        // console.log(this.props.storiesSuggest);
+        var user = (this.props.checkLogin) ? JSON.parse(localStorage.getItem('userLogin')) : 'Bạn';
+        const htmlLogin = (this.props.checkLogin) ?
+            (
+                <>
+                    <li> <a href="/" >Hi {user.name}</a></li>
+                    <li> <Link to="/">Đăng xuất</Link></li>
+                </>
+            ) : (
+                <>
+                    <li> <Link to="/login" onClick = {() => this.logoutClick()}>Đăng nhập</Link></li>
+                    <li> <Link to="/">Đăng ký</Link></li>
+                </>
+            );
         const listCategories = this.props.categories.map((item, index) => {
             return (<li key={index}><a href={`/category/${item.id}`}>{item.name}</a></li>)
         })
@@ -75,7 +82,7 @@ class Header extends Component {
                             <li className="logo"><Link to="/">MangaWorld</Link></li>
                             <li className="search-input">
                                 {/* <a> */}
-                                <input type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="tìm kiếm ở đây" />
+                                <input type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="Tìm kiếm ..." />
                                 {(this.state.suggestStatus) ? <SuggestSearch storiesSuggest={this.props.storiesSuggest} /> : <></>}
                                 {/* <button type="submit" onClick={() => this.searchClick()} value="Tìm kiếm"><i className="fa fa-search" /></button> */}
                                 {/* </a> */}
@@ -88,7 +95,6 @@ class Header extends Component {
                             <li>
                                 <ul>
                                     {htmlLogin}
-                                    <li> <a href="/">Đăng xuất</a></li>
                                 </ul>
                             </li>
                         </ul>
@@ -98,10 +104,10 @@ class Header extends Component {
                         <nav>
                             <ul>
                                 <li className="nav-li"><Link to="/"><i className="fas fa-home" /></Link></li>
-                                <li className="nav-li"><a href="/">HOT</a></li>
-                                <li className="nav-li"><a href="/">THEO DÕI</a></li>
+                                <li className="nav-li"><Link to="/">HOT</Link></li>
+                                <li className="nav-li"><Link to="/" >THEO DÕI</Link></li>
                                 <li className="nav-li"><Link to="/history">LỊCH SỬ</Link></li>
-                                <li className="nav-li"><a href="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
+                                <li className="nav-li"><Link to="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></Link>
                                     <ul className="dropdown_1">
                                         {listCategories}
                                     </ul>
@@ -121,7 +127,6 @@ class Header extends Component {
                     </div>
                 </header>
             </div>
-
         );
     }
 }
@@ -145,6 +150,9 @@ const mapDispatchToProps = (dispatch) => {
         searchStories: (stories) => {
             dispatch(actSearchStoriesRequest(stories))
         },
+        setLoginFalse: () => {
+            dispatch(isLoginFalse())
+        }
 
     }
 }

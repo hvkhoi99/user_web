@@ -18,7 +18,7 @@ class StoryMBRight extends Component {
         var list = (dataString) ? JSON.parse(dataString) : [];
         
         if (this.findIndex(list, story.id) === -1) {
-            list.push(story);
+            list.unshift(story);
             localStorage.setItem(storyKey, JSON.stringify(list));
         }
     }

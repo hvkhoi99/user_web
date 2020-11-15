@@ -1,4 +1,4 @@
-const login = localStorage.getItem("isLoggedIn");
+const login = localStorage.getItem("isUserLoggedIn");
 
 const InitialState = login
 const checkLogin = (state = InitialState, action) => {

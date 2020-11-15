@@ -1,32 +1,22 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { getListStories } from '../../actions/story'
+import { connect } from 'react-redux';
 import MainBetweenRight from '../Main/MainBetweenRight';
 import Phantrang from '../Phantrang';
-import StoryMBLeft from '../Story/StoryMBLeft'
+import StoryHistory from '../Story/StoryHistory';
 
 class PageHistory extends Component {
 
     componentDidMount() {
-        this.props.getStories();
+        var dataS = localStorage.getItem('list');
+        var list = (dataS) ? JSON.parse(dataS) : [];
+        this.props.getHistory(list);
     }
-
 
     render() {
 
-        var dataS = localStorage.getItem('list');
-        var list;
-        if (dataS) {
-            list = JSON.parse(dataS)
-        }
-        else {
-            list = [];
-        }
-
-        const listStories = list.map((story, index) => {
-            if(list)
-            {
-                return (<StoryMBLeft key={index} story={story} />)
+        const listStories = this.props.history.map((story, index) => {
+            if (this.props.history) {
+                return (<StoryHistory key={index} story={story} />)
             }
             else return (<></>);
         });
@@ -42,26 +32,24 @@ class PageHistory extends Component {
                             {listStories}
                         </section>
                         <MainBetweenRight />
-
                     </div>
                     <Phantrang />
-
                 </div>
             </>
         )
     }
 }
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = (state) => {
     return {
-        stories: state.stories
+        history: state.history
     }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = (dispatch) => {
     return {
-        getStories: () => {
-            dispatch(getListStories())
+        getHistory: (stories) => {
+            dispatch({ type: 'GET_HISTORY', stories })
         }
     }
 }
