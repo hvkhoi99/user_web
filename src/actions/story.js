@@ -58,7 +58,15 @@ export const actSearchStories = (stories) => {
 
 export const actDeleteStoryFollow = (user_id, story_id) => {
     return dispatch => {
-        return callApi(`unfollow/user/${user_id}/story/${story_id}`, 'DELETE', null)
-            // dispatch(actSearchStories(res.data));
+        return callApi(`unfollow/user/${user_id}/story/${story_id}`, 'DELETE', null).then(res => {
+            dispatch(actUnFollow(story_id));
+        });
     };
+}
+
+export const actUnFollow = (story_id) => {
+    return {
+        type: 'UN_FOLLOW',
+        story_id
+    }
 }

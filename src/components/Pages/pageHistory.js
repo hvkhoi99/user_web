@@ -14,27 +14,9 @@ class PageHistory extends Component {
 
     render() {
 
-<<<<<<< HEAD
-        var dataS = localStorage.getItem('list');
-        var list;
-        if (dataS) {
-            list = JSON.parse(dataS)
-        }
-        else {
-            list = [];
-        }
-
-        console.log(JSON.parse(dataS));
-
-        const listStories = list.map((story, index) => {
-            if(list)
-            {
-                return (<StoryMBLeft key={index} story={story} />)
-=======
         const listStories = this.props.history.map((story, index) => {
             if (this.props.history) {
                 return (<StoryHistory key={index} story={story} />)
->>>>>>> 37ce710650aae54ddaf0fe568dc1dc89b52630b1
             }
             else return (<></>);
         });
