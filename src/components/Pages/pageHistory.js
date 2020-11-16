@@ -22,7 +22,7 @@ class PageHistory extends Component {
         });
 
         return (
-            <>
+            <div className="pageChung pageHis">
                 <div className="mainPart">
                     <div className="comic-list-container">
                         <section className="left-side-item ">
@@ -35,7 +35,7 @@ class PageHistory extends Component {
                     </div>
                     <Phantrang />
                 </div>
-            </>
+            </div>
         )
     }
 }

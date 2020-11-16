@@ -26,7 +26,7 @@ class PageFollow extends Component {
         })
 
         return (
-            <>
+            <div className="pageChung pageFol">
                 <div className="mainPart">
                     <div className="comic-list-container">
                         <section className="left-side-item ">
@@ -41,7 +41,8 @@ class PageFollow extends Component {
                     <Phantrang />
 
                 </div>
-            </>
+            </div>
+
         )
     }
 }
