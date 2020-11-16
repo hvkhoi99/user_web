@@ -14,13 +14,12 @@ class PageFollow extends Component {
             user = JSON.parse(dataS).id
         }
         else {
-            user = {};
+            user = [];
         }
         this.props.getStories(user);
     }
 
     render() {
-
         const listStories = this.props.getStoriesFollow.map((story, index) => {
             return <StoryFollow key={index} story={story} />
         })

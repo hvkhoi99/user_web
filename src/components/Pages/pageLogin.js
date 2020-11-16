@@ -70,12 +70,20 @@ class PageLogin extends Component {
                     <div className="form-login">
                         <h3 className="logo-login">LOGIN</h3>
                         <div className="form-group-login">
-                            <input className="form-control-login" type="text" name="email" placeholder="Email" ref={this.emailRef} />
+                            <input onKeyPress={(e) => {
+                                if (e.key === 'Enter') {
+                                    this.loginClick();
+                                }
+                            }} className="form-control-login" type="text" name="email" placeholder="Email" ref={this.emailRef} />
                             <i className="fa fa-user icon-login" />
                             <span className="text-danger">{this.state.errMsgEmail}</span>
                         </div>
                         <div className="form-group-login">
-                            <input className="form-control-login" type="password" name="password" placeholder="Password" ref={this.passwordRef} />
+                            <input onKeyPress={(e) => {
+                                if (e.key === 'Enter') {
+                                    this.loginClick();
+                                }
+                            }} className="form-control-login" type="password" name="password" placeholder="Password" ref={this.passwordRef} />
                             <i className="fa fa-unlock-alt icon-login" />
                             <span className="text-danger">{this.state.errMsgPwd}</span>
                         </div>

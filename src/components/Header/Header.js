@@ -3,8 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getListCategories } from '../../actions/category';
 import { isLoginFalse } from '../../actions/login';
-import { actFetchStoriesRequest, actSearchStoriesRequest, getListStories } from '../../actions/story';
+import { actSearchStoriesRequest, getListStories } from '../../actions/story';
 import SuggestSearch from './SuggestSearch';
+import logoImg from '../../webLogo.png'
 
 
 class Header extends Component {
@@ -20,11 +21,6 @@ class Header extends Component {
     componentDidMount() {
         this.props.getCategories();
     }
-
-    // searchClick = () => {
-    //     let name = this.nameRef.current.value;
-    //     (name === "") ? this.props.fetchStories() : this.props.searchStories(name)
-    // }
 
     isChange = () => {
         let name = this.nameRef.current.value;
@@ -42,6 +38,15 @@ class Header extends Component {
         localStorage.removeItem('isLogin');
     }
 
+    checkLoginPage = () => {
+        if (this.props.checkLogin === null) {
+            if (window.confirm("Chức năng này hoạt động khi đã đăng nhập!")) {
+            }
+        } else {
+            return;
+        }
+    }
+
     render() {
 
         var name = (this.props.checkLogin) ? JSON.parse(localStorage.getItem('userLogin')).name : 'Bạn';
@@ -49,7 +54,7 @@ class Header extends Component {
         const htmlLogin = (this.props.checkLogin) ?
             (
                 <>
-                    <li className="dangnhap"><a href='/'>Hi {name}</a></li>
+                    <li className="hi-name"><a href='/'>Hi <p>{name}</p></a></li>
                     <li className="dangxuat"> <a onClick={() => this.LogOutClick()} href="/" >Đăng xuất</a></li>
                 </>
 
@@ -66,30 +71,17 @@ class Header extends Component {
         return (
             <div className="mainPart">
                 <header>
-                    {/* <nav>
-                        <a href="#home"><img className="logo" src="./resources/img/logo.png" alt="logo" /></a>
-                        <ul class="main-nav">
-                            <li><a href="#testimonials">How Clients Think</a></li>
-                            <li><a href="#about">About</a></li>
-                            <li><a href="#products">Products</a></li>
-                            <li><a href="#contact">Contact</a></li>
-                        </ul>
-                    </nav>
-                    <div className="clearfix"></div> */}
-
-                    {/* Searching bar*/}
+                    
                     <div className="topNav">
                         <ul className="searchBar">
-                            <li className="logo"><Link to="/">MangaWorld</Link></li>
+                            {/* <li className="logo"><Link to="/"></Link></li> */}
+                            <Link to="/" className="logo header__logo"><img src={logoImg}  alt="logo" /></Link>
                             <li className="search-input">
                                 <input type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="Tìm kiếm ..." />
                                 {(this.state.suggestStatus) ? <SuggestSearch storiesSuggest={this.props.storiesSuggest} /> : <></>}
-                                {/* <button type="submit" onClick={() => this.searchClick()} value="Tìm kiếm"><i className="fa fa-search" /></button> */}
                             </li>
                             <li>
-                                <a href="/">
-                                    <i className="fas fa-comment" style={{ fontSize: '40px' }} />
-                                </a>
+                                <i className="fas fa-comment" style={{ fontSize: '40px' }} />
                             </li>
                             <li>
                                 <ul>
@@ -104,21 +96,21 @@ class Header extends Component {
                             <ul>
                                 <li className="nav-li"><Link to="/"><i className="fas fa-home" /></Link></li>
                                 <li className="nav-li"><Link to="/">HOT</Link></li>
-                                <li className="nav-li"><Link to="/follow">THEO DÕI</Link></li>
+                                <li className="nav-li"><Link onClick={() => this.checkLoginPage()} to="/follow">THEO DÕI</Link></li>
                                 <li className="nav-li"><Link to="/history">LỊCH SỬ</Link></li>
                                 <li className="nav-li"><Link to="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></Link>
                                     <ul className="dropdown_1">
                                         {listCategories}
                                     </ul>
                                 </li>
-                                <li className="nav-li"><a>XẾP HẠNG <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
+                                <li className="nav-li"><a href="/">XẾP HẠNG <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
                                     <ul className="dropdown_1">
-                                        <li><a>Top all</a></li>
-                                        <li><a>Top tháng</a></li>
-                                        <li><a>Top tuần</a></li>
-                                        <li><a>Top ngày</a></li>
-                                        <li><a>Yêu thích</a></li>
-                                        <li><a>Mới cập nhật</a></li>
+                                        <li><a href="/">Top all</a></li>
+                                        <li><a href="/">Top tháng</a></li>
+                                        <li><a href="/">Top tuần</a></li>
+                                        <li><a href="/">Top ngày</a></li>
+                                        <li><a href="/">Yêu thích</a></li>
+                                        <li><a href="/">Mới cập nhật</a></li>
                                     </ul>
                                 </li>
                             </ul>
