@@ -28,8 +28,8 @@ class PageLogin extends Component {
             }).then((response) => {
                 console.log(response);
                 if (response.data.status === 200) {
-                    localStorage.setItem("isLoggedIn", true);
-                    localStorage.setItem("userData", JSON.stringify(response.data.data));
+                    localStorage.setItem("isLogin", true);
+                    localStorage.setItem("userLogin", JSON.stringify(response.data.data));
                     // this.setState({
                     //     redirect: true,
                     // });
@@ -91,9 +91,9 @@ class PageLogin extends Component {
                         <p className="text-danger">{this.state.errMsg}</p>
                         <span className="text-success">{this.state.msg}</span>
                     </div>
-                 </div>
+                </div>
 
-             </div>
+            </div>
 
         )
     }

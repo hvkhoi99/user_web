@@ -37,7 +37,7 @@ class StoryFollow extends Component {
     UnfollowClick = (story_id) => {
 
 
-        var dataS = localStorage.getItem('userData');
+        var dataS = localStorage.getItem('userLogin');
         var list;
         if (dataS) {
             list = JSON.parse(dataS).id

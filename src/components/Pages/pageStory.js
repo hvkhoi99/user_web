@@ -1,3 +1,4 @@
+import Axios from 'axios';
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom';
@@ -6,6 +7,7 @@ import { actFetchCategoriesRequest } from '../../actions/category_stories';
 import { getListChapters } from '../../actions/chapters';
 import { actFollowRequest, actGetStoriesFollowRequest } from '../../actions/follow';
 import { actGetStory } from '../../actions/get_Story'
+import { actDeleteStoryFollow } from '../../actions/story';
 import MainBetweenRight from '../Main/MainBetweenRight';
 
 // var moment = require('moment')
@@ -14,13 +16,14 @@ class PageStory extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            buttonCheck: true
+            buttonCheck: false,
         }
     }
 
 
     componentDidMount() {
         var { match } = this.props;
+
         if (match) {
             var id = match.params.id;
 
@@ -30,17 +33,16 @@ class PageStory extends Component {
             this.props.getAuthorByStoryId(id);
             this.props.getListChapters(id);
 
+            if (this.props.checkLogin) {
+                var userString = localStorage.getItem('userLogin');
+                var userLogin = (userString) ? JSON.parse(userString) : null;
+                if (userLogin !== null) {
+                    Axios.get(`http://127.0.0.1:8000/api/check-follow/user/${userLogin.id}/story/${id}`).then(res => {
+                        if (res.data > 0) this.setState({ buttonCheck: true })
+                    })
+                }
+            }
         }
-        var dataS = localStorage.getItem('userData');
-        var list;
-        if (dataS) {
-            list = JSON.parse(dataS).id
-        }
-        else {
-            list = [];
-        }
-        this.props.getFollowStories(list)
-
     }
 
     findIndex = (list, id) => {
@@ -50,7 +52,6 @@ class PageStory extends Component {
                 result = index;
             }
         });
-
         return result;
     }
 
@@ -63,25 +64,36 @@ class PageStory extends Component {
             }
 
         } else {
-            var userCurrent = JSON.parse(localStorage.getItem('userData'));
+            var userCurrent = JSON.parse(localStorage.getItem('userLogin'));
             var story = {
                 story_id: this.props.match.params.id,
                 user_id: userCurrent.id
             }
-            // this.props.getStoriesFollow.map((item, index) => {
-            //     if (this.props.getStoriesFollow.indexOf(item) === -1) this.setState({ buttonCheck: true});
-            //     else this.setState({ buttonCheck: false});
-            // })
-            this.props.followStory(story);
+
+            if (this.state.buttonCheck) {
+                this.props.unfollowStory(story.user_id, story.story_id);
+                this.setState({ buttonCheck: false })
+            }
+            else {
+                this.props.followStory(story);
+                this.setState({ buttonCheck: true })
+            }
         }
     }
 
-    
+
 
     render() {
-
-        
-
+        console.log(this.state)
+        const followText = (this.state.buttonCheck) ? (
+            <a style={{ color: 'red' }}>
+                <i className="fa fa-heart " /> <span >Theo dõi</span>
+            </a>
+        ) : (
+                <a style={{ color: 'black' }}>
+                    <i className="fa fa-heart " /> <span >Theo dõi</span>
+                </a>
+            )
 
         const listChapter = this.props.chapters.map((chapter, index) => {
             return (
@@ -122,7 +134,7 @@ class PageStory extends Component {
                         </div>
                         <div className="manga-infor-container">
                             <div className="left-side-manga-infor">
-                                <img style={{ width: '100px', height: '100px' }} src={this.props.getStory.path_image} alt={this.props.getStory.name} style={{ marginTop: '50px' }} />
+                                <img src={this.props.getStory.path_image} alt={this.props.getStory.name} />
                             </div>
                             <div className="right-side-manga-infor ">
                                 <div>
@@ -149,7 +161,6 @@ class PageStory extends Component {
                                 </div>
                                 <div>
                                     <div className="ranking-item-container">
-
                                         <span itemProp="aggregateRating " itemScope=" " itemType="https://schema.org/AggregateRating "> Xếp hạng: <span itemProp="ratingValue ">3.7</span>/5 - <span itemProp="ratingCount ">425</span> Lượt đánh giá.</span>
                                     </div>
                                     <div className="ranking-item-container">
@@ -170,12 +181,11 @@ class PageStory extends Component {
                                         </button>
                                     </div>
                                     <div className="ranking-item-container">
+
                                         <button onClick={() => this.FollowClick()} style={{ width: '120px', marginRight: '5px' }}>
-                                            <a style={(this.state.buttonCheck) ? { color: 'red' } : { color: 'black' }}>
-                                                <i className="fa fa-heart " /> <span >Theo dõi</span>
-                                            </a>
-                                            <span>
-                                            </span></button>
+                                            {followText}
+                                        </button>
+
                                         <b>8.003</b> Người Đã Theo Dõi
               </div>
                                     <div className="ranking-item-container">
@@ -255,6 +265,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         getFollowStories: (user_id) => {
             dispatch(actGetStoriesFollowRequest(user_id))
+        },
+        unfollowStory: (user_id, story_id) => {
+            dispatch(actDeleteStoryFollow(user_id, story_id))
         }
     }
 }

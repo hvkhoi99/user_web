@@ -12,12 +12,7 @@ import Navigation from './components/Navigation/navigation';
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      listStory: []
-    }
-  }
+
   showContentMenus = (routes) => {
     var result = null;
     if (routes.length > 0) {
@@ -40,7 +35,7 @@ class App extends Component {
       <>
         <Router>
           <Header />
-          <Navigation/>
+          <Navigation />
           {this.showContentMenus(routes)}
           <Footer />
         </Router>

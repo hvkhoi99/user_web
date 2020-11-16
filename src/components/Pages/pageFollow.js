@@ -8,15 +8,15 @@ import StoryFollow from '../Story/StoryFollow'
 class PageFollow extends Component {
 
     componentDidMount() {
-        var dataS = localStorage.getItem('userData');
-        var list;
+        var dataS = localStorage.getItem('userLogin');
+        var user;
         if (dataS) {
-            list = JSON.parse(dataS).id
+            user = JSON.parse(dataS).id
         }
         else {
-            list = [];
+            user = {};
         }
-        this.props.getStories(list);
+        this.props.getStories(user);
     }
 
     render() {

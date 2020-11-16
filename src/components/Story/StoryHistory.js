@@ -22,6 +22,7 @@ class StoryHistory extends Component {
         if (this.findIndex(list, story_id) !== -1) {
             list.splice(this.findIndex(list, story_id), 1);
             localStorage.setItem(storyKey, JSON.stringify(list));
+            this.props.deleteHistory(story_id)
         }
     }
     render() {
@@ -46,5 +47,12 @@ class StoryHistory extends Component {
     }
 }
 
-export default StoryHistory;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        deleteHistory: (id) => {
+            dispatch({type: 'DELETE_HISTORY', id})
+        }
+    }
+}
+export default connect(null, mapDispatchToProps)(StoryHistory)
 

@@ -21,13 +21,6 @@ class Header extends Component {
         this.props.getCategories();
     }
 
-    logoutClick = () => {
-        localStorage.removeItem('userLogin');
-        localStorage.removeItem('isUserLoggedIn');
-
-        this.props.setLoginFalse();
-    }
-
     // searchClick = () => {
     //     let name = this.nameRef.current.value;
     //     (name === "") ? this.props.fetchStories() : this.props.searchStories(name)
@@ -42,22 +35,30 @@ class Header extends Component {
             this.setState({ suggestStatus: true })
             this.props.searchStories(name)
         }
-        // (name === "") ? this.props.fetchStories() : this.props.searchStories(name)
     }
 
     LogOutClick = () => {
-        localStorage.removeItem('userData');
-        localStorage.removeItem('isLoggedIn');
+        localStorage.removeItem('userLogin');
+        localStorage.removeItem('isLogin');
     }
 
     render() {
-        const htmlLogin = (this.props.checkLogin) ? (<li className="dangxuat"> <a onClick={()=> this.LogOutClick()} href="/" >Đăng xuất</a></li>) : (
-            <>
 
-                <li className="dangnhap"> <Link to="/login">Đăng nhập</Link></li>
-                <li className="dangky"> <a href="/">Đăng ký</a></li>
-            </>
-        );
+        var name = (this.props.checkLogin) ? JSON.parse(localStorage.getItem('userLogin')).name : 'Bạn';
+
+        const htmlLogin = (this.props.checkLogin) ?
+            (
+                <>
+                    <li className="dangnhap"><a href='/'>Hi {name}</a></li>
+                    <li className="dangxuat"> <a onClick={() => this.LogOutClick()} href="/" >Đăng xuất</a></li>
+                </>
+
+            ) : (
+                <>
+                    <li className="dangnhap"> <Link to="/login">Đăng nhập</Link></li>
+                    <li className="dangky"> <a href="/">Đăng ký</a></li>
+                </>
+            );
 
         const listCategories = this.props.categories.map((item, index) => {
             return (<li key={index}><a href={`/category/${item.id}`}>{item.name}</a></li>)
@@ -81,11 +82,9 @@ class Header extends Component {
                         <ul className="searchBar">
                             <li className="logo"><Link to="/">MangaWorld</Link></li>
                             <li className="search-input">
-                                {/* <a> */}
                                 <input type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="Tìm kiếm ..." />
                                 {(this.state.suggestStatus) ? <SuggestSearch storiesSuggest={this.props.storiesSuggest} /> : <></>}
                                 {/* <button type="submit" onClick={() => this.searchClick()} value="Tìm kiếm"><i className="fa fa-search" /></button> */}
-                                {/* </a> */}
                             </li>
                             <li>
                                 <a href="/">
@@ -104,10 +103,10 @@ class Header extends Component {
                         <nav>
                             <ul>
                                 <li className="nav-li"><Link to="/"><i className="fas fa-home" /></Link></li>
-                                <li className="nav-li"><a href="/">HOT</a></li>
-                                <li className="nav-li"><a href="/follow">THEO DÕI</a></li>
-                                <li className="nav-li"><a href="/history">LỊCH SỬ</a></li>
-                                <li className="nav-li"><a href="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
+                                <li className="nav-li"><Link to="/">HOT</Link></li>
+                                <li className="nav-li"><Link to="/follow">THEO DÕI</Link></li>
+                                <li className="nav-li"><Link to="/history">LỊCH SỬ</Link></li>
+                                <li className="nav-li"><Link to="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></Link>
                                     <ul className="dropdown_1">
                                         {listCategories}
                                     </ul>
@@ -153,10 +152,8 @@ const mapDispatchToProps = (dispatch) => {
         setLoginFalse: () => {
             dispatch(isLoginFalse())
         }
-
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header)
 
