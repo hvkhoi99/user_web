@@ -14,10 +14,10 @@
   .page-title {
     color: black;
     text-transform: uppercase;
-    margin-bottom: 5px;
+    height: 10%;
     font-weight: 400;
     font-size: 25px;
-    padding-top: 10px;
+    margin-left: 80px;
   }
 
 
@@ -31,25 +31,24 @@
 
   .search-input{
     margin-top: 15px;
-    margin-left: 150px;
+    margin-left: 180px;
   }
   .suggestsearch {
     position: absolute;
     top: 40px;
     left: 0;
-    z-index: 1;
+    z-index: 199;
     max-height: 370px;
     overflow-y: auto;
     overflow-x: hidden;
-    border: 1px solid #ebebeb;
     background-color: white;
     width: 100%;
-    /* overflow: hidden;
-    opacity: 0; */
+
   }
   .suggestsearch ul {
       display: flex;
       flex-direction: column;
+      
   }
   .suggestsearch ul li {
     padding: 5px 0;
@@ -68,6 +67,7 @@
     display: block;
     background: none;
     text-align: left;
+    
 }
 
 .suggestsearch ul li a img {
@@ -120,7 +120,10 @@
   /* menu navigation bar */
   
   .navMenu-top a {
-    background-color: rgb(13, 154, 209);
+    background-color: #f1f1f1;
+    border-left: .1px solid rgb(206, 204, 204);
+    border-bottom: .1px solid rgb(206, 204, 204);
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -128,7 +131,9 @@
     font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
-    color: white;
+    color: black;
+    width: 100%;
+
   }
   
   .navMenu-top a:hover {
@@ -138,30 +143,27 @@
   
   .navMenu-top ul {
     list-style: none;
-    display: flex;
-    z-index: 999;
+    display: flex; 
+    width: 100%;
+    margin-top: -1px;
   }
+
+  
   
   .navMenu-top ul li {
     position: relative;
     width: 100%;
     text-align: center;
-    border: .05px solid rgb(38, 200, 211);
-
+    /* border: .5px solid rgb(38, 200, 211); */
   }
 
   .nav-li a:hover{
     transition: all .3s ease-out;
-
   }
 
   .nav-li .dropdown_1::before, .nav-li .dropdown_1::after{
     transition: all 5s ease-out;
-
   }
-
-  
-
 
   .dropdown_1 li a:hover, .dropdown_1 li a:focus{
     transition: all .3s ease-out;
@@ -175,15 +177,15 @@
   }
   
   .dropdown_1 li {
-    display: none;
+    display: inline-block;
     position: relative;
+    
   }
   
   .dropdown_1 {
     position: absolute;
     display: flex;
     flex-direction: column;
-    width: 100%;
   }
   
   
@@ -305,15 +307,12 @@
 
   .unfollow-storyfollow{
     width: 15%;
-    /* margin-left: 165px; */
     position: relative;
-    /* z-index: 10; */
     color: rgb(60, 35, 174);
     cursor: pointer;
     font-weight: 900;
     background-color: rgb(159, 159, 160);
     border-radius: 8rem;
-    /* margin-bottom: -30px; */
     top: 17px;
     left: 155px;
     opacity: .5;
@@ -329,11 +328,10 @@
   .pageChung{
     background-size: cover;
     background-position: top;
-    /* height: 95vh; */
-  /* clip-path: ellipse(65% 80% at 49% 10%); */
     background-attachment: fixed;
-    margin-top: -15px;
-    margin-bottom: -15px;
+    margin-top: -70px;
+    /* margin-bottom: -55px; */
+
   }
 
   .pageFol{
@@ -351,11 +349,21 @@
     background-image: linear-gradient(to right bottom, rgba(235, 240, 243, 0.8), rgba(234, 234, 242, 0.8)), url("https://p4.wallpaperbetter.com/wallpaper/404/346/421/anime-one-punch-man-garou-one-punch-man-hd-wallpaper-preview.jpg");
   }
 
-  .header__logo{
- 
-    display: inline-block;
-    cursor: pointer;
-    margin: 10px 40px 0 80px;
-    width: 60%;
-  }
+
+.header__logo{
+  padding: 20px 0 0 40px;
+}
+
+.rank-a{
+  padding-left: 4px;
+}
+
+.navbar {
+  font-size: 1.2rem;
+  position: sticky;
+  top: 0;
+  margin-top: 7rem
+  
+}
+
  

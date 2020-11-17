@@ -1,13 +1,14 @@
 import Axios from 'axios';
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { actGetAuthorByStoryIdRequest } from '../../actions/author';
 import { actFetchCategoriesRequest } from '../../actions/category_stories';
 import { getListChapters } from '../../actions/chapters';
 import { actFollowRequest, actGetStoriesFollowRequest } from '../../actions/follow';
-import { actGetStory } from '../../actions/get_Story'
+import { actGetStory } from '../../actions/get_Story';
 import { actDeleteStoryFollow } from '../../actions/story';
+import Sticky from '../Header/Sticky';
 import MainBetweenRight from '../Main/MainBetweenRight';
 
 // var moment = require('moment')
@@ -85,13 +86,13 @@ class PageStory extends Component {
 
     render() {
         const followText = (this.state.buttonCheck) ? (
-            <a style={{ color: 'red' }}>
+            <Link style={{ color: 'red' }}>
                 <i className="fa fa-heart " /> <span >Theo dõi</span>
-            </a>
+            </Link>
         ) : (
-                <a style={{ color: 'black' }}>
+                <Link style={{ color: 'black' }}>
                     <i className="fa fa-heart " /> <span >Theo dõi</span>
-                </a>
+                </Link>
             )
 
         const listChapter = this.props.chapters.map((chapter, index) => {
@@ -117,6 +118,7 @@ class PageStory extends Component {
 
         return (
             <div className="pageChung pageStory">
+                <Sticky />
                 <div className="mainPart">
                     {/* Block two - slide show */}
                     <div className="comic-list-container">
@@ -188,12 +190,12 @@ class PageStory extends Component {
               </div>
                                         <div className="ranking-item-container">
                                             <button style={{ width: '120px' }}>
-                                                <a href="/ ">
-                                                    Đọc từ đầu</a>
+                                                <Link to="/ ">
+                                                    Đọc từ đầu</Link>
                                             </button>
                                             <button style={{ width: '150px' }}>
-                                                <a href="/">
-                                                    Đọc mới nhất</a>
+                                                <Link to="/">
+                                                    Đọc mới nhất</Link>
                                             </button>
                                         </div>
                                     </div>

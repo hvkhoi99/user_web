@@ -11,10 +11,9 @@ export default class Navigation extends Component {
                 <div className="navigation__background">&nbsp;</div>
                 <div className="navigation__nav">
                     <ul className="navigation__list">
+                        <li className="navigation__item"><a href="/" className="navigation__link">Trang chủ</a></li>
                         <li className="navigation__item"><a href="/login" className="navigation__link">Đăng nhập</a></li>
                         <li className="navigation__item"><a href="/" className="navigation__link">Đăng ký</a></li>
-                        <li className="navigation__item"><a href="/" className="navigation__link">Phản hồi</a></li>
-                        
                     </ul>
                 </div>
             </div>

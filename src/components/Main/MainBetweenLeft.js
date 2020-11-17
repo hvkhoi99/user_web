@@ -1,18 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getListStories } from '../../actions/story';
-import MyContext from '../../myContext';
 import StoryMBLeft from '../Story/StoryMBLeft';
 
 class MainBetweenLeft extends Component {
     componentDidMount() {
         this.props.getStories();
     }
-    
+
     render() {
-        
+
         const listStories = this.props.stories.map((story, index) => {
-            return (<StoryMBLeft key={index} story={story}/>)
+            return (<StoryMBLeft key={index} story={story} />)
         })
 
         return (
@@ -21,7 +20,7 @@ class MainBetweenLeft extends Component {
                     <div className="introduction-item introduction-item-1">
                         <h3 className="page-title">Truyện mới cập nhật <i className="fa fa-angle-right" /></h3>
                     </div>
-                    {listStories}                    
+                    {listStories}
                 </section>
             </>
         );

@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Sticky from '../Header/Sticky';
 import MainBetweenRight from '../Main/MainBetweenRight';
 import Phantrang from '../Phantrang';
 import StoryHistory from '../Story/StoryHistory';
@@ -23,6 +24,7 @@ class PageHistory extends Component {
 
         return (
             <div className="pageChung pageHis">
+                <Sticky />
                 <div className="mainPart">
                     <div className="comic-list-container">
                         <section className="left-side-item ">

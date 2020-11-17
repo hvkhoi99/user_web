@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LinesEllipsis from 'react-lines-ellipsis'
+import LinesEllipsis from 'react-lines-ellipsis';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { actDeleteStoryFollow } from '../../actions/story';
@@ -58,7 +58,7 @@ class StoryFollow extends Component {
             <div className="storyfollow-container">
                 <Link to='/follow'><p onClick={() => this.UnfollowClick(story.id)} className="item-storyfollow unfollow-storyfollow">X</p></Link>
                 <Link title={story.name} to={`/story/${story.id}`}>
-                    <img className="story-item" onClick={(name) => this.SaveClick(story)} src={story.path_image} className="comic-list-img" data-original="//st.truyenchon.com/data/comics/70/van-gioi-tien-vuong.jpg" alt={story.name} />
+                    <img className="story-item comic-list-img" onClick={() => this.SaveClick(story)} src={story.path_image} data-original="" alt={story.name} />
                     <h4 className="item-storyfollow name-storyfollow">
                         {/* {story.name} */}
                         <LinesEllipsis

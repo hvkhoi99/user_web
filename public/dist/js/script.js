@@ -1,7 +1,7 @@
 $(document).ready(
-    function(){
+    function () {
         //sticky nav    
-        $('.about-section').waypoint(
+        $('.mainPart').waypoint(
             function (dicrection) {
                 if (dicrection == "down") {
                     $('nav').addClass('sticky');
@@ -21,21 +21,5 @@ $(document).ready(
             event.preventDefault();
         });
 
-
-        //mobile navigation
-        $('.mobile-nav-icon').click(
-            function () {
-                $('.main-nav').slideToggle(200);
-
-                if ($('.mobile-nav-icon').hasClass('fa-bars')) {
-                    $('.mobile-nav-icon').addClass('fa-times');
-                    $('.mobile-nav-icon').removeClass('fa-bars');
-                }
-                else {
-                    $('.mobile-nav-icon').addClass('fa-bars');
-                    $('.mobile-nav-icon').removeClass('fa-times');
-                }
-            }
-        )
     }
 )

@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getListStories, getTruyenDCRequest } from '../../actions/story';
-import StoryMBRight from '../Story/StoryMBRight'
+import { getTruyenDCRequest } from '../../actions/story';
+import StoryMBRight from '../Story/StoryMBRight';
 
 class MainBetweenRight extends Component {
 
     componentDidMount(){
-        // this.props.getStories();
         this.props.getTruyendecu(5);
     }
 
@@ -20,19 +19,17 @@ class MainBetweenRight extends Component {
         return (
             <>
                 <section className="right-side-item">
-                    <div>
                         <div className="trending-tile-container">
                             <ul>
                                 <li>
                                     <a href="/" />Top Tháng</li>
                                 <li>
-                                    <a href="/" />Top Tuần</li>
+                                    <a className="rank-a" href="/" />Top Tuần</li>
                                 <li>
-                                    <a href="/" />Top Ngày</li>
+                                    <a className="rank-a" href="/" />Top Ngày</li>
                             </ul>
                         </div>
                         {listStories}
-                    </div>
                 </section>
             </>
         );

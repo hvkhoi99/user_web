@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
-import Header from './components/Header/Header';
-import Footer from './components/Footer/Footer';
-import './App.css'
 import {
   BrowserRouter as Router,
-  Switch,
-  Route,
+
+  Route, Switch
 } from "react-router-dom";
-import routes from './Router/Url';
+import './App.css';
+import Footer from './components/Footer/Footer';
+import Header from './components/Header/Header';
 import Navigation from './components/Navigation/navigation';
+import routes from './Router/Url';
 
 
 class App extends Component {

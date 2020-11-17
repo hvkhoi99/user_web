@@ -1,6 +1,6 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { getImages } from '../../actions/image'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getImages } from '../../actions/image';
 
 class PageImage extends Component {
 

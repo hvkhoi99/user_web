@@ -17,7 +17,7 @@ class StoryMBRight extends Component {
         var dataString = localStorage.getItem(storyKey);
 
         var list = (dataString) ? JSON.parse(dataString) : [];
-        
+
         if (this.findIndex(list, story.id) === -1) {
             list.unshift(story);
             localStorage.setItem(storyKey, JSON.stringify(list));
@@ -38,7 +38,7 @@ class StoryMBRight extends Component {
                         <div className="order_infor">
                             <div>
                                 <a className="thumb" title={story.name} href={`/story/${story.id}`}>
-                                    <img onClick={(name)=> this.SaveClick(story)} className="ranking-img-item" src={story.path_image} alt="Bách Luyện Thành Thần" style={{ display: 'inline' }} />
+                                    <img onClick={(name) => this.SaveClick(story)} className="ranking-img-item" src={story.path_image} alt="Bách Luyện Thành Thần" style={{ display: 'inline' }} />
                                 </a>
                             </div>
                             <div>

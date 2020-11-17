@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LinesEllipsis from 'react-lines-ellipsis'
+import LinesEllipsis from 'react-lines-ellipsis';
 import { Link } from 'react-router-dom';
 
 class StoryMBLeft extends Component {
@@ -19,7 +19,7 @@ class StoryMBLeft extends Component {
         var dataString = localStorage.getItem(storyKey);
 
         var list = (dataString) ? JSON.parse(dataString) : [];
-        
+
         if (this.findIndex(list, story.id) === -1) {
             list.unshift(story);
             localStorage.setItem(storyKey, JSON.stringify(list));
@@ -38,7 +38,7 @@ class StoryMBLeft extends Component {
         return (
             <div>
                 <Link title={story.name} to={`/story/${story.id}`}>
-                    <img className="story-item" onClick={(name) => this.SaveClick(story)} src={story.path_image} className="comic-list-img" data-original="//st.truyenchon.com/data/comics/70/van-gioi-tien-vuong.jpg" alt={story.name} />
+                    <img className="story-item comic-list-img" onClick={(name) => this.SaveClick(story)} src={story.path_image} data-original="//st.truyenchon.com/data/comics/70/van-gioi-tien-vuong.jpg" alt={story.name} />
                     <h4>
                         {/* {story.name} */}
                         <LinesEllipsis

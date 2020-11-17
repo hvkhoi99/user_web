@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LinesEllipsis from 'react-lines-ellipsis'
+import LinesEllipsis from 'react-lines-ellipsis';
 import { Link } from 'react-router-dom';
 
 
@@ -33,11 +33,7 @@ class StoryMHeader extends Component {
     }
     render() {
 
-
-
-
-
-        var { story, saveClick } = this.props;
+        var { story } = this.props;
         return (
             <div className="recommend-item" style={{ width: '203px' }}>
                 <div className="item">

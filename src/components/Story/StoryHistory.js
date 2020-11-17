@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import LinesEllipsis from 'react-lines-ellipsis'
+import LinesEllipsis from 'react-lines-ellipsis';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
@@ -31,7 +31,7 @@ class StoryHistory extends Component {
             <div>
                 <Link to="/history"><p onClick={() => this.RemoveHisClick(story.id)} className="item-storyfollow unfollow-storyfollow">X</p></Link>
                 <Link title={story.name} to={`/story/${story.id}`}>
-                    <img className="story-item" src={story.path_image} className="comic-list-img" alt={story.name} />
+                    <img className="story-item comic-list-img" src={story.path_image} alt={story.name} />
                     <h4>
                         <LinesEllipsis
                             text={story.name}
@@ -50,7 +50,7 @@ class StoryHistory extends Component {
 const mapDispatchToProps = (dispatch) => {
     return {
         deleteHistory: (id) => {
-            dispatch({type: 'DELETE_HISTORY', id})
+            dispatch({ type: 'DELETE_HISTORY', id })
         }
     }
 }

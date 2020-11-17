@@ -1,8 +1,8 @@
 import Axios from 'axios';
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { isLoginTrue } from '../../actions/login'
-import './login.css'
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { isLoginTrue } from '../../actions/login';
+import './login.css';
 
 class PageLogin extends Component {
 

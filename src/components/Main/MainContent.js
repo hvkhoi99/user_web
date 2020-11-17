@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
-import MainBottom from './MainBottom';
+import Sticky from '../Header/Sticky';
 import MainBetweenLeft from './MainBetweenLeft';
 import MainBetweenRight from './MainBetweenRight';
-import MainTop from './MainTop'
+import MainBottom from './MainBottom';
+import MainTop from './MainTop';
 
 class MainContent extends Component {
     render() {
         return (
             <div className="header">
+                <Sticky />
                 <MainTop />
-                
                 <div className="mainPart">
 
                     <div className="comic-list-container">

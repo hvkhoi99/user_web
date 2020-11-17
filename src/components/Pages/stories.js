@@ -1,11 +1,11 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actFetchStoryCategoriesRequest } from '../../actions/category_stories';
 import { get_Category } from '../../actions/get_category';
-import StoryMBLeft from '../Story/StoryMBLeft';
-import MainBetweenRight from '../Main/MainBetweenRight'
+import Sticky from '../Header/Sticky';
+import MainBetweenRight from '../Main/MainBetweenRight';
 import Phantrang from '../Phantrang';
-import { getListChapters } from '../../actions/chapters';
+import StoryMBLeft from '../Story/StoryMBLeft';
 
 class Stories extends Component {
 
@@ -25,7 +25,8 @@ class Stories extends Component {
         })
 
         return (
-            <div className="pageChung pageCate">
+            <div className="pageChung pageCate ">
+                <Sticky />
                 <div className="mainPart">
                     <div className="comic-list-container">
                         <section className="left-side-item">

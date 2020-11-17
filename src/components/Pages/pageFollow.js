@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actGetStoriesFollowRequest } from '../../actions/follow'
+import Sticky from '../Header/Sticky'
 import MainBetweenRight from '../Main/MainBetweenRight'
 import Phantrang from '../Phantrang'
 import StoryFollow from '../Story/StoryFollow'
@@ -26,6 +27,7 @@ class PageFollow extends Component {
 
         return (
             <div className="pageChung pageFol">
+                <Sticky />
                 <div className="mainPart">
                     <div className="comic-list-container">
                         <section className="left-side-item ">
