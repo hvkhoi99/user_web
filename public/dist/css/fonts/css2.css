@@ -197,6 +197,7 @@ header {
     /* height: 95vh; */
   /* clip-path: ellipse(65% 80% at 49% 10%); */
     background-attachment: fixed;
+    margin-bottom: -15px;
 }
 
 .div-img .read{
@@ -547,7 +548,7 @@ footer .footer-right-side {
 
     .dangnhap, .dangky{
         margin-top: 10px;
-        margin-left: -15px;
+        margin-left: 45px;
         height: 40px;
     }
     .hi-name{
