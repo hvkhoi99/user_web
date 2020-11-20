@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getImages } from '../../actions/image';
+import Footer from '../Footer/Footer';
 
 class PageImage extends Component {
 
@@ -22,12 +23,15 @@ class PageImage extends Component {
         })
 
         return (
-            <div className="div-img-father">
-                <div className="div-img">
-                    {listImage}
-                </div>
-            </div>
+            <div>
 
+                <div className="div-img-father">
+                    <div className="div-img">
+                        {listImage}
+                    </div>
+                </div>
+                <Footer />
+            </div>
         )
     }
 }

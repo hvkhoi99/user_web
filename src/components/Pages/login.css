@@ -55,7 +55,7 @@
     width: 100%;
     padding: 14px 0px 14px 15px;
     box-sizing: border-box;
-    color: #717171;
+    color: black;
     border: 1px solid #dbdbdb;
     border-radius: 3px;
     font-size: 14px;
@@ -141,9 +141,9 @@
     /* height: 95vh; */
   /* clip-path: ellipse(65% 80% at 49% 10%); */
     background-attachment: fixed;
-    height: 600px;
-    margin-top: -10px;
-    margin-bottom: -15px;
+    height: 100vh;
+    /* margin-top: -10px; */
+    /* margin-bottom: -15px; */
   }
   
   

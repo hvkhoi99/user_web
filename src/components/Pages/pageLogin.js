@@ -2,7 +2,9 @@ import Axios from 'axios';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { isLoginTrue } from '../../actions/login';
+import { showLoading } from '../../utils/helpers';
 import './login.css';
+
 
 class PageLogin extends Component {
 
@@ -20,44 +22,48 @@ class PageLogin extends Component {
     }
 
     loginClick = () => {
+        showLoading(true)
         var { history } = this.props;
         Axios
             .post("http://localhost:8000/api/login-user", {
                 email: this.emailRef.current.value,
                 password: this.passwordRef.current.value,
             }).then((response) => {
-                console.log(response);
-                if (response.data.status === 200) {
-                    localStorage.setItem("isLogin", true);
-                    localStorage.setItem("userLogin", JSON.stringify(response.data.data));
-                    // this.setState({
-                    //     redirect: true,
-                    // });
-                    // showAlert('Đã đăng nhập thành công', 'success');
-                    this.props.setLoginTrue();
-                    history.goBack();
-                }
-                else {
-                    if (response.data.status === "failed") {
-                        if (response.data.success === undefined) {
-                            this.setState({
-                                errMsgEmail: response.data.validation_error.email,
-                                errMsgPwd: response.data.validation_error.password,
-                                msg: "",
-                                errMsg: "",
+                setTimeout(() => {
+                    showLoading(false)
+                    if (response.data.status === 200) {
+                        localStorage.setItem("isLogin", true);
+                        localStorage.setItem("userLogin", JSON.stringify(response.data.data));
+                        // this.setState({
+                        //     redirect: true,
+                        // });
+                        // showAlert('Đã đăng nhập thành công', 'success');
+                        this.props.setLoginTrue();
+                        history.goBack();
+                    }
+                    else {
+                        if (response.data.status === "failed") {
+                            if (response.data.success === undefined) {
+                                this.setState({
+                                    errMsgEmail: response.data.validation_error.email,
+                                    errMsgPwd: response.data.validation_error.password,
+                                    msg: "",
+                                    errMsg: "",
 
-                            });
-                        }
-                        else {
-                            this.setState({
-                                errMsg: response.data.message,
-                                errMsgEmail: "",
-                                errMsgPwd: "",
-                                msg: ""
-                            });
+                                });
+                            }
+                            else {
+                                this.setState({
+                                    errMsg: response.data.message,
+                                    errMsgEmail: "",
+                                    errMsgPwd: "",
+                                    msg: ""
+                                });
+                            }
                         }
                     }
-                }
+                }, 2000);
+
             }).catch((error) => {
                 console.log(error);
             });

@@ -1,4 +1,5 @@
 import Axios from 'axios';
+import moment from 'moment';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
@@ -8,6 +9,7 @@ import { getListChapters } from '../../actions/chapters';
 import { actFollowRequest, actGetStoriesFollowRequest } from '../../actions/follow';
 import { actGetStory } from '../../actions/get_Story';
 import { actDeleteStoryFollow } from '../../actions/story';
+import Footer from '../Footer/Footer';
 import Sticky from '../Header/Sticky';
 import MainBetweenRight from '../Main/MainBetweenRight';
 
@@ -86,11 +88,11 @@ class PageStory extends Component {
 
     render() {
         const followText = (this.state.buttonCheck) ? (
-            <Link style={{ color: 'red' }}>
+            <Link to="" style={{ color: 'red' }}>
                 <i className="fa fa-heart " /> <span >Theo dõi</span>
             </Link>
         ) : (
-                <Link style={{ color: 'black' }}>
+                <Link to="" style={{ color: 'black' }}>
                     <i className="fa fa-heart " /> <span >Theo dõi</span>
                 </Link>
             )
@@ -103,8 +105,7 @@ class PageStory extends Component {
                             <Link to={`/chapter/${chapter.id}`}>{chapter.name}</Link>
                         </span>
                         <span className="center-list-item">
-                            {/* {moment(chapter.created_at).format("L")} */}
-                            20/11/2020
+                            {moment(chapter.created_at).format("L")}
                         </span>
                         <span className="right-list-item">2.527</span>
                     </div>
@@ -120,17 +121,15 @@ class PageStory extends Component {
             <div className="pageChung pageStory">
                 <Sticky />
                 <div className="mainPart">
-                    {/* Block two - slide show */}
                     <div className="comic-list-container">
                         <section className="left-side-item-manga">
                             <div className="manga-title-container">
                                 <h1 className="title-detail">{this.props.getStory.name}</h1>
                                 <time className="small">
                                     [Cập nhật lúc:
-                                {/* {moment(this.props.getStory.updated_at).format("L")} */}
-                                20/11/2020
-                                ]
-          </time>
+                                    20/11/2020
+                                    ]
+                                </time>
                             </div>
                             <div className="manga-infor-container">
                                 <div className="left-side-manga-infor">
@@ -149,7 +148,7 @@ class PageStory extends Component {
                                             </li>
                                             <li>
                                                 <span className="manga-status-left"> <i className="fa fa-tags "> </i> Thể loại</span>
-                                                <span className="manga-status-right">
+                                                <span className="manga-status-right manga-status-right-theloai">
                                                     {listCate}
                                                 </span>
                                             </li>
@@ -164,7 +163,7 @@ class PageStory extends Component {
                                             <span itemProp="aggregateRating " itemScope=" " itemType="https://schema.org/AggregateRating "> Xếp hạng: <span itemProp="ratingValue ">3.7</span>/5 - <span itemProp="ratingCount ">425</span> Lượt đánh giá.</span>
                                         </div>
                                         <div className="ranking-item-container">
-                                            <span style={{ paddingRight: '2%', marginRight: '100px' }}>
+                                            <span style={{ paddingRight: '2%', marginRight: '70px' }}>
                                                 <i className="fas fa-star " />
                                                 <i className="fas fa-star " />
                                                 <i className="fas fa-star " />
@@ -175,7 +174,7 @@ class PageStory extends Component {
                                                 <i className="far fa-thumbs-up " />
                                                 <span>Like 1</span>
                                             </button>
-                                            <button style={{ width: '120px' }}>
+                                            <button style={{ width: '120px',  marginLeft: '10px' }}>
                                                 <i className="fas fa-share " />
                                                 <span>Share</span>
                                             </button>
@@ -187,13 +186,13 @@ class PageStory extends Component {
                                             </button>
 
                                             <b>8.003</b> Người Đã Theo Dõi
-              </div>
+                                        </div>
                                         <div className="ranking-item-container">
                                             <button style={{ width: '120px' }}>
                                                 <Link to="/ ">
                                                     Đọc từ đầu</Link>
                                             </button>
-                                            <button style={{ width: '150px' }}>
+                                            <button style={{ width: '150px', marginLeft: '10px' }}>
                                                 <Link to="/">
                                                     Đọc mới nhất</Link>
                                             </button>
@@ -225,7 +224,8 @@ class PageStory extends Component {
                         </section>
                         <MainBetweenRight />
                     </div>
-                </div >
+                </div>
+                <Footer />
             </div>
 
 

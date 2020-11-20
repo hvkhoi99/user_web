@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { actGetStoriesFollowRequest } from '../../actions/follow'
+import Footer from '../Footer/Footer'
 import Sticky from '../Header/Sticky'
 import MainBetweenRight from '../Main/MainBetweenRight'
 import Phantrang from '../Phantrang'
@@ -42,6 +43,7 @@ class PageFollow extends Component {
                     <Phantrang />
 
                 </div>
+                <Footer />
             </div>
 
         )

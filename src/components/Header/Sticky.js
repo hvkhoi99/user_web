@@ -25,12 +25,12 @@ class Sticky extends Component {
     }
 
     render() {
-        const {checkLG} = this.props;
+        const { checkLG } = this.props;
         const listCategories = this.props.categories.map((item, index) => {
             return (<li key={index}><a href={`/category/${item.id}`}>{item.name}</a></li>)
         })
         return (
-                <div className='navbar'>
+            <div className='navbar'>
                 <nav className="navMenu-top">
                     <ul>
                         <li className="nav-li"><Link to="/"><i className="fas fa-home" /></Link></li>

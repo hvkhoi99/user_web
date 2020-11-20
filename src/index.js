@@ -5,8 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import appReducers from './reducers';
 import thunk from 'redux-thunk';
-import {createStore, applyMiddleware} from 'redux';
-import {Provider} from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import Loading from './components/Loading'
 
 const store = createStore(
   appReducers,
@@ -16,7 +17,9 @@ const store = createStore(
 
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <Loading>
+      <App />
+    </Loading>
   </Provider>,
   document.getElementById('root')
 );

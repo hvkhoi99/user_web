@@ -1,11 +1,12 @@
 import React from 'react';
-import Stories from '../components/Pages/stories';
 import Main from '../components/Main/MainContent';
-import PageStory from '../components/Pages/pageStory';
-import PageImage from '../components/Pages/pageImage';
-import PageHistory from '../components/Pages/pageHistory';
-import PageLogin from '../components/Pages/pageLogin';
 import PageFollow from '../components/Pages/pageFollow';
+import PageHistory from '../components/Pages/pageHistory';
+import PageImage from '../components/Pages/pageImage';
+import PageLogin from '../components/Pages/pageLogin';
+import PageStory from '../components/Pages/pageStory';
+import PageUserCurrent from '../components/Pages/pageUserCurrent';
+import Stories from '../components/Pages/stories';
 
 
 
@@ -40,6 +41,11 @@ const routes = [
         path: '/follow',
         exact: false,
         main: ({ match, history }) => <PageFollow match={match} history={history} />
+    },
+    {
+        path: '/user',
+        exact: false,
+        main: ({ match, history }) => <PageUserCurrent match={match} history={history} />
     },
     {
         path: '/',

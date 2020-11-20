@@ -5,11 +5,10 @@ import {
   Route, Switch
 } from "react-router-dom";
 import './App.css';
-import Footer from './components/Footer/Footer';
 import Header from './components/Header/Header';
 import Navigation from './components/Navigation/navigation';
 import routes from './Router/Url';
-
+import ReactNotification from 'react-notifications-component'
 
 class App extends Component {
 
@@ -36,8 +35,8 @@ class App extends Component {
         <Router>
           <Header />
           <Navigation />
+          <ReactNotification />
           {this.showContentMenus(routes)}
-          <Footer />
         </Router>
       </>
     );

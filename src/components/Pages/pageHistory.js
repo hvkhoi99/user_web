@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Footer from '../Footer/Footer';
 import Sticky from '../Header/Sticky';
 import MainBetweenRight from '../Main/MainBetweenRight';
 import Phantrang from '../Phantrang';
@@ -37,6 +38,7 @@ class PageHistory extends Component {
                     </div>
                     <Phantrang />
                 </div>
+                <Footer />
             </div>
         )
     }

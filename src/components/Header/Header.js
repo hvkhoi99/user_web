@@ -49,7 +49,14 @@ class Header extends Component {
         const htmlLogin = (this.props.checkLogin) ?
             (
                 <>
-                    <li className="hi-name"><a href='/'>Hi <p>{name}</p></a></li>
+                    <li className="hi-name">
+                        <a className="hi-name-a" href='/user'>Hi <p>{name}</p></a>
+                        <ul className="dropdown_1">
+                            <li><Link to="/user" className="dropdown_1-a">Thông tin cá nhân</Link></li>
+                            {/* <li><a href="/" className="dropdown_1-a">Đăng xuất</a></li> */}
+
+                        </ul>
+                    </li>
                     <li className="dangxuat"> <a onClick={() => this.LogOutClick()} href="/" >Đăng xuất</a></li>
                 </>
 
@@ -66,8 +73,7 @@ class Header extends Component {
                 <header>
                     <div className="topNav">
                         <ul className="searchBar">
-                            {/* <li className="logo"><Link to="/"></Link></li> */}
-                            <Link to="/" className="logo header__logo"><img src={logoImg} alt="logo" /></Link>
+                            <Link to="/" className="header__logo"><img src={logoImg} alt="logo" /></Link>
                             <li className="search-input">
                                 <input type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="Tìm kiếm ..." />
                                 {(this.state.suggestStatus) ? <SuggestSearch storiesSuggest={this.props.storiesSuggest} /> : <></>}

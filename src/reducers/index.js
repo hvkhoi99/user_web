@@ -14,6 +14,8 @@ import images from './images';
 import stories from './stories';
 import storiesSuggest from './storiesSuggest';
 import truyendecu from './truyendecu';
+import userCurrent from './userCurrent';
+
 
 
 
@@ -32,7 +34,8 @@ const appReducers = combineReducers({
     storiesSuggest,
     checkLogin,
     getStoriesFollow,
-    history
+    history,
+    userCurrent
 })
 
 export default appReducers;

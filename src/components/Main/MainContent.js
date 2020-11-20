@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Footer from '../Footer/Footer';
 import Sticky from '../Header/Sticky';
 import MainBetweenLeft from './MainBetweenLeft';
 import MainBetweenRight from './MainBetweenRight';
@@ -19,6 +20,7 @@ class MainContent extends Component {
                     </div>
                     <MainBottom />
                 </div>
+                <Footer/>
             </div>
         );
     }
