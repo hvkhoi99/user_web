@@ -38,10 +38,8 @@ class PageFollow extends Component {
                             {listStories}
                         </section>
                         <MainBetweenRight />
-
                     </div>
                     <Phantrang />
-
                 </div>
                 <Footer />
             </div>

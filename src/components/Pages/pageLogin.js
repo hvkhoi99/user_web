@@ -1,6 +1,7 @@
 import Axios from 'axios';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { isLoginTrue } from '../../actions/login';
 import { showLoading } from '../../utils/helpers';
 import './login.css';
@@ -49,7 +50,6 @@ class PageLogin extends Component {
                                     errMsgPwd: response.data.validation_error.password,
                                     msg: "",
                                     errMsg: "",
-
                                 });
                             }
                             else {
@@ -98,7 +98,12 @@ class PageLogin extends Component {
                                 <input className="remember-me-login" type="checkbox" name="remember_me" id="remember_me" />
                                 <label htmlFor="remember_me" className="label-login">Ghi nhớ đăng nhập</label>
                             </div>
+                            <div className='link-dangky'>
+                                <Link to='/register' ><p className='link-dangky-p'>Đăng ký</p></Link>
+                            </div>
                         </div>
+
+
                         <div className="form-group-login">
                             <button className="form-submit-login" onClick={() => this.loginClick()}>Login</button>
                         </div>

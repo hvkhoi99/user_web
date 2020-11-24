@@ -13,7 +13,6 @@ class StoryFollow extends Component {
                 result = index;
             }
         });
-
         return result;
     }
 
@@ -35,8 +34,6 @@ class StoryFollow extends Component {
     }
 
     UnfollowClick = (story_id) => {
-
-
         var dataS = localStorage.getItem('userLogin');
         var list;
         if (dataS) {
@@ -48,12 +45,8 @@ class StoryFollow extends Component {
 
         this.props.unfollowStory(list, story_id);
     }
-
     render() {
-
-
         const story = this.props.story;
-
         return (
             <div className="storyfollow-container">
                 <Link to='/follow'><p onClick={() => this.UnfollowClick(story.id)} className="item-storyfollow unfollow-storyfollow">X</p></Link>

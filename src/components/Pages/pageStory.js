@@ -88,11 +88,11 @@ class PageStory extends Component {
 
     render() {
         const followText = (this.state.buttonCheck) ? (
-            <Link to="" style={{ color: 'red' }}>
+            <Link to={`/story/${this.props.match.params.id}`} style={{ color: 'red' }}>
                 <i className="fa fa-heart " /> <span >Theo dõi</span>
             </Link>
         ) : (
-                <Link to="" style={{ color: 'black' }}>
+                <Link to={`/story/${this.props.match.params.id}`} style={{ color: 'black' }}>
                     <i className="fa fa-heart " /> <span >Theo dõi</span>
                 </Link>
             )
@@ -174,7 +174,7 @@ class PageStory extends Component {
                                                 <i className="far fa-thumbs-up " />
                                                 <span>Like 1</span>
                                             </button>
-                                            <button style={{ width: '120px',  marginLeft: '10px' }}>
+                                            <button style={{ width: '120px', marginLeft: '10px' }}>
                                                 <i className="fas fa-share " />
                                                 <span>Share</span>
                                             </button>
