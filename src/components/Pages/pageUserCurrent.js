@@ -44,7 +44,7 @@ class PageUserCurrent extends Component {
                     email: this.props.userCurrent.email
                 }
                 this.props.editUser(user);
-                localStorage.setItem("userData", JSON.stringify(user));
+                localStorage.setItem("userLogin", JSON.stringify(user));
                 showAlert("Đã sửa tên thành công", "success")
                 this.setState({
                     inputStatus: !this.state.inputStatus,
@@ -73,7 +73,7 @@ class PageUserCurrent extends Component {
             return (
                 <>
                     <li className="tt">{this.state.name}</li>
-                    <li className="edit" onClick={() => this.editClick()}><i className="fa fa-pencil" /> <span>Chỉnh sửa</span></li>
+                    <li className="edit" onClick={() => this.editClick()}><i className="fa fa-pencil-alt" /> <span>Chỉnh sửa</span></li>
                 </>
             )
         }
@@ -86,7 +86,7 @@ class PageUserCurrent extends Component {
                             <i className="fa fa-check" style={{ color: "green" }} /> <span>Lưu</span>
                         </span>
                         <span className="mr" onClick={() => this.editClick()}>
-                            <i className="fa fa-close" style={{ color: "red" }} /> <span>Hủy</span>
+                            <i className="fa fa-times" style={{ color: "red" }} /> <span>Hủy</span>
                         </span>
                     </li>
 
@@ -120,7 +120,7 @@ class PageUserCurrent extends Component {
                         <ul>
                             <li className="td">Số điện thoại</li>
                             <li className="tt">09358324754</li>
-                            <li className="edit"><i className="fa fa-pencil" /> <span>Chỉnh sửa</span></li>
+                            <li className="edit"><i className="fa fa-pencil-alt" /> <span>Chỉnh sửa</span></li>
                         </ul>
                     </div>
                 </div>

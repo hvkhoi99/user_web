@@ -9,6 +9,7 @@ import Header from './components/Header/Header';
 import Navigation from './components/Navigation/navigation';
 import routes from './Router/Url';
 import ReactNotification from 'react-notifications-component'
+import 'react-notifications-component/dist/theme.css'
 
 class App extends Component {
 
