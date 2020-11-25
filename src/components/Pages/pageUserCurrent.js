@@ -113,7 +113,7 @@ class PageUserCurrent extends Component {
                         <ul>
                             <li className="td">Email</li>
                             <li className="tt">{email}</li>
-                            <li className="edit hidden" ><i className="fa fa-pencil" /> <span>Chỉnh sửa</span></li>
+                            <li className="edit hidden" ><i className="fa fa-pencil-alt" /> <span>Chỉnh sửa</span></li>
                         </ul>
                     </div>
                     <div className="_1info">

@@ -4,6 +4,7 @@ import PageFollow from '../components/Pages/pageFollow';
 import PageHistory from '../components/Pages/pageHistory';
 import PageImage from '../components/Pages/pageImage';
 import PageLogin from '../components/Pages/pageLogin';
+import PageRegister from '../components/Pages/pageRegister';
 import PageStory from '../components/Pages/pageStory';
 import PageUserCurrent from '../components/Pages/pageUserCurrent';
 import Stories from '../components/Pages/stories';
@@ -41,6 +42,11 @@ const routes = [
         path: '/follow',
         exact: false,
         main: ({ match, history }) => <PageFollow match={match} history={history} />
+    },
+    {
+        path: '/register',
+        exact: false,
+        main: ({ match, history }) => <PageRegister match={match} history={history} />
     },
     {
         path: '/user',

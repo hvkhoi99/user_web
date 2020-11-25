@@ -474,9 +474,14 @@
 }
 .info  ._1info .edit{
 	width: 290px;
-	/* border: 1px solid orange; */
+
 	margin: 0px 20px;
-	padding: 10px 0;
+  padding: 10px 0;
+
+  
+}
+.fa-times{
+  margin-left: 20px;
 }
 
 .info  ._1info .edit:hover{
@@ -526,4 +531,12 @@
   width: 20%;
   float: left;
 } */
+
+.link-dangky{
+  margin-top: 2px;
+}
+
+.link-dangky-p{
+  font-weight: 700;
+}
  

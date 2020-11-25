@@ -53,8 +53,6 @@ class Header extends Component {
                         <a className="hi-name-a" href='/user'>Hi <p>{name}</p></a>
                         <ul className="dropdown_1">
                             <li><Link to="/user" className="dropdown_1-a">Thông tin cá nhân</Link></li>
-                            {/* <li><a href="/" className="dropdown_1-a">Đăng xuất</a></li> */}
-
                         </ul>
                     </li>
                     <li className="dangxuat"> <a onClick={() => this.LogOutClick()} href="/" >Đăng xuất</a></li>
@@ -63,7 +61,7 @@ class Header extends Component {
             ) : (
                 <>
                     <li className="dangnhap"> <Link to="/login">Đăng nhập</Link></li>
-                    <li className="dangky"> <a href="/">Đăng ký</a></li>
+                    <li className="dangky"> <Link to="/register">Đăng ký</Link></li>
                 </>
             );
 
