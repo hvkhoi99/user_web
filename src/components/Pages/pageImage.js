@@ -15,7 +15,6 @@ class PageImage extends Component {
 
 
     render() {
-
         const listImage = this.props.images.map((item, index) => {
             return (
                 <img src={item.path_image} alt="" className="read" key={index} />

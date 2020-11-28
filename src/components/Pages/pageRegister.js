@@ -26,11 +26,9 @@ class PageRegister extends Component {
         var name = this.nameRef.current.value;
         var email = this.emailRef.current.value;
         var password = md5(this.passwordRef.current.value);
-        // alert(password)
         var { history } = this.props;
         if (name && email && password) {
             Axios.post("http://localhost:8000/api/user/register", { name, email, password }).then(response => {
-
                 history.goBack();
                 showAlert('Đăng ký thành công', 'success');
             }).catch(err => {

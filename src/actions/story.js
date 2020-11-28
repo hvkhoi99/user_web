@@ -4,6 +4,8 @@ export const getListStories = () => {
     return dispatch => {
         return callApi('stories', 'GET', null).then(res => {
             dispatch(actGetStories(res.data));
+        }).catch(err =>{
+            console.log(err.res)
         });
     };
 }
@@ -19,6 +21,8 @@ export const getTruyenDCRequest = (number) => {
     return dispatch => {
         return callApi(`story/many-view/${number}`, 'GET', null).then(res => {
             dispatch(actGetTruyenDC(res.data));
+        }).catch(err =>{
+            console.log(err.res)
         });
     };
 }
