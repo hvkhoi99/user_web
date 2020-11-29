@@ -1,0 +1,40 @@
+.body-container {
+    width: 90%;
+    margin: 20px auto;
+    background-color: white;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+.Trangchu_theloai {
+    margin: 5px 0 15px 0;
+}
+
+.Trangchu_theloai a{
+    margin-right: 15px;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+/* server picked */
+.server-container {
+    background-color: #D9EDF7;
+    padding: 3px;
+    border-radius: 4px;
+    margin: 15px 0;
+}
+.server-container div{
+    background-color:  #D9EDF7;
+    display: flex;
+    margin: 15px 0;
+    justify-content: center;
+}
+
+.server-item-container button{
+    margin: 0 4px;
+    padding: 2px 3px;
+}
+
+.chapter-nav-container div {
+    margin:10px;
+}

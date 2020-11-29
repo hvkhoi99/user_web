@@ -15,6 +15,8 @@ import stories from './stories';
 import storiesSuggest from './storiesSuggest';
 import truyendecu from './truyendecu';
 import userCurrent from './userCurrent';
+import chapterDetail from './chapterDetail';
+import comments from './comments';
 
 
 
@@ -35,7 +37,9 @@ const appReducers = combineReducers({
     checkLogin,
     getStoriesFollow,
     history,
-    userCurrent
+    userCurrent,
+    chapterDetail,
+    comments
 })
 
 export default appReducers;
