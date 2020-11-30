@@ -18,7 +18,7 @@ class PageImage extends Component {
         super(props);
         this.state = {
             chapterDetail: {
-                
+
             },
             comments: []
         }
@@ -45,7 +45,8 @@ class PageImage extends Component {
         }
     }
 
-    commentFunc = (userLogin) => {
+    commentFunc = (e, userLogin) => {
+        e.preventDefault();
         if (userLogin) {
             if (this.commentRef.current.value === '') {
                 showAlert('Bạn cần phải nhập nội dung bình luận', 'danger');
@@ -64,6 +65,7 @@ class PageImage extends Component {
                 tmp.unshift(newComment);
                 this.setState({ comments: tmp })
                 this.props.commentFunc(comment);
+                e.target.reset();
             }
         }
         else {
@@ -177,8 +179,11 @@ class PageImage extends Component {
                             </div>
 
                             <div style={{ position: 'relative' }}>
-                                <textarea ref={this.commentRef} placeholder="Comment Here" style={{ width: '100%', padding: '10px', borderColor: "#dbdbdb", boxShadow: "inset 0 1px 2px rgba(10,10,10,.1)" }} defaultValue={""} />
-                                <button type="submit" className="submit_comment" onClick={() => this.commentFunc(userLogin)}></button>
+                                <form onSubmit={(e) => this.commentFunc(e, userLogin)}>
+                                    <textarea ref={this.commentRef} placeholder="Comment Here" style={{ width: '100%', padding: '10px', borderColor: "#dbdbdb", boxShadow: "inset 0 1px 2px rgba(10,10,10,.1)" }} defaultValue={""} />
+                                    <button type="submit" className="submit_comment" ></button>
+                                </form>
+
                             </div>
                             <div>
                                 {listComment}
