@@ -65,7 +65,6 @@ class Header extends Component {
                 </>
             );
 
-
         return (
             <div className="mainPart">
                 <header>
@@ -74,6 +73,7 @@ class Header extends Component {
                             <Link to="/" className="header__logo"><img src={logoImg} alt="logo" /></Link>
                             <li className="search-input">
                                 <input type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="Tìm kiếm ..." />
+                                <i class="fa fa-search"  aria-hidden="true" style={{position: 'relative', bottom: 30, left: 155, color: 'gray', fontSize: 18}}></i>
                                 {(this.state.suggestStatus) ? <SuggestSearch storiesSuggest={this.props.storiesSuggest} /> : <></>}
                             </li>
                             <li className='phanhoi-icon'>

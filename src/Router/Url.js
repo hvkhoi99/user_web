@@ -1,5 +1,6 @@
 import React from 'react';
 import Main from '../components/Main/MainContent';
+import ContactUs from '../components/Pages/pageFeedBack';
 import PageFollow from '../components/Pages/pageFollow';
 import PageHistory from '../components/Pages/pageHistory';
 import PageImage from '../components/Pages/pageImage';
@@ -54,9 +55,14 @@ const routes = [
         main: ({ match, history }) => <PageUserCurrent match={match} history={history} />
     },
     {
+        path: '/phan-hoi',
+        exact: false,
+        main: ({ match, history }) => <ContactUs match={match} history={history} />
+    },
+    {
         path: '/',
         exact: false,
-        main: () => <Main />
+        main: ({ match, history }) => <Main match={match} history={history}/>
     },
     // {
     //     path: '/admin/edit',

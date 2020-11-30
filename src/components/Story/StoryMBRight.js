@@ -1,4 +1,6 @@
+import Axios from 'axios';
 import React, { Component } from 'react';
+import * as Config from '../../constants/Config';
 
 class StoryMBRight extends Component {
     findIndex = (list, id) => {
@@ -12,7 +14,7 @@ class StoryMBRight extends Component {
         return result;
     }
 
-    SaveClick = (story) => {
+    SaveClick = async(story) => {
         var storyKey = 'list';
         var dataString = localStorage.getItem(storyKey);
 
@@ -26,7 +28,15 @@ class StoryMBRight extends Component {
             list.push(story);
             localStorage.setItem(storyKey, JSON.stringify(list));
         }
+
+        
+        await Axios.put(`${Config.API_URL}/api/story/` + story.id, { view: story.view + 1 }).then(res => {
+        }).catch(err => {
+            console.log(err)
+        })
     }
+
+    
     render() {
 
         var story = this.props.story;

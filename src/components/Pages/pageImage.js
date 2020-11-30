@@ -9,6 +9,8 @@ import './DetailChapter/Comment.css'
 import { actAddCommentRequest, actGetCommentsRequest } from '../../actions/comments';
 import showAlert from '../../reducers/showAlert';
 import { actGetStoryByChapterIdRequest } from '../../actions/get_Story';
+import Axios from 'axios';
+import * as Config from '../../constants/Config';
 
 var moment = require('moment')
 class PageImage extends Component {
@@ -16,11 +18,7 @@ class PageImage extends Component {
         super(props);
         this.state = {
             chapterDetail: {
-                // id: '',
-                // story_id: '',
-                // name: '',
-                // name_story: '',
-                // updated_at: ''
+                
             },
             comments: []
         }
@@ -73,6 +71,23 @@ class PageImage extends Component {
         }
     }
 
+    storyClick = async (e, id) => {
+        e.preventDefault();
+        var { history } = this.props;
+        var view;
+        await Axios.get(`${Config.API_URL}/api/story/` + id, null).then(response => {
+            view = response.data.view;
+        }).catch(error => {
+            console.log(error)
+        })
+
+        await Axios.put(`${Config.API_URL}/api/story/` + id, { view: view + 1 }).then(res => {
+            history.push(`/story/${id}`)
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
     render() {
         var userLogin = JSON.parse(localStorage.getItem('userLogin'));
 
@@ -108,7 +123,7 @@ class PageImage extends Component {
                     <div className="body-container">
                         <div className="Trangchu_theloai">
                             <Link to="/">Trang chủ <i className="fas fa-angle-double-right" /></Link>
-                            <Link to={`/story/${this.props.getStory.id}`}>{this.props.getStory.name}<i className="fas fa-angle-double-right" /></Link>
+                            <Link to={`/story/${this.props.getStory.id}`} onClick={(e) => this.storyClick(e, this.props.getStory.id)}>{this.props.getStory.name}<i className="fas fa-angle-double-right" /></Link>
                             <Link to={`/story/${this.props.chapterDetail.id}`}>{this.props.chapterDetail.name}</Link>
                         </div>
                         <div className="wrap">
@@ -154,7 +169,7 @@ class PageImage extends Component {
                         <div className="comment-area-container">
                             <div className="Trangchu_theloai">
                                 <Link to="/">Trang chủ <i className="fas fa-angle-double-right" /></Link>
-                                <Link to={`/story/${this.props.getStory.id}`}>{this.props.getStory.name} <i className="fas fa-angle-double-right" /></Link>
+                                <Link to={`/story/${this.props.getStory.id}`} onClick={(e) => this.storyClick(e, this.props.getStory.id)}>{this.props.getStory.name} <i className="fas fa-angle-double-right" /></Link>
                                 <Link to={`/chapter/${this.props.chapterDetail.id}`}>{this.props.chapterDetail.name}</Link>
                             </div>
                             <div className="link-comment-site-container">

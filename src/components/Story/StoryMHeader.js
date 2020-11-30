@@ -1,6 +1,9 @@
+import Axios from 'axios';
 import React, { Component } from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
 import { Link } from 'react-router-dom';
+import * as Config from '../../constants/Config';
+
 
 
 class StoryMHeader extends Component {
@@ -16,7 +19,7 @@ class StoryMHeader extends Component {
         return result;
     }
 
-    SaveClick = (story) => {
+    SaveClick = async (story) => {
         var storyKey = 'list';
         var dataString = localStorage.getItem(storyKey);
         var list;
@@ -30,16 +33,22 @@ class StoryMHeader extends Component {
             list.push(story);
             localStorage.setItem(storyKey, JSON.stringify(list));
         }
+
+        await Axios.put(`${Config.API_URL}/api/story/` + story.id, { view: story.view + 1 }).then(res => {
+        }).catch(err => {
+            console.log(err)
+        })
     }
+
     render() {
 
         var { story } = this.props;
         return (
             <div className="recommend-item" style={{ width: '203px' }}>
                 <div className="item">
-                    <a href={`/story/${story.id}`}>
+                    <Link to={`/story/${story.id}`} >
                         <img onClick={(name) => this.SaveClick(story)} className="recommendImage" src={story.path_image} alt={story.name} style={{ display: 'inline' }} />
-                    </a>
+                    </Link>
                     <div className="slide-caption">
                         <h4>
                             <Link to={`/story/${story.id}`} title={story.name}>
