@@ -12,6 +12,8 @@ import { actDeleteStoryFollow } from '../../actions/story';
 import Footer from '../Footer/Footer';
 import Sticky from '../Header/Sticky';
 import MainBetweenRight from '../Main/MainBetweenRight';
+import * as Config from '../../constants/Config';
+
 
 // var moment = require('moment')
 class PageStory extends Component {
@@ -40,7 +42,7 @@ class PageStory extends Component {
                 var userString = localStorage.getItem('userLogin');
                 var userLogin = (userString) ? JSON.parse(userString) : null;
                 if (userLogin !== null) {
-                    Axios.get(`http://192.168.43.171:8000/api/check-follow/user/${userLogin.id}/story/${id}`).then(res => {
+                    Axios.get(`${Config.API_URL}/api/check-follow/user/${userLogin.id}/story/${id}`).then(res => {
                         if (res.data > 0) this.setState({ buttonCheck: true })
                     })
                 }
@@ -59,13 +61,13 @@ class PageStory extends Component {
     }
 
 
-    FollowClick() {
+    FollowClick = async () => {
         var { history } = this.props;
+        var follows = this.props.getStory.follow;
         if (this.props.checkLogin === null) {
             if (window.confirm("Bạn cần phải đăng nhập!")) {
                 history.push('/login');
             }
-
         } else {
             var userCurrent = JSON.parse(localStorage.getItem('userLogin'));
             var story = {
@@ -74,14 +76,43 @@ class PageStory extends Component {
             }
 
             if (this.state.buttonCheck) {
+                follows -= 1;
+                await Axios.put(`${Config.API_URL}/api/story/` + story.story_id, { follow: follows }).then(res => {
+                }).catch(err => {
+                    console.log(err)
+                })
                 this.props.unfollowStory(story.user_id, story.story_id);
                 this.setState({ buttonCheck: false })
             }
             else {
+                follows += 1;
+                await Axios.put(`${Config.API_URL}/api/story/` + story.story_id, { follow: follows }).then(res => {
+                }).catch(err => {
+                    console.log(err)
+                })
                 this.props.followStory(story);
                 this.setState({ buttonCheck: true })
             }
+
+
         }
+    }
+
+    chapterClick = async (e, id) => {
+        e.preventDefault();
+        var { history } = this.props;
+        var view;
+        await Axios.get(`${Config.API_URL}/api/chapter/` + id, null).then(response => {
+            view = response.data.view;
+        }).catch(error => {
+            console.log(error)
+        })
+
+        await Axios.put(`${Config.API_URL}/api/chapter/` + id, { view: view + 1 }).then(res => {
+            history.push(`/chapter/${id}`)
+        }).catch(err => {
+            console.log(err)
+        })
     }
 
 
@@ -102,12 +133,12 @@ class PageStory extends Component {
                 <li key={index}>
                     <div>
                         <span className="left-list-item">
-                            <Link to={`/chapter/${chapter.id}`}>{chapter.name}</Link>
+                            <Link to={`/chapter/${chapter.id}`} onClick={(e) => this.chapterClick(e, chapter.id)}>{chapter.name}</Link>
                         </span>
                         <span className="center-list-item">
                             {moment(chapter.created_at).format("L")}
                         </span>
-                        <span className="right-list-item">2.527</span>
+                        <span className="right-list-item">{new Intl.NumberFormat().format(chapter.view)}</span>
                     </div>
                 </li>
             );
@@ -154,7 +185,7 @@ class PageStory extends Component {
                                             </li>
                                             <li>
                                                 <span className="manga-status-left"> <i className="fa fa-eye "> </i> Lượt xem </span>
-                                                <span className="manga-status-right">308.790</span>
+                                                <span className="manga-status-right">{new Intl.NumberFormat().format(this.props.getStory.view)}</span>
                                             </li>
                                         </ul>
                                     </div>
@@ -185,7 +216,7 @@ class PageStory extends Component {
                                                 {followText}
                                             </button>
 
-                                            <b>8.003</b> Người Đã Theo Dõi
+                                            <b>{new Intl.NumberFormat().format(this.props.getStory.follow)}</b> Người Đã Theo Dõi
                                         </div>
                                         <div className="ranking-item-container">
                                             <button style={{ width: '120px' }}>
@@ -240,8 +271,7 @@ const mapStateToProps = (state) => {
         author: state.author,
         chapters: state.chapters,
         checkLogin: state.checkLogin,
-        getStoriesFollow: state.getStoriesFollow
-
+        getStoriesFollow: state.getStoriesFollow,
     }
 }
 
@@ -270,7 +300,7 @@ const mapDispatchToProps = (dispatch) => {
         },
         unfollowStory: (user_id, story_id) => {
             dispatch(actDeleteStoryFollow(user_id, story_id))
-        }
+        },
     }
 }
 

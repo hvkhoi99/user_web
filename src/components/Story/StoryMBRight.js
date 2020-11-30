@@ -1,4 +1,7 @@
+import Axios from 'axios';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import * as Config from '../../constants/Config';
 
 class StoryMBRight extends Component {
 
@@ -13,7 +16,7 @@ class StoryMBRight extends Component {
         return result;
     }
 
-    SaveClick = (story) => {
+    SaveClick = async (story) => {
         var storyKey = 'list';
         var dataString = localStorage.getItem(storyKey);
 
@@ -27,7 +30,29 @@ class StoryMBRight extends Component {
             list.push(story);
             localStorage.setItem(storyKey, JSON.stringify(list));
         }
+
+
+        await Axios.put(`${Config.API_URL}/api/story/` + story.id, { view: story.view + 1 }).then(res => {
+        }).catch(err => {
+            console.log(err)
+        })
     }
+
+    chapterClick = async (id) => {
+        var view;
+        await Axios.get(`${Config.API_URL}/api/chapter/` + id, null).then(response => {
+            view = response.data.view;
+        }).catch(error => {
+            console.log(error)
+        })
+
+        await Axios.put(`${Config.API_URL}/api/chapter/` + id, { view: view + 1 }).then(res => {
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+
     render() {
         // console.log(this.props.story);
         const { story } = this.props;
@@ -44,13 +69,13 @@ class StoryMBRight extends Component {
                             </div>
                             <div>
                                 <p className="title">
-                                    <a href={`/story/${story.id}`}>{story.name_story}</a>
+                                    <a href={`/story/${story.story_id}`} >{story.name_story}</a>
                                 </p>
                                 <p className="chapter top">
-                                    <a href="/" title="Chapter 639">{story.name}</a>
+                                    <Link to={`/chapter/${story.id}`} title={story.name} onClick={() => this.chapterClick(story.id)}>{story.name}</Link>
                                     <span className="view pull-right">
                                         <i className="fa fa-eye">
-                                        </i>{story.view}</span>
+                                        </i>{new Intl.NumberFormat().format(story.view)}</span>
                                 </p>
                             </div>
                         </div>

@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { isLoginTrue } from '../../actions/login';
 import { showLoading } from '../../utils/helpers';
 import './login.css';
+import * as Config from '../../constants/Config';
 
 
 class PageLogin extends Component {
@@ -26,7 +27,7 @@ class PageLogin extends Component {
         showLoading(true)
         var { history } = this.props;
         Axios
-            .post("http://192.168.43.171:8000/api/login-user", {
+            .post(`${Config.API_URL}/api/login-user`, {
                 email: this.emailRef.current.value,
                 password: this.passwordRef.current.value,
             }).then((response) => {

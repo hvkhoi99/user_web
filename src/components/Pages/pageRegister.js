@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React, { Component } from 'react';
 import { showLoading } from '../../utils/helpers';
 import './login.css';
+import * as Config from '../../constants/Config';
 
 
 
@@ -32,7 +33,7 @@ class PageRegister extends Component {
         var { history } = this.props;
 
         Axios
-            .post("http://192.168.43.171:8000/api/user/register", { name, email, password, password_confirm })
+            .post(`${Config.API_URL}/api/user/register`, { name, email, password, password_confirm })
             .then((response) => {
                 setTimeout(() => {
                     showLoading(false);

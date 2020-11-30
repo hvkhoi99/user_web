@@ -16,3 +16,18 @@ export const actGetListChapters = (chapters) => {
     }
 }
 
+export const getChapterByIdRequest = (id) => {
+    return dispatch => {
+        return callApi(`chapter/${id}`, 'GET', null).then(res => {
+            dispatch(getChapterById(res.data));
+        });
+    };
+}
+
+export const getChapterById = (chapter) => {
+    return {
+        type: 'CHAPTER_GETTING',
+        chapter
+    }
+}
+

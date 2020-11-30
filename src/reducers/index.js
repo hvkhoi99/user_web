@@ -15,6 +15,9 @@ import stories from './stories';
 import storiesSuggest from './storiesSuggest';
 import truyendecu from './truyendecu';
 import userCurrent from './userCurrent';
+import chapterDetail from './chapterDetail';
+import comments from './comments';
+
 import storiesRankMonth from './rankMonth'
 import storiesRankWeek from './rankWeek'
 import storiesRankDay from './rankDay'
@@ -39,6 +42,8 @@ const appReducers = combineReducers({
     getStoriesFollow,
     history,
     userCurrent,
+    chapterDetail,
+    comments,
     storiesRankMonth,
     storiesRankWeek,
     storiesRankDay,

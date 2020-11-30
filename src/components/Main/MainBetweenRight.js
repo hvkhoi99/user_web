@@ -8,7 +8,10 @@ class MainBetweenRight extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            listStories: []
+            listStories: [],
+            monthActive: true,
+            weekActive: false,
+            dayActive: false,
         }
     }
 
@@ -20,6 +23,13 @@ class MainBetweenRight extends Component {
     }
 
     renderWeek = () => {
+        if(!this.state.weekActive){
+            this.setState({
+                monthActive: false,
+                weekActive: true,
+                dayActive: false,
+            })
+        }
         const listStories = this.props.storiesRankWeek.map((story, index) => {
 
             return (<StoryMBRight stt={index + 1} key={index} story={story} />);
@@ -28,6 +38,13 @@ class MainBetweenRight extends Component {
     }
 
     renderMonth = () => {
+        if(!this.state.monthActive){
+            this.setState({
+                monthActive: true,
+                weekActive: false,
+                dayActive: false,
+            })
+        }
         const listStories = this.props.storiesRankMonth.map((story, index) => {
 
             return (<StoryMBRight stt={index + 1} key={index} story={story} />);
@@ -35,6 +52,13 @@ class MainBetweenRight extends Component {
         this.setState({ listStories: listStories });
     }
     renderDay = () => {
+        if(!this.state.dayActive){
+            this.setState({
+                monthActive: false,
+                weekActive: false,
+                dayActive: true,
+            })
+        }
         const listStories = this.props.storiesRankDay.map((story, index) => {
 
             return (<StoryMBRight stt={index + 1} key={index} story={story} />);
@@ -55,11 +79,11 @@ class MainBetweenRight extends Component {
                 <section className="right-side-item">
                     <div className="trending-tile-container">
                         <ul>
-                            <li onClick={() => this.renderMonth()}>
+                            <li onClick={() => this.renderMonth()} style={{ color: (this.state.monthActive) ? '#FF6347' : 'black' }}>
                                 Top Tháng</li>
-                            <li onClick={() => this.renderWeek()}>
+                            <li onClick={() => this.renderWeek()} style={{ color: (this.state.weekActive) ? '#FF6347' : 'black' }}>
                                 Top Tuần</li>
-                            <li onClick={() => this.renderDay()}>
+                            <li onClick={() => this.renderDay()} style={{ color: (this.state.dayActive) ? '#FF6347' : 'black' }}>
                                 Top Ngày</li>
                         </ul>
                     </div>
