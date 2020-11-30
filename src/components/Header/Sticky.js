@@ -36,7 +36,7 @@ class Sticky extends Component {
                         <li className="nav-li"><a href="/"><i className="fas fa-home" /></a></li>
                         <li className="nav-li"><a href="/hot">HOT</a></li>
                         <li className="nav-li"><a onClick={checkLG} href="/follow">THEO DÕI</a></li>
-                        <li className="nav-li"><a href="/">DAILY <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
+                        <li className="nav-li"><a href="/">DAILY <i className="fas fa-sort" style={{ marginLeft: '4px' }} /></a>
                             <ul className="dropdown_1">
                                 <li><Link to="/daily/monday">Monday</Link></li>
                                 <li><Link to="/daily/tuesday">Tuesday</Link></li>
@@ -48,12 +48,12 @@ class Sticky extends Component {
                             </ul>
                         </li>
                         <li className="nav-li"><a href="/history">LỊCH SỬ</a></li>
-                        <li className="nav-li"><a href="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
+                        <li className="nav-li"><a href="/">THỂ LOẠI <i className="fas fa-sort" style={{ marginLeft: '4px' }} /></a>
                             <ul className="dropdown_1">
                                 {listCategories}
                             </ul>
                         </li>
-                        <li className="nav-li"><a href="/">XẾP HẠNG <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
+                        <li className="nav-li"><a href="/">XẾP HẠNG <i className="fas fa-sort" style={{ marginLeft: '4px' }} /></a>
                             <ul className="dropdown_1">
                                 <li><Link to="/bxh/all">Top all</Link></li>
                                 <li><Link to="/bxh/month">Top tháng</Link></li>
