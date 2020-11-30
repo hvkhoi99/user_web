@@ -1,8 +1,10 @@
 import Axios from 'axios';
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import * as Config from '../../constants/Config';
 
 class StoryMBRight extends Component {
+
     findIndex = (list, id) => {
         var result = -1;
         list.forEach((item, index) => {
@@ -14,7 +16,7 @@ class StoryMBRight extends Component {
         return result;
     }
 
-    SaveClick = async(story) => {
+    SaveClick = async (story) => {
         var storyKey = 'list';
         var dataString = localStorage.getItem(storyKey);
 
@@ -29,17 +31,31 @@ class StoryMBRight extends Component {
             localStorage.setItem(storyKey, JSON.stringify(list));
         }
 
-        
+
         await Axios.put(`${Config.API_URL}/api/story/` + story.id, { view: story.view + 1 }).then(res => {
         }).catch(err => {
             console.log(err)
         })
     }
 
-    
-    render() {
+    chapterClick = async (id) => {
+        var view;
+        await Axios.get(`${Config.API_URL}/api/chapter/` + id, null).then(response => {
+            view = response.data.view;
+        }).catch(error => {
+            console.log(error)
+        })
 
-        var story = this.props.story;
+        await Axios.put(`${Config.API_URL}/api/chapter/` + id, { view: view + 1 }).then(res => {
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+
+
+    render() {
+        // console.log(this.props.story);
+        const { story } = this.props;
         return (
             <div>
                 <ul>
@@ -47,19 +63,19 @@ class StoryMBRight extends Component {
                         <div className="order_number">{this.props.stt}</div>
                         <div className="order_infor">
                             <div>
-                                <a className="thumb" title={story.name} href={`/story/${story.id}`}>
-                                    <img onClick={(name) => this.SaveClick(story)} className="ranking-img-item" src={story.path_image} alt="Bách Luyện Thành Thần" style={{ display: 'inline' }} />
+                                <a className="thumb" title={story.name_story} href={`/story/${story.story_id}`}>
+                                    <img className="ranking-img-item" src={story.path_image} alt="ttt" style={{ display: 'inline' }} />
                                 </a>
                             </div>
                             <div>
                                 <p className="title">
-                                    <a onClick={(name) => this.SaveClick(story)} href={`/story/${story.id}`}>{story.name}</a>
+                                    <a href={`/story/${story.story_id}`} >{story.name_story}</a>
                                 </p>
                                 <p className="chapter top">
-                                    <a href="http://www.nettruyen.com/truyen-tranh/bach-luyen-thanh-than/chap-639/646892" title="Chapter 639">Chapter 639</a>
+                                    <Link to={`/chapter/${story.id}`} title={story.name} onClick={() => this.chapterClick(story.id)}>{story.name}</Link>
                                     <span className="view pull-right">
                                         <i className="fa fa-eye">
-                                        </i> 7.283.978</span>
+                                        </i>{new Intl.NumberFormat().format(story.view)}</span>
                                 </p>
                             </div>
                         </div>
@@ -70,5 +86,4 @@ class StoryMBRight extends Component {
         );
     }
 }
-
 export default StoryMBRight;

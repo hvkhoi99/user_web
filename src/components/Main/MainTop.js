@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { getTruyenDCRequest } from '../../actions/story';
+import { getTruyenHotRequest } from '../../actions/story';
 import StoryMHeader from '../Story/StoryMHeader';
 
 
@@ -43,7 +43,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         getTruyendecu: (number) => {
-            dispatch(getTruyenDCRequest(number))
+            dispatch(getTruyenHotRequest(number))
         }
     }
 }

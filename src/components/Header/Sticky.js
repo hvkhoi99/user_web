@@ -33,23 +33,33 @@ class Sticky extends Component {
             <div className='navbar'>
                 <nav className="navMenu-top">
                     <ul>
-                        <li className="nav-li"><Link to="/"><i className="fas fa-home" /></Link></li>
-                        <li className="nav-li"><Link to="/">HOT</Link></li>
-                        <li className="nav-li"><Link onClick={checkLG} to="/follow">THEO DÕI</Link></li>
-                        <li className="nav-li"><Link to="/history">LỊCH SỬ</Link></li>
-                        <li className="nav-li"><Link to="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></Link>
+                        <li className="nav-li"><a href="/"><i className="fas fa-home" /></a></li>
+                        <li className="nav-li"><a href="/hot">HOT</a></li>
+                        <li className="nav-li"><a onClick={checkLG} href="/follow">THEO DÕI</a></li>
+                        <li className="nav-li"><a href="/">DAILY <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
+                            <ul className="dropdown_1">
+                                <li><Link to="/daily/monday">Monday</Link></li>
+                                <li><Link to="/daily/tuesday">Tuesday</Link></li>
+                                <li><Link to="/daily/wednesday">Wednesday</Link></li>
+                                <li><Link to="/daily/thursday">Thursday</Link></li>
+                                <li><Link to="/daily/friday">Friday</Link></li>
+                                <li><Link to="/daily/saturday">Saturday</Link></li>
+                                <li><Link to="/daily/sunday">Sunday</Link></li>
+                            </ul>
+                        </li>
+                        <li className="nav-li"><a href="/history">LỊCH SỬ</a></li>
+                        <li className="nav-li"><a href="/">THỂ LOẠI <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
                             <ul className="dropdown_1">
                                 {listCategories}
                             </ul>
                         </li>
                         <li className="nav-li"><a href="/">XẾP HẠNG <i className="fas fa-expand-arrows-alt" style={{ marginLeft: '4px' }} /></a>
                             <ul className="dropdown_1">
-                                <li><a href="/">Top all</a></li>
-                                <li><a href="/">Top tháng</a></li>
-                                <li><a href="/">Top tuần</a></li>
-                                <li><a href="/">Top ngày</a></li>
-                                <li><a href="/">Yêu thích</a></li>
-                                <li><a href="/">Mới cập nhật</a></li>
+                                <li><Link to="/bxh/all">Top all</Link></li>
+                                <li><Link to="/bxh/month">Top tháng</Link></li>
+                                <li><Link to="/bxh/week">Top tuần</Link></li>
+                                <li><Link to="/bxh/day">Top ngày</Link></li>
+                                <li><Link to="/">Yêu thích</Link></li>
                             </ul>
                         </li>
                     </ul>

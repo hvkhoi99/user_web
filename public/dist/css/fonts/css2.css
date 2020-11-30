@@ -299,6 +299,7 @@ header {
     padding-bottom: 5px;
     width: 80px;
     padding-top: 5px;
+    text-align: center;
 }
 
 .right-side-item .trending-tile-container ul li:hover{
@@ -312,8 +313,8 @@ header {
 
 .right-side-item .trending-tile-container ul li a {
     display: inline-block;
-    font-size: 2.5em;
-    margin-left: 5px;
+    /* margin-left: 5px; */
+    /* text-align: center; */
 }
 
 

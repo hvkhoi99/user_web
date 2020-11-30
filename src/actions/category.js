@@ -4,6 +4,8 @@ export const getListCategories = () => {
     return dispatch => {
         return callApi('categories', 'GET', null).then(res => {
             dispatch(actGetCategories(res.data));
+        }).catch(err => {
+            console.log(err.res)
         });
     };
 }

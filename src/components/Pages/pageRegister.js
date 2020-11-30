@@ -1,7 +1,8 @@
 import Axios from 'axios';
 import React, { Component } from 'react';
-import showAlert from '../../reducers/showAlert';
+import { showLoading } from '../../utils/helpers';
 import './login.css';
+import * as Config from '../../constants/Config';
 
 
 
@@ -24,6 +25,7 @@ class PageRegister extends Component {
     }
 
     RegisterClick = () => {
+        showLoading(true);
         var name = this.nameRef.current.value;
         var email = this.emailRef.current.value;
         var password = this.passwordRef.current.value;
@@ -31,43 +33,47 @@ class PageRegister extends Component {
         var { history } = this.props;
 
         Axios
-            .post("http://localhost:8000/api/user/register", { name, email, password, password_confirm })
+            .post(`${Config.API_URL}/api/user/register`, { name, email, password, password_confirm })
             .then((response) => {
-                if (response.data.status === 200) {
-                    this.setState({
-                        msg: response.data.message,
-                        errMsg: "",
-                    });
-                    setTimeout(() => {
-                        if (window.confirm('Đã đăng ký thành công! Đến trang đăng nhập ?')) {
-                            history.push('/login');
-                        }
-                    }, 2000);
-                }
-                else {
-                    if (response.data.status === "failed") {
-                        this.setState({ msg: response.data.message });
-                        if (response.data.success === undefined) {
-                            this.setState({
-                                errUserName: response.data.errors.name,
-                                errMsgEmail: response.data.errors.email,
-                                errMsgPwd: response.data.errors.password,
-                                errMsgRePwd: response.data.errors.password_confirm,
-                                msg: "",
-                            });
-                        }
-                        else {
-                            this.setState({
-                                errMsg: response.data.message,
-                                errUserName: "",
-                                errMsgEmail: "",
-                                errMsgPwd: "",
-                                errMsgRePwd: "",
-                                msg: "",
-                            });
+                setTimeout(() => {
+                    showLoading(false);
+                    if (response.data.status === 200) {
+                        this.setState({
+                            msg: response.data.message,
+                            errMsg: "",
+                        });
+                        setTimeout(() => {
+                            if (window.confirm('Đã đăng ký thành công! Đến trang đăng nhập ?')) {
+                                history.push('/login');
+                            }
+                        }, 2000);
+                    }
+                    else {
+                        if (response.data.status === "failed") {
+                            this.setState({ msg: response.data.message });
+                            if (response.data.success === undefined) {
+                                this.setState({
+                                    errUserName: response.data.errors.name,
+                                    errMsgEmail: response.data.errors.email,
+                                    errMsgPwd: response.data.errors.password,
+                                    errMsgRePwd: response.data.errors.password_confirm,
+                                    msg: "",
+                                });
+                            }
+                            else {
+                                this.setState({
+                                    errMsg: response.data.message,
+                                    errUserName: "",
+                                    errMsgEmail: "",
+                                    errMsgPwd: "",
+                                    errMsgRePwd: "",
+                                    msg: "",
+                                });
+                            }
                         }
                     }
-                }
+                }, 2000)
+
             });
     }
     render() {
@@ -125,7 +131,9 @@ class PageRegister extends Component {
                         <span className="text-success">{this.state.msg}</span>
                     </div>
                 </div>
+                
             </div>
+
 
         )
     }

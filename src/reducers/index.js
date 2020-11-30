@@ -18,6 +18,10 @@ import userCurrent from './userCurrent';
 import chapterDetail from './chapterDetail';
 import comments from './comments';
 
+import storiesRankMonth from './rankMonth'
+import storiesRankWeek from './rankWeek'
+import storiesRankDay from './rankDay'
+import dailyStories from './dailyStories'
 
 
 
@@ -39,7 +43,11 @@ const appReducers = combineReducers({
     history,
     userCurrent,
     chapterDetail,
-    comments
+    comments,
+    storiesRankMonth,
+    storiesRankWeek,
+    storiesRankDay,
+    dailyStories
 })
 
 export default appReducers;

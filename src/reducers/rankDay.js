@@ -1,13 +1,12 @@
 const InitialState = []
-const truyendecu = (state = InitialState, action) => {
+const storiesRankDay = (state = InitialState, action) => {
     switch (action.type) {
-        case 'GET_TRUYEN_HOT':
+        case 'GET_STORIES_RANK_DAY':
             state = action.stories
             return [...state]
-        
         default:
             return state
     }
 }
 
-export default truyendecu;
+export default storiesRankDay;
