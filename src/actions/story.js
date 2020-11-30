@@ -17,10 +17,10 @@ export const actGetStories = (stories) => {
     }
 }
 
-export const getTruyenDCRequest = (number) => {
+export const getTruyenHotRequest = (number) => {
     return dispatch => {
         return callApi(`story/many-view/${number}`, 'GET', null).then(res => {
-            dispatch(actGetTruyenDC(res.data));
+            dispatch(actGetTruyenHot(res.data));
         }).catch(err =>{
             console.log(err.res)
         });
@@ -28,9 +28,9 @@ export const getTruyenDCRequest = (number) => {
 }
 
 
-export const actGetTruyenDC = (stories) => {
+export const actGetTruyenHot = (stories) => {
     return {
-        type: 'GET_TRUYEN_DC',
+        type: 'GET_TRUYEN_HOT',
         stories
     }
 }

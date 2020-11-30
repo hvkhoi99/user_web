@@ -26,7 +26,7 @@ class PageLogin extends Component {
         showLoading(true)
         var { history } = this.props;
         Axios
-            .post("http://localhost:8000/api/login-user", {
+            .post("http://192.168.43.171:8000/api/login-user", {
                 email: this.emailRef.current.value,
                 password: this.passwordRef.current.value,
             }).then((response) => {
@@ -40,7 +40,7 @@ class PageLogin extends Component {
                         // });
                         // showAlert('Đã đăng nhập thành công', 'success');
                         this.props.setLoginTrue();
-                        history.goBack();
+                        history.push('/');
                     }
                     else {
                         if (response.data.status === "failed") {

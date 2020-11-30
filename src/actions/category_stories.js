@@ -19,6 +19,8 @@ export const actFetchCategoriesRequest = (id) => {
     return dispatch => {
         return callApi(`categories/story/${id}`, 'GET', null).then(res => {
             dispatch(actFetchCategories(res.data));
+        }).catch(err => {
+            console.log(err.res)
         });
     };
 }

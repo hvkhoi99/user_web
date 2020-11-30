@@ -40,7 +40,7 @@ class PageStory extends Component {
                 var userString = localStorage.getItem('userLogin');
                 var userLogin = (userString) ? JSON.parse(userString) : null;
                 if (userLogin !== null) {
-                    Axios.get(`http://127.0.0.1:8000/api/check-follow/user/${userLogin.id}/story/${id}`).then(res => {
+                    Axios.get(`http://192.168.43.171:8000/api/check-follow/user/${userLogin.id}/story/${id}`).then(res => {
                         if (res.data > 0) this.setState({ buttonCheck: true })
                     })
                 }

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 class StoryMBRight extends Component {
+
     findIndex = (list, id) => {
         var result = -1;
         list.forEach((item, index) => {
@@ -28,8 +29,8 @@ class StoryMBRight extends Component {
         }
     }
     render() {
-
-        var story = this.props.story;
+        // console.log(this.props.story);
+        const { story } = this.props;
         return (
             <div>
                 <ul>
@@ -37,19 +38,19 @@ class StoryMBRight extends Component {
                         <div className="order_number">{this.props.stt}</div>
                         <div className="order_infor">
                             <div>
-                                <a className="thumb" title={story.name} href={`/story/${story.id}`}>
-                                    <img onClick={(name) => this.SaveClick(story)} className="ranking-img-item" src={story.path_image} alt="Bách Luyện Thành Thần" style={{ display: 'inline' }} />
+                                <a className="thumb" title={story.name_story} href={`/story/${story.story_id}`}>
+                                    <img className="ranking-img-item" src={story.path_image} alt="ttt" style={{ display: 'inline' }} />
                                 </a>
                             </div>
                             <div>
                                 <p className="title">
-                                    <a onClick={(name) => this.SaveClick(story)} href={`/story/${story.id}`}>{story.name}</a>
+                                    <a href={`/story/${story.id}`}>{story.name_story}</a>
                                 </p>
                                 <p className="chapter top">
-                                    <a href="http://www.nettruyen.com/truyen-tranh/bach-luyen-thanh-than/chap-639/646892" title="Chapter 639">Chapter 639</a>
+                                    <a href="/" title="Chapter 639">{story.name}</a>
                                     <span className="view pull-right">
                                         <i className="fa fa-eye">
-                                        </i> 7.283.978</span>
+                                        </i>{story.view}</span>
                                 </p>
                             </div>
                         </div>
@@ -60,5 +61,4 @@ class StoryMBRight extends Component {
         );
     }
 }
-
 export default StoryMBRight;
