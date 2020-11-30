@@ -77,7 +77,7 @@ class Header extends Component {
                                 {(this.state.suggestStatus) ? <SuggestSearch storiesSuggest={this.props.storiesSuggest} /> : <></>}
                             </li>
                             <li className='phanhoi-icon'>
-                                <i className="fas fa-comment" style={{ fontSize: '40px' }} />
+                                <Link to="/phan-hoi"><i className="fas fa-comment" style={{ fontSize: '40px' }} /></Link>
                             </li>
                             <li>
                                 <ul>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 import emailjs from 'emailjs-com';
+import * as Config from '../../constants/Config';
 
 import './login.css';
+import Axios from 'axios';
 
 export default class ContactUs extends Component {
     constructor(props) {
@@ -14,7 +16,7 @@ export default class ContactUs extends Component {
         this.messageRef = React.createRef()
     }
 
-    sendEmail(e) {
+    sendEmail(e, id) {
         e.preventDefault();
         if (this.subjectRef.current.value !== "" && this.messageRef.current.value !== "") {
             emailjs.sendForm('service_l068fu5', 'template_2ogh7x8', e.target, 'user_awv3YdZqy00gAmT9XMCfc')
@@ -23,13 +25,21 @@ export default class ContactUs extends Component {
                 }, (error) => {
                     console.log(error.text);
                 });
-            e.target.reset();
-            this.setState({
-                msg: "Đả gửi phản hồi thành công",
-                errMsg: ""
+            Axios.post(`${Config.API_URL}/api/feedback/add`, {
+                subject: this.subjectRef.current.value,
+                message: this.messageRef.current.value,
+                user_id: id
+            }).then(response => {
+                this.setState({
+                    msg: "Đả gửi phản hồi thành công",
+                    errMsg: ""
+                })
+            }).catch(error => {
+                console.log(error)
             })
+            e.target.reset();
         }
-        else{
+        else {
             this.setState({
                 errMsg: "Vui lòng điền đầy đủ thông tin",
                 msg: ""
@@ -53,21 +63,22 @@ export default class ContactUs extends Component {
 
     render() {
         var user = JSON.parse(localStorage.getItem('userLogin'));
-        var email = "", name = "";
+        var email = "", name = "", id = 0;
         if (user !== null) {
             email = user.email;
-            name = user.name
+            name = user.name;
+            id = user.id
         }
         return (
             <div className="page-login-bg">
                 <div className="form-login-container">
                     <div className="form-login">
                         <h3 className="logo-login">Phản Hồi</h3>
-                        <form className="contact-form" onSubmit={(e) => this.sendEmail(e)}>
+                        <form className="contact-form" onSubmit={(e) => this.sendEmail(e, id)}>
                             <div className="form-group-login">
                                 <input onKeyPress={(e) => {
                                     if (e.key === 'Enter') {
-                                        this.sendEmail(e);
+                                        this.sendEmail(e, id);
                                     }
                                 }} className="form-control-login" type="text" name="name" placeholder="Name" defaultValue={name} readOnly />
                             </div>
@@ -75,7 +86,7 @@ export default class ContactUs extends Component {
                             <div className="form-group-login">
                                 <input onKeyPress={(e) => {
                                     if (e.key === 'Enter') {
-                                        this.sendEmail(e);
+                                        this.sendEmail(e, id);
                                     }
                                 }} className="form-control-login" type="email" name="email" placeholder="Email" defaultValue={email} readOnly />
                             </div>
@@ -83,7 +94,7 @@ export default class ContactUs extends Component {
                             <div className="form-group-login">
                                 <input onKeyPress={(e) => {
                                     if (e.key === 'Enter') {
-                                        this.sendEmail(e);
+                                        this.sendEmail(e, id);
                                     }
                                 }} className="form-control-login" type="text" name="subject" placeholder="Subject" ref={this.subjectRef} />
                             </div>
@@ -91,15 +102,12 @@ export default class ContactUs extends Component {
                             <div className="form-group-login">
                                 <textarea ref={this.messageRef} name="message" style={{ width: '100%', padding: '10px', borderColor: "#dbdbdb", boxShadow: "inset 0 1px 2px rgba(10,10,10,.1)" }} placeholder="Message"></textarea>
                             </div>
-
+                            <p className="text-danger">{this.state.errMsg}</p>
+                            <span className="text-success">{this.state.msg}</span>
                             <div className="form-group-login">
                                 <button className="form-submit-login" type="submit">Gửi phản hồi</button>
                             </div>
                         </form>
-
-                        <p className="text-danger">{this.state.errMsg}</p>
-                        <span className="text-success">{this.state.msg}</span>
-
                     </div>
                 </div>
             </div>
