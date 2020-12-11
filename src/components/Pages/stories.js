@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { actFetchStoryCategoriesRequest } from '../../actions/category_stories';
 import { get_Category } from '../../actions/get_category';
+import Footer from '../Footer/Footer';
 import Sticky from '../Header/Sticky';
 import MainBetweenRight from '../Main/MainBetweenRight';
 import Phantrang from '../Phantrang';
@@ -39,6 +40,7 @@ class Stories extends Component {
                     </div>
                     <Phantrang />
                 </div>
+                <Footer/>
             </div>
         )
     }

@@ -5,9 +5,17 @@ import { Link } from 'react-router-dom';
 import * as Config from '../../constants/Config';
 
 import moment from 'moment';
+import { connect } from 'react-redux';
+import { getListChapters } from '../../actions/chapters';
 
 
 class StoryMHeader extends Component {
+
+    componentDidMount() {
+        const id_story = this.props.story.id;
+        this.props.getListChapters(id_story)
+    }
+    
 
     findIndex = (list, id) => {
         var result = -1;
@@ -42,9 +50,10 @@ class StoryMHeader extends Component {
     }
 
     render() {
+        const nameChapter = this.props.chapters[0]?this.props.chapters[0].name:'';
+        const timeUpdate = this.props.chapters[0]?this.props.chapters[0].create_at:'2020-12-12';
 
         var { story } = this.props;
-        // console.log(story)
         return (
             <div className="recommend-item" style={{ width: '203px' }}>
                 <div className="item">
@@ -64,8 +73,8 @@ class StoryMHeader extends Component {
                                 />
                             </Link>
                         </h4>
-                        <a className="a-chapter-maintop" href={`/story/${story.id}`} title="chapter">Chapter 226</a>
-                        <span className="time">{moment(story.created_at).fromNow()}</span>
+                        <a className="a-chapter-maintop" href={`/story/${story.id}`} title="chapter">{nameChapter}</a>
+                        <span className="time">{moment(timeUpdate).fromNow()}</span>
 
                     </div>
                 </div>
@@ -74,6 +83,20 @@ class StoryMHeader extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        chapters: state.chapters,
 
+    }
+}
 
-export default StoryMHeader;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getListChapters: (id) => {
+            dispatch(getListChapters(id));
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StoryMHeader)
+

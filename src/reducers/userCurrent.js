@@ -7,6 +7,9 @@ const userCurrent = (state = InitialState, action) => {
         case 'GET_USER_CURRENT':
             state = action.user
             return state
+        // case 'ADD_USER_CURRENT':
+        //     state = action.user
+        //     return state
         default:
             return state
     }

@@ -5,6 +5,8 @@ export const actGetStory = (id) => {
         return callApi(`story/${id}`, 'GET', null).then(res => {
             dispatch(actGet(res.data));
 
+        }).catch(error=>{
+            console.log(error)
         });
     };
 }
@@ -20,7 +22,8 @@ export const actGetStoryByChapterIdRequest = (id) => {
     return dispatch => {
         return callApi(`story/chapter/${id}`, 'GET', null).then(res => {
             dispatch(actGetStoryByChapterId(res.data));
-
+        }).catch(error=>{
+            console.log(error)
         });
     };
 }

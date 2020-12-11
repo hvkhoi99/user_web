@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { isLoginFalse } from '../../actions/login';
 import { actSearchStoriesRequest, getListStories } from '../../actions/story';
+import { actGetUserRequest } from '../../actions/user';
 import logoImg from '../../webLogo.png';
 import SuggestSearch from './SuggestSearch';
 
@@ -16,6 +17,14 @@ class Header extends Component {
         }
         this.nameRef = React.createRef();
     }
+
+    componentDidMount() {
+        var userLogin = localStorage.getItem('userLogin');
+        var userCurrent = (userLogin) ? JSON.parse(userLogin) : [];
+        const user_id = userCurrent.id;
+        this.props.getUser(user_id);
+    }
+    
 
     isChange = () => {
         let name = this.nameRef.current.value;
@@ -44,7 +53,7 @@ class Header extends Component {
 
     render() {
 
-        var name = (this.props.checkLogin) ? JSON.parse(localStorage.getItem('userLogin')).name : 'Bạn';
+        var name = (this.props.checkLogin) ? this.props.userCurrent.name : 'Bạn';
 
         const htmlLogin = (this.props.checkLogin) ?
             (
@@ -53,6 +62,7 @@ class Header extends Component {
                         <a className="hi-name-a" href='/user'>Hi <p>{name}</p></a>
                         <ul className="dropdown_1">
                             <li><Link to="/user" className="dropdown_1-a">Thông tin cá nhân</Link></li>
+                            <li><Link to={`/change-password/${this.props.userCurrent.email}`} className="dropdown_1-a">Đổi mật khẩu</Link></li>
                         </ul>
                     </li>
                     <li className="dangxuat"> <a onClick={() => this.LogOutClick()} href="/" >Đăng xuất</a></li>
@@ -72,12 +82,12 @@ class Header extends Component {
                         <ul className="searchBar">
                             <Link to="/" className="header__logo"><img src={logoImg} alt="logo" /></Link>
                             <li className="search-input">
-                                <input type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="Tìm kiếm ..." />
-                                <i class="fa fa-search"  aria-hidden="true" style={{position: 'relative', bottom: 30, left: 155, color: 'gray', fontSize: 18}}></i>
+                                <input className="input-search" type="text" ref={this.nameRef} onChange={() => this.isChange()} id="searchBar" placeholder="Tìm kiếm ..." />
+                                <i className="fa fa-search" aria-hidden="true" style={{ position: 'relative', bottom: 30, left: 165, color: 'gray', fontSize: 18, cursor: 'pointer' }}></i>
                                 {(this.state.suggestStatus) ? <SuggestSearch storiesSuggest={this.props.storiesSuggest} /> : <></>}
                             </li>
                             <li className='phanhoi-icon'>
-                                <Link to="/phan-hoi"><i className="fas fa-comment" style={{ fontSize: '40px' }} /></Link>
+                                <Link className="feedback-area" to="/phan-hoi"><i className="fas fa-comment" style={{ fontSize: '40px' }} /></Link>
                             </li>
                             <li>
                                 <ul>
@@ -96,7 +106,8 @@ const mapStateToProps = (state) => {
     return {
         stories: state.stories,
         storiesSuggest: state.storiesSuggest,
-        checkLogin: state.checkLogin
+        checkLogin: state.checkLogin,
+        userCurrent: state.userCurrent
 
     }
 }
@@ -111,7 +122,10 @@ const mapDispatchToProps = (dispatch) => {
         },
         setLoginFalse: () => {
             dispatch(isLoginFalse())
-        }
+        },
+        getUser: (id) => {
+            dispatch(actGetUserRequest(id))
+        },
     }
 }
 

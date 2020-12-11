@@ -1,11 +1,21 @@
 import Axios from 'axios';
 import React, { Component } from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
+import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { getListChapters } from '../../actions/chapters';
 import * as Config from '../../constants/Config';
+import moment from 'moment';
 
 
 class StoryMBLeft extends Component {
+
+    componentDidMount() {
+        const id_story = this.props.story.id;
+        this.props.getListChapters(id_story)
+    }
+
+
     findIndex = (list, id) => {
         var result = -1;
         list.forEach((item, index) => {
@@ -17,7 +27,7 @@ class StoryMBLeft extends Component {
         return result;
     }
 
-    SaveClick = async(story) => {
+    SaveClick = async (story) => {
         var storyKey = 'list';
         var dataString = localStorage.getItem(storyKey);
 
@@ -41,14 +51,14 @@ class StoryMBLeft extends Component {
 
     render() {
 
+        const nameChapter = this.props.chapters[0] ? this.props.chapters[0].name : '...';
+        const timeUpdate = this.props.chapters[0] ? this.props.chapters[0].create_at : '2020-12-12';
         const story = this.props.story;
-
         return (
             <div>
                 <Link title={story.name} to={`/story/${story.id}`}>
-                    <img className="story-item comic-list-img" onClick={(name) => this.SaveClick(story)} src={story.path_image} data-original="//st.truyenchon.com/data/comics/70/van-gioi-tien-vuong.jpg" alt={story.name} />
+                    <img className="story-item comic-list-img" onClick={(name) => this.SaveClick(story)} src={story.path_image} alt={story.name} />
                     <h4>
-                        {/* {story.name} */}
                         <LinesEllipsis
                             onClick={(name) => this.SaveClick(story)}
                             text={story.name}
@@ -58,17 +68,28 @@ class StoryMBLeft extends Component {
                             basedOn='letters'
                         />
                     </h4>
+                    <a className="a-chapter-maintop" href={`/story/${story.id}`} title="chapter">{nameChapter}</a>
+                    <span className="time">{moment(timeUpdate).fromNow()}</span>
 
                 </Link>
-                {/* <div className="view clearfix">
-                    <span className="pull-left">
-                        <i className="fa fa-eye">
-                        </i> 2.108.695 <i className="fa fa-comment" /> 219 <i className="fa fa-heart" />
-            15.831</span>
-                </div> */}
             </div>
         );
     }
 }
 
-export default StoryMBLeft;
+const mapStateToProps = (state) => {
+    return {
+        chapters: state.chapters,
+
+    }
+}
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        getListChapters: (id) => {
+            dispatch(getListChapters(id));
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(StoryMBLeft)

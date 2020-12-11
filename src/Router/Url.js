@@ -21,6 +21,7 @@ import PageThursday from '../components/Pages/pageThursday';
 import PageFriday from '../components/Pages/pageFriday';
 import PageSaturday from '../components/Pages/pageSaturday';
 import PageSunday from '../components/Pages/pageSunday';
+import PageChangePass from '../components/Pages/pageChangePass';
 
 
 
@@ -133,9 +134,14 @@ const routes = [
         main: ({ match, history }) => <PageSunday match={match} history={history} />
     },
     {
+        path: '/change-password/:email',
+        exact: false,
+        main: ({ match, history }) => <PageChangePass match={match} history={history} />
+    },
+    {
         path: '/',
         exact: false,
-        main: ({ match, history }) => <Main match={match} history={history}/>
+        main: ({ match, history }) => <Main match={match} history={history} />
     },
     // {
     //     path: '/admin/edit',
