@@ -13,7 +13,6 @@ class MainContent extends Component {
                 <Sticky />
                 <MainTop />
                 <div className="mainPart">
-
                     <div className="comic-list-container">
                         <MainBetweenLeft />
                         <MainBetweenRight />

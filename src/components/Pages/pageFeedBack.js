@@ -19,7 +19,7 @@ export default class ContactUs extends Component {
     sendEmail(e, id) {
         e.preventDefault();
         if (this.subjectRef.current.value !== "" && this.messageRef.current.value !== "") {
-            emailjs.sendForm('service_l068fu5', 'template_2ogh7x8', e.target, 'user_awv3YdZqy00gAmT9XMCfc')
+            emailjs.sendForm('service_lej33pf', 'template_vb8s621', e.target, 'user_WZnvxSeuDVX8Y8IP8JwMt')
                 .then((result) => {
                     console.log(result.text);
                 }, (error) => {
@@ -35,7 +35,7 @@ export default class ContactUs extends Component {
                     errMsg: ""
                 })
             }).catch(error => {
-                console.log(error)
+                console.log(error.response)
             })
             e.target.reset();
         }

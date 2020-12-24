@@ -5,6 +5,8 @@ export const getListChapters = (id) => {
         return callApi(`story/${id}/chapters`, 'GET', null).then(res => {
             var resData = res.data;
             dispatch(actGetListChapters(resData));
+        }).catch(error=>{
+            console.log(error)
         });
     };
 }
@@ -20,6 +22,8 @@ export const getChapterByIdRequest = (id) => {
     return dispatch => {
         return callApi(`chapter/${id}`, 'GET', null).then(res => {
             dispatch(getChapterById(res.data));
+        }).catch(error=>{
+            console.log(error)
         });
     };
 }

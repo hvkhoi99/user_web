@@ -41,8 +41,13 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 35px;
     font-weight: 700;
-    padding: 10px 0px 30px 0px;
+    padding: 20px 0px 30px 0px;
     color: orange;
+    background-color: black;
+    margin-top: -10px;
+    /* border-radius: 10px; */
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
   }
   
   .form-group-login {
@@ -125,6 +130,11 @@
     display: block;
   }
 
+  .label_changePass{
+    float: left;
+    padding-bottom: .5rem;
+  }
+
   .form-login-container{
     display: inline-block;
     width: 50%;
@@ -132,7 +142,7 @@
     margin-left: 25%;
     padding-bottom: 3%;
     border: .1px solid rgb(148, 147, 147);
-    margin-top: 1%;
+    margin-top: 2%;
     border-radius: 8px;
   }
 

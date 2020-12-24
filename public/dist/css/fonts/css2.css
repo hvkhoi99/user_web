@@ -113,6 +113,8 @@
     list-style: none;
     display: flex;
     /* z-index: 999; */
+    /* padding-bottom: -10px; */
+    height: 60px;
 }
 
 .topNav ul li {
@@ -146,15 +148,17 @@ header {
     width: 180px;
     height: 200px;
     border: .5px solid rgb(126, 124, 124);
+    z-index: 0;
 }
 
+
 .recommendBlock {
-    width: 90%;
-    display: flex;
-    flex-direction: row;
-    margin: auto;
+    /* margin: auto; */
     border: .5px solid rgb(170, 170, 170);
     border-radius: 5px;
+    width: 80%;
+    margin: 0 auto;
+    background-color: white;
 }
 
 .recommendBlock div {
@@ -576,11 +580,56 @@ footer .footer-right-side {
     }
 
     .phanhoi-icon{
-        display: inline-block;
-        margin-left: -70px;
+        /* display: inline-block; */
+        /* margin-left: -70px; */
+        padding-left: 50px;
         margin-right: -50px;
+        width: 100px;
     }
  
+    .feedback-area{
+        width: 100px;
+    }
 
+    input {
+    border-color: #d5d5d5; 
+  }
+
+.save-change {
+    cursor: pointer;
+    background-color: #0094FF;
+    border: none;
+  }
+
+.save-change:hover{
+    background-color: #0488E6;
+  }
+.info .form-change-password {
+	width: 50%;
+	height: 100%;
+	/* border: 1px solid red; */
+	margin: 20px 40px;
+}
+
+.info .form-change-password label{
+	display: block;
+	padding-bottom: 7px;
+	font-weight: normal;
+	font-family: 'Roboto Medium';
+	cursor: default;
+	font-size: 20px;
+}
+
+.info .form-change-password input{
+	display: block;
+	padding: 7px 10px;
+	width: 270px;
+	margin-bottom: 15px;
+	font-size: 14px;
+}
+
+.div-Slider-container{
+    
+}
 
 /* /////////////////////////// */
