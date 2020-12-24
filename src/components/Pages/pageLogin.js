@@ -36,10 +36,6 @@ class PageLogin extends Component {
                     if (response.data.status === 200) {
                         localStorage.setItem("isLogin", true);
                         localStorage.setItem("userLogin", JSON.stringify(response.data.data));
-                        // this.setState({
-                        //     redirect: true,
-                        // });
-                        // showAlert('Đã đăng nhập thành công', 'success');
                         this.props.setLoginTrue();
                         history.push('/');
                     }

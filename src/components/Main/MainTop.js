@@ -25,7 +25,6 @@ class MainTop extends Component {
 
         const listStory = this.props.truyendecu.map((story, index) => {
             return (<StoryMHeader key={index} story={story} />);
-
         });
 
         return (

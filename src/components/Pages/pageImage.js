@@ -116,7 +116,6 @@ class PageImage extends Component {
                 </div>
             )
         })
-        console.log(this.props.comments);
         return (
             <div>
                 <div className="div-img-father">

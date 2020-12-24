@@ -51,9 +51,9 @@ class StoryMBLeft extends Component {
 
     render() {
 
-        const nameChapter = this.props.chapters[0] ? this.props.chapters[0].name : '...';
-        const timeUpdate = this.props.chapters[0] ? this.props.chapters[0].create_at : '2020-12-12';
-        const story = this.props.story;
+        const nameChapter = this.props.chapters.length!==0 ? this.props.chapters[0].name : '...';
+        const timeUpdate = this.props.chapters.length!==0 ? this.props.chapters[0].update_at : '2020-12-12';
+        const {story} = this.props;
         return (
             <div>
                 <Link title={story.name} to={`/story/${story.id}`}>

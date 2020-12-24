@@ -4,7 +4,7 @@ export const getListStories = () => {
     return dispatch => {
         return callApi('stories', 'GET', null).then(res => {
             dispatch(actGetStories(res.data));
-        }).catch(err =>{
+        }).catch(err => {
             console.log(err.res)
         });
     };
@@ -21,7 +21,7 @@ export const getTruyenHotRequest = (number) => {
     return dispatch => {
         return callApi(`story/many-view/${number}`, 'GET', null).then(res => {
             dispatch(actGetTruyenHot(res.data));
-        }).catch(err =>{
+        }).catch(err => {
             console.log(err.res)
         });
     };
@@ -48,6 +48,8 @@ export const actSearchStoriesRequest = (name) => {
     return dispatch => {
         return callApi(`story/search/${name}`, 'GET', null).then(res => {
             dispatch(actSearchStories(res.data));
+        }).catch(error => {
+            console.log(error)
         });
     };
 }

@@ -50,8 +50,9 @@ class StoryMHeader extends Component {
     }
 
     render() {
-        const nameChapter = this.props.chapters[0]?this.props.chapters[0].name:'';
-        const timeUpdate = this.props.chapters[0]?this.props.chapters[0].create_at:'2020-12-12';
+        
+        const nameChapter = this.props.chapters.length!==0?this.props.chapters[0].name:'...';
+        const timeUpdate = this.props.chapters.length!==0?this.props.chapters[0].update_at:'2020-12-12';
 
         var { story } = this.props;
         return (

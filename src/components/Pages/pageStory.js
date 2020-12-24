@@ -118,7 +118,7 @@ class PageStory extends Component {
 
 
     render() {
-        console.log(this.props.chapters[0])
+        // console.log(this.props.chapters[0])
         const followText = (this.state.buttonCheck) ? (
             <Link to={`/story/${this.props.match.params.id}`} style={{ color: 'red' }}>
                 <i className="fa fa-heart " /> <span >Theo dõi</span>

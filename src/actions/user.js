@@ -17,7 +17,7 @@ export const actGetUserRequest = (id) => {
         return callApi(`user/${id}`, 'GET', null).then(res => {
             dispatch(actGetUser(res.data));
         }).catch(error => {
-            showAlert(error, 'danger');
+            console.log(error)
         });
     };
 }
