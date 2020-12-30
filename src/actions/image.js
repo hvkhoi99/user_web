@@ -4,6 +4,8 @@ export const getImages = (id) => {
     return dispatch => {
         return callApi(`images/chapter/${id}`, 'GET', null).then(res => {
             dispatch(actGetImage(res.data));
+        }).catch(err => {
+            console.log(err.res)
         });
     };
 }

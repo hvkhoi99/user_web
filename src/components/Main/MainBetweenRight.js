@@ -23,7 +23,7 @@ class MainBetweenRight extends Component {
     }
 
     renderWeek = () => {
-        if(!this.state.weekActive){
+        if (!this.state.weekActive) {
             this.setState({
                 monthActive: false,
                 weekActive: true,
@@ -38,7 +38,7 @@ class MainBetweenRight extends Component {
     }
 
     renderMonth = () => {
-        if(!this.state.monthActive){
+        if (!this.state.monthActive) {
             this.setState({
                 monthActive: true,
                 weekActive: false,
@@ -52,7 +52,7 @@ class MainBetweenRight extends Component {
         this.setState({ listStories: listStories });
     }
     renderDay = () => {
-        if(!this.state.dayActive){
+        if (!this.state.dayActive) {
             this.setState({
                 monthActive: false,
                 weekActive: false,
@@ -88,8 +88,8 @@ class MainBetweenRight extends Component {
                         </ul>
                     </div>
                     {/* {listStoriess} */}
-                    {/* {this.state.listStories} */}
-                    {(this.state.listStories.length !== 0) ? (this.state.listStories) : listStoriess}
+                    {this.state.listStories}
+                    {/* {(this.state.listStories.length !== 0) ? (this.state.listStories) : listStoriess}s */}
                 </section>
             </>
         );

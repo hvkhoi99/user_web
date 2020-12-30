@@ -4,6 +4,8 @@ export const actFollowRequest = (story) => {
     return dispatch => {
         return callApi('follow', 'POST', story).then(res => {
             // dispatch(actFetchAuthors(res.data));
+        }).catch(err => {
+            console.log(err.res)
         });
     };
 }
@@ -13,6 +15,8 @@ export const actGetStoriesFollowRequest = (user_id) => {
         return callApi(`story/follow/${user_id}`, 'GET', null).then(res => {
             var dataStoriesFollow = res.data;
             dispatch(actGetStoriesFollow(dataStoriesFollow));
+        }).catch(err => {
+            console.log(err.res)
         });
     };
 }

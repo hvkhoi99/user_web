@@ -1,19 +1,11 @@
 import Axios from 'axios';
 import React, { Component } from 'react';
 import LinesEllipsis from 'react-lines-ellipsis';
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getListChapters } from '../../actions/chapters';
 import * as Config from '../../constants/Config';
-import moment from 'moment';
 
 
 class StoryMBLeft extends Component {
-
-    componentDidMount() {
-        const id_story = this.props.story.id;
-        this.props.getListChapters(id_story)
-    }
 
 
     findIndex = (list, id) => {
@@ -50,10 +42,7 @@ class StoryMBLeft extends Component {
     }
 
     render() {
-
-        const nameChapter = this.props.chapters.length!==0 ? this.props.chapters[0].name : '...';
-        const timeUpdate = this.props.chapters.length!==0 ? this.props.chapters[0].update_at : '2020-12-12';
-        const {story} = this.props;
+        const { story } = this.props;
         return (
             <div>
                 <Link title={story.name} to={`/story/${story.id}`}>
@@ -68,8 +57,8 @@ class StoryMBLeft extends Component {
                             basedOn='letters'
                         />
                     </h4>
-                    <a className="a-chapter-maintop" href={`/story/${story.id}`} title="chapter">{nameChapter}</a>
-                    <span className="time">{moment(timeUpdate).fromNow()}</span>
+                    {/* <a className="a-chapter-maintop" href={`/story/${story.id}`} title="chapter">{nameChapter}</a> */}
+                    {/* <span className="time">{moment(timeUpdate).fromNow()}</span> */}
 
                 </Link>
             </div>
@@ -77,19 +66,4 @@ class StoryMBLeft extends Component {
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        chapters: state.chapters,
-
-    }
-}
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        getListChapters: (id) => {
-            dispatch(getListChapters(id));
-        },
-    }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(StoryMBLeft)
+export default StoryMBLeft;

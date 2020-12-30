@@ -4,7 +4,7 @@ export const getListStoriesMonday = (day) => {
     return dispatch => {
         return callApi(`chapters/day/${day}`, 'GET', null).then(res => {
             dispatch(actGetStoriesMonday(res.data));
-        }).catch(err =>{
+        }).catch(err => {
             console.log(err.res)
         });
     };
@@ -21,7 +21,7 @@ export const getListStoriesTuesday = (day) => {
     return dispatch => {
         return callApi(`chapters/day/${day}`, 'GET', null).then(res => {
             dispatch(actGetStoriesTuesday(res.data));
-        }).catch(err =>{
+        }).catch(err => {
             console.log(err.res)
         });
     };
@@ -38,7 +38,7 @@ export const getListStoriesWednesday = (day) => {
     return dispatch => {
         return callApi(`chapters/day/${day}`, 'GET', null).then(res => {
             dispatch(actGetStoriesWednesday(res.data));
-        }).catch(err =>{
+        }).catch(err => {
             console.log(err.res)
         });
     };
@@ -57,7 +57,7 @@ export const getListStoriesThursday = (day) => {
     return dispatch => {
         return callApi(`chapters/day/${day}`, 'GET', null).then(res => {
             dispatch(actGetStoriesThursday(res.data));
-        }).catch(err =>{
+        }).catch(err => {
             console.log(err.res)
         });
     };
@@ -75,7 +75,7 @@ export const getListStoriesFriday = (day) => {
     return dispatch => {
         return callApi(`chapters/day/${day}`, 'GET', null).then(res => {
             dispatch(actGetStoriesFriday(res.data));
-        }).catch(err =>{
+        }).catch(err => {
             console.log(err.res)
         });
     };
@@ -93,7 +93,7 @@ export const getListStoriesSaturday = (day) => {
     return dispatch => {
         return callApi(`chapters/day/${day}`, 'GET', null).then(res => {
             dispatch(actGetStoriesSaturday(res.data));
-        }).catch(err =>{
+        }).catch(err => {
             console.log(err.res)
         });
     };
@@ -111,7 +111,7 @@ export const getListStoriesSunday = (day) => {
     return dispatch => {
         return callApi(`chapters/day/${day}`, 'GET', null).then(res => {
             dispatch(actGetStoriesSunday(res.data));
-        }).catch(err =>{
+        }).catch(err => {
             console.log(err.res)
         });
     };
