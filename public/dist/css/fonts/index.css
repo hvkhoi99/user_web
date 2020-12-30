@@ -44,7 +44,7 @@
     overflow-x: hidden;
     background-color: white;
     width: 110%;
-
+    height: 200px;
   }
   .suggestsearch ul {
       display: flex;
@@ -334,17 +334,21 @@
 
   .pageFol{
     background-image: linear-gradient(to right bottom, rgba(235, 240, 243, 0.8), rgba(234, 234, 242, 0.8)), url("https://c4.wallpaperflare.com/wallpaper/151/143/785/anime-dragons-rioting-manga-wallpaper-preview.jpg");
+    /* background-color: #EBEBEB; */
   }
 
   .pageHis{
+    /* background-color: #EBEBEB; */
     background-image: linear-gradient(to right bottom, rgba(235, 240, 243, 0.8), rgba(234, 234, 242, 0.8)), url("https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/527f2c83-b33d-43f4-8aa8-a95372ee139e/dcdms0u-0a96291b-3b8d-423e-a9be-fab89d1948ec.jpg/v1/fill/w_1024,h_557,q_75,strp/hunter_x_hunter_hisoka_cards__anime_2011_manga_hd_by_amanomoon_dcdms0u-fullview.jpg?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3siaGVpZ2h0IjoiPD01NTciLCJwYXRoIjoiXC9mXC81MjdmMmM4My1iMzNkLTQzZjQtOGFhOC1hOTUzNzJlZTEzOWVcL2RjZG1zMHUtMGE5NjI5MWItM2I4ZC00MjNlLWE5YmUtZmFiODlkMTk0OGVjLmpwZyIsIndpZHRoIjoiPD0xMDI0In1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmltYWdlLm9wZXJhdGlvbnMiXX0.pBobB5wxSS3NUd6op9-qlcqaFaHCPletLa-MUb69-Ms");
   }
 
   .pageCate{
+    /* background-color: #EBEBEB; */
     background-image: linear-gradient(to right bottom, rgba(235, 240, 243, 0.8), rgba(234, 234, 242, 0.8)), url("https://i.pinimg.com/originals/c2/ba/e2/c2bae211b44acfaf4667f562353108ee.jpg");
   }
   .pageStory{
     background-image: linear-gradient(to right bottom, rgba(235, 240, 243, 0.8), rgba(234, 234, 242, 0.8)), url("https://p4.wallpaperbetter.com/wallpaper/404/346/421/anime-one-punch-man-garou-one-punch-man-hd-wallpaper-preview.jpg");
+    /* background-color: #EBEBEB; */
   }
 
 
@@ -359,7 +363,8 @@
   font-size: 1.2rem;
   position: sticky;
   top: 0;
-  margin-top: 7rem
+  margin-top: 7rem;
+  z-index: 100!important;
 }
 /* ----------------------------USER CURRENT------------------------------ */
 

@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import { showLoading } from '../../utils/helpers';
 import './login.css';
 import * as Config from '../../constants/Config';
+import Sticky from '../Header/Sticky';
+import Footer from '../Footer/Footer';
 
 
 
@@ -79,61 +81,70 @@ class PageRegister extends Component {
     render() {
 
         return (
-            <div className="page-login-bg">
-                <div className="form-login-container">
-                    <div className="form-login">
-                        <h3 className="logo-login">Đăng Ký</h3>
+            <div className="pageChung">
+                <Sticky />
+                <div className="page-login-bg">
+                    <div className="form-login-container">
+                        <div className="form-login">
+                            <h3 className="logo-login">Đăng Ký</h3>
 
-                        <div className="form-group-login">
-                            <input onKeyPress={(e) => {
-                                if (e.key === 'Enter') {
-                                    this.RegisterClick();
-                                }
-                            }} className="form-control-login" type="text" name="name" placeholder="Name" ref={this.nameRef} />
-                            <i className="fa fa-user icon-login" />
-                            <span className="text-danger">{this.state.errUserName}</span>
-                        </div>
+                            <div className="form-group-login">
+                                <input onKeyPress={(e) => {
+                                    if (e.key === 'Enter') {
+                                        this.RegisterClick();
+                                    }
+                                }} className="form-control-login" type="text" name="name" placeholder="Name" ref={this.nameRef} />
+                                <i className="fa fa-user icon-login" />
+                                <span className="text-danger">{this.state.errUserName}</span>
+                            </div>
 
-                        <div className="form-group-login">
-                            <input onKeyPress={(e) => {
-                                if (e.key === 'Enter') {
-                                    this.RegisterClick();
-                                }
-                            }} className="form-control-login" type="text" name="email" placeholder="Email" ref={this.emailRef} />
-                            <i className="fa fa-envelope icon-login" />
-                            <span className="text-danger">{this.state.errMsgEmail}</span>
-                        </div>
+                            <div className="form-group-login">
+                                <input onKeyPress={(e) => {
+                                    if (e.key === 'Enter') {
+                                        this.RegisterClick();
+                                    }
+                                }} className="form-control-login" type="text" name="email" placeholder="Email" ref={this.emailRef} />
+                                <i className="fa fa-envelope icon-login" />
+                                <span className="text-danger">{this.state.errMsgEmail}</span>
+                            </div>
 
-                        <div className="form-group-login">
-                            <input onKeyPress={(e) => {
-                                if (e.key === 'Enter') {
-                                    this.RegisterClick();
-                                }
-                            }} className="form-control-login" type="password" name="password" placeholder="Password" ref={this.passwordRef} />
-                            <i className="fa fa-unlock-alt icon-login" />
-                            <span className="text-danger">{this.state.errMsgPwd}</span>
-                        </div>
+                            <div className="form-group-login">
+                                <input onKeyPress={(e) => {
+                                    if (e.key === 'Enter') {
+                                        this.RegisterClick();
+                                    }
+                                }} className="form-control-login" type="password" name="password" placeholder="Password" ref={this.passwordRef} />
+                                <i className="fa fa-unlock-alt icon-login" />
+                                <span className="text-danger">{this.state.errMsgPwd}</span>
+                            </div>
 
-                        <div className="form-group-login">
-                            <input onKeyPress={(e) => {
-                                if (e.key === 'Enter') {
-                                    this.RegisterClick();
-                                }
-                            }} className="form-control-login" type="password" name="password_confirm" placeholder="Confirm Password" ref={this.RepasswordRef} />
-                            <i className="fa fa-unlock-alt icon-login" />
-                            <span className="text-danger">{this.state.errMsgRePwd}</span>
-                        </div>
+                            <div className="form-group-login">
+                                <input onKeyPress={(e) => {
+                                    if (e.key === 'Enter') {
+                                        this.RegisterClick();
+                                    }
+                                }} className="form-control-login" type="password" name="password_confirm" placeholder="Confirm Password" ref={this.RepasswordRef} />
+                                <i className="fa fa-unlock-alt icon-login" />
+                                <span className="text-danger">{this.state.errMsgRePwd}</span>
+                            </div>
 
-                        <div className="form-group-login">
-                            <button className="form-submit-login" onClick={() => this.RegisterClick()} >Đăng Ký</button>
+                            <div className="form-group-login">
+                                <button className="form-submit-login login" onClick={() => this.RegisterClick()} >Đăng Ký</button>
+                            </div>
+                            <p className="text-danger">{this.state.errMsg}</p>
+                            <span className="text-success">{this.state.msg}</span>
+
+                            <div className="form-group-login">
+                                <button className="form-submit-login facebook" onClick={() => this.loginClick()}><i className="fab fa-facebook-f"></i>Đăng nhập bằng Facebook</button>
+                            </div>
+                            <div className="form-group-login">
+                                <button className="form-submit-login gmail" onClick={() => this.loginClick()}><i className="fab fa-google-plus-g"></i>Đăng nhập bằng Google</button>
+                            </div>
                         </div>
-                        <p className="text-danger">{this.state.errMsg}</p>
-                        <span className="text-success">{this.state.msg}</span>
                     </div>
                 </div>
-                
+                <Footer />
             </div>
-
 
         )
     }
