@@ -11,6 +11,7 @@ import showAlert from '../../reducers/showAlert';
 import { actGetStoryByChapterIdRequest } from '../../actions/get_Story';
 import Axios from 'axios';
 import * as Config from '../../constants/Config';
+import Sticky from '../Header/Sticky';
 
 var moment = require('moment')
 class PageImage extends Component {
@@ -117,9 +118,9 @@ class PageImage extends Component {
             )
         })
         return (
-            <div>
+            <div className="pageChung">
+                <Sticky />
                 <div className="div-img-father">
-
                     {/* phan tren */}
                     <div className="body-container">
                         <div className="Trangchu_theloai">

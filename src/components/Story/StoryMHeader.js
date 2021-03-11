@@ -10,6 +10,12 @@ import { connect } from 'react-redux';
 
 class StoryMHeader extends Component {
 
+    // componentDidMount() {
+    //     const id_story = this.props.story.id;
+    //     this.props.getListChapters(id_story)
+    // }
+    
+
     findIndex = (list, id) => {
         var result = -1;
         list.forEach((item, index) => {
@@ -43,6 +49,9 @@ class StoryMHeader extends Component {
     }
 
     render() {
+        
+        // const nameChapter = this.props.chapters.length!==0?this.props.chapters[0].name:'...';
+        // const timeUpdate = this.props.chapters.length!==0?this.props.chapters[0].update_at:'2020-12-12';
 
         var { story } = this.props;
         return (
@@ -64,9 +73,8 @@ class StoryMHeader extends Component {
                                 />
                             </Link>
                         </h4>
-                        {/* <a className="a-chapter-maintop" href={`/story/${story.id}`} title="chapter">{nameChapter}</a> */}
-                        {/* <span className="time">{moment(timeUpdate).fromNow()}</span> */}
-
+                        {/* <a className="a-chapter-maintop" href={`/story/${story.id}`} title="chapter">{nameChapter}</a>
+                        <span className="time">{moment(timeUpdate).fromNow()}</span> */}
                     </div>
                 </div>
             </div>

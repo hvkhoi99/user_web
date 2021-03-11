@@ -41,8 +41,8 @@
     font-family: 'Open Sans', sans-serif;
     font-size: 35px;
     font-weight: 700;
-    padding: 20px 0px 30px 0px;
-    color: orange;
+    padding: 20px 0px 20px 0px;
+    color: white;
     background-color: black;
     margin-top: -10px;
     /* border-radius: 10px; */
@@ -77,7 +77,6 @@
   
   .form-submit-login {
     width: 100%;
-    background: #2a3148;
     box-sizing: border-box;
     padding: 10px 30px 10px 30px;
     letter-spacing: 1px;
@@ -89,9 +88,57 @@
     border: none;
     color: white;
   }
+
+  .login {
+    background: #FFA500;
+  }
+
+  .facebook {
+    background-color: #3B5998;
+    position: relative;
+  }
+
+  .gmail {
+    background-color: #DD4B39;
+    position: relative;
+  }
   
-  .form-submit-login:hover {
-    background: #36405F;
+  .login:hover {
+    background: #fdab16;
+  }
+  .facebook:hover {
+    background: #2D4373; 
+  }
+  .gmail:hover {
+    background: #C23321; 
+  }
+
+  .facebook .fab{
+    position: absolute;
+    left: 0;
+    top:0;
+    bottom: 0;
+    width: 32px;
+    line-height: 34px;
+    font-size: 1.5em;
+    text-align: center;
+    border-right: 1px solid rgba(0,0,0,.2);
+    height: 43px;
+    padding-top: 3px;
+  }
+
+  .gmail .fab{
+    position: absolute;
+    left: 0;
+    top:0;
+    bottom: 0;
+    width: 32px;
+    line-height: 34px;
+    font-size: 1.5em;
+    text-align: center;
+    border-right: 1px solid rgba(0,0,0,.2);
+    height: 43px;
+    padding-top: 3px;
   }
   
   .checkbox-login {
@@ -106,7 +153,7 @@
     display: block;
     box-sizing: border-box;
     float: left;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
   }
   
   .remember-me-login {
@@ -140,22 +187,23 @@
     width: 50%;
     text-align: center;
     margin-left: 25%;
-    padding-bottom: 3%;
+    padding-bottom: 1%;
     border: .1px solid rgb(148, 147, 147);
     margin-top: 2%;
     border-radius: 8px;
   }
 
   .page-login-bg{
-    background-image: linear-gradient(to right bottom, rgba(235, 240, 243, 0.8), rgba(234, 234, 242, 0.8)), url("https://i.pinimg.com/originals/b0/4b/22/b04b2239b28e30aaed522c2d18069139.jpg");
+    /* background-image: linear-gradient(to right bottom, rgba(235, 240, 243, 0.8), rgba(234, 234, 242, 0.8)), url("https://i.pinimg.com/originals/b0/4b/22/b04b2239b28e30aaed522c2d18069139.jpg"); */
     background-size: cover;
     background-position: top;
     /* height: 95vh; */
   /* clip-path: ellipse(65% 80% at 49% 10%); */
     background-attachment: fixed;
     height: 100vh;
-    /* margin-top: -10px; */
-    /* margin-bottom: -15px; */
+    margin-top: -30px;
+    margin-bottom: -15px;
+    background-color: #F9F9F9;
   }
   
   

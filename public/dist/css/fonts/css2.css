@@ -171,7 +171,7 @@ header {
 }
 
 .div-img-father{
-    margin: 10px 10px;
+    margin: -20px 10px 0px 10px;
     padding: 10px 10px;
     background-color: rgb(122, 117, 117);
 }
@@ -406,6 +406,7 @@ footer .footer-right-side {
 }
 
 
+
 .navigation__checkbox {
     display: none; }
   
@@ -433,7 +434,7 @@ footer .footer-right-side {
     top: 13rem;
     right: 1rem;
     border-radius: 50%;
-    z-index: 1000;
+    z-index: 1499;
     transition: transform .8s;
     opacity: .95;
  }

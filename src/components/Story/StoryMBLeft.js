@@ -7,6 +7,11 @@ import * as Config from '../../constants/Config';
 
 class StoryMBLeft extends Component {
 
+    // componentDidMount() {
+    //     const id_story = this.props.story.id;
+    //     this.props.getListChapters(id_story)
+    // }
+
 
     findIndex = (list, id) => {
         var result = -1;
@@ -42,7 +47,10 @@ class StoryMBLeft extends Component {
     }
 
     render() {
-        const { story } = this.props;
+
+        // const nameChapter = this.props.chapters.length!==0 ? this.props.chapters[0].name : '...';
+        // const timeUpdate = this.props.chapters.length!==0 ? this.props.chapters[0].update_at : '2020-12-12';
+        const {story} = this.props;
         return (
             <div>
                 <Link title={story.name} to={`/story/${story.id}`}>
@@ -57,8 +65,8 @@ class StoryMBLeft extends Component {
                             basedOn='letters'
                         />
                     </h4>
-                    {/* <a className="a-chapter-maintop" href={`/story/${story.id}`} title="chapter">{nameChapter}</a> */}
-                    {/* <span className="time">{moment(timeUpdate).fromNow()}</span> */}
+                    {/* <a className="a-chapter-maintop" href={`/story/${story.id}`} title="chapter">{nameChapter}</a>
+                    <span className="time">{moment(timeUpdate).fromNow()}</span> */}
 
                 </Link>
             </div>

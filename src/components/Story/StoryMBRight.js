@@ -80,7 +80,6 @@ class StoryMBRight extends Component {
                             </div>
                         </div>
                     </li>
-
                 </ul>
             </div>
         );
